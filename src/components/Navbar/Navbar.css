@@ -19,6 +19,8 @@
     padding: 8px;
     border-radius: 14px;
     margin: 8px 0;
+    transition: all 0.2s ease;
+
 }
 .menu-content:hover {
     background-color: var(--thiBgColor);

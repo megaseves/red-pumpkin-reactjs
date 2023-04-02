@@ -1,0 +1,48 @@
+.player-container {
+    margin-left: 100px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.player {
+    min-width: 550px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+}
+.play-audio {
+    font-size: 45px;
+    cursor: pointer;
+}
+
+
+.casette-div {
+    width: 358px;
+    height: 233px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+.casette-tittle {
+    color: black;
+    font-weight: bold;
+    margin-top: 30px;
+
+}
+
+.audio-detail-title {
+    margin-top: 10px;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+
+
+.album-name-and-releases {
+    min-width: 400px;
+    background-color: green;
+}
