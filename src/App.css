@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body { overflow-x: hidden; }
+
+:root {
+  --linkColor: #c72329;
+  --bgColor: #1e1f21;
+  --secBgColor: #292a2b;
+  --thiBgColor: #3c3d3f;
+  --textColor: #adb1b5;
+  --secTextColor: white;
+}
