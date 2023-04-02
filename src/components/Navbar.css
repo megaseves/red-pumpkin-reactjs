@@ -1,0 +1,42 @@
+.navbar-container {
+    width: 100px;
+    height: 100vh;
+    background-color: var(--secBgColor);
+    position: fixed;
+    border-right: 1px solid var(--thiBgColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.menu-content {
+    min-width: 80px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 14px;
+    margin: 8px 0;
+}
+.menu-content:hover {
+    background-color: var(--thiBgColor);
+    cursor: pointer;
+}
+.menu-icon {
+    font-size: 38px;
+}
+.menu-title {
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.active {
+    color: var(--linkColor);
+    /*background-color: var(--thiBgColor);*/
+}
+.active p {
+    font-weight: bold;
+}
