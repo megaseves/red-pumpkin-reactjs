@@ -1,6 +1,7 @@
 import './Player.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackwardStep, faForwardStep, faPause, faPlay, faRepeat, faShuffle} from "@fortawesome/free-solid-svg-icons";
+import {NextSong} from "../components/NextSong";
 
 export function Player({audioElem, isPlaying, setIsPlaying, currentSong}) {
 
@@ -37,7 +38,16 @@ export function Player({audioElem, isPlaying, setIsPlaying, currentSong}) {
                   </div>
               </div>
               <div className="up-next-container">
-                  <h3>Up Next</h3>
+                  <div className="container-line"></div>
+                  <h3 className={"container-title"} >Up Next</h3>
+                  <div className="up-next-songs">
+
+                      <NextSong />
+                      <NextSong />
+                      <NextSong />
+                      <NextSong />
+
+                  </div>
               </div>
 
           </div>
