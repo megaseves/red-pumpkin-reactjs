@@ -5,18 +5,52 @@
 }
 .player {
     min-width: 550px;
-    background-color: red;
+    /*background-color: red;*/
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .audio-controls {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
 }
 .play-audio {
+    min-width: 40px;
     font-size: 45px;
     cursor: pointer;
+    margin: 0 10px;
+    align-self: center;
+}
+.small-control {
+    font-size: 20px;
+}
+.medium-control {
+    font-size: 30px;
+}
+.audio-detail {
+    text-align: center;
+    text-shadow: 2px 0 2px rgba(0, 0, 0, 0.62);
+}
+.audio-detail-album-name {
+    color: var(--textColor);
+}
+.audio-detail-time {
+    min-width: 450px;
+    color: var(--textColor);
+    display: flex;
+    justify-content: space-between;
+    font-size: 19px;
+    font-weight: bold;
+    /*background-color: gold;*/
+    margin-top: 10px;
+}
+.time-line {
+    min-width: 340px;
+    height: 10px;
+    border-radius: 8px;
+    background-color: white;
+    align-self: flex-end;
 }
 
 
@@ -42,7 +76,66 @@
 
 
 
+.up-next-container {
+    margin-top: 30px;
+    min-width: 550px;
+    background-color: gold;
+}
+
+
+
+
 .album-name-and-releases {
     min-width: 400px;
-    background-color: green;
+    /*background-color: green;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.album-container {
+    width: 385px;
+    height: 440px;
+    padding: 18px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 80px;
+     background: rgba( 255, 255, 255, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.album-container:hover {
+    cursor: pointer;
+    background: rgba(107, 107, 107, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.album-image {
+    width: 350px;
+    border-radius: 15px;
+    margin-top: 9px;
+}
+.album-description {
+    padding: 15px;
+}
+.album-description h3 {
+    font-size: 20px;
+}
+.album-description p {
+    color: var(--textColor);
+    font-size: 14px;
+}
+
+.new-releases {
+    min-width: 400px;
+    background-color: gold;
+    margin-top: 50px;
 }
