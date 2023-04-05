@@ -1,5 +1,4 @@
 import './Navbar.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faAddressBook,
     faCalendarCheck,

@@ -3,16 +3,15 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackwardStep, faForwardStep, faPause, faPlay, faRepeat, faShuffle} from "@fortawesome/free-solid-svg-icons";
 import {NextSong} from "../components/NextSong";
 import {NewReleaseSong} from "../components/NewReleaseSong";
-import {useRef} from "react";
+import {useEffect, useRef} from "react";
 
-export function Player({audioElem, isPlaying, setIsPlaying, currentSong, release}) {
+export function Player({songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release}) {
 
     const clickRef = useRef();
 
     const PlayPause = () => {
         setIsPlaying(!isPlaying);
     }
-    //console.log(currentSong);
 
 
     const checkWidth = (e) => {
@@ -20,7 +19,20 @@ export function Player({audioElem, isPlaying, setIsPlaying, currentSong, release
         const offset = e.nativeEvent.offsetX;
 
         const divProgress = offset / width * 100;
-        audioElem.current.currentTime = divProgress / 100 * currentSong.length;
+        if (audioElem.current.currentTime !== 0) {
+            audioElem.current.currentTime = divProgress / 100 * currentSong.length;
+        }
+    }
+
+    const skipBack = () => {
+        setIsPlaying(true);
+        const index = songs.findIndex(x=>x.title === currentSong.title);
+
+        if (index === 0) {
+            setCurrentSong(songs[songs.length -1]);
+        } else {
+            setCurrentSong(songs[index - 1]);
+        }
     }
 
   return (
@@ -43,7 +55,7 @@ export function Player({audioElem, isPlaying, setIsPlaying, currentSong, release
                   </div>
                   <div className="audio-controls">
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} />
-                      <FontAwesomeIcon className={"play-audio medium-control"} icon={faBackwardStep} />
+                      <FontAwesomeIcon className={"play-audio medium-control"} icon={faBackwardStep} onClick={() => skipBack()} />
                       {isPlaying ?
                           <FontAwesomeIcon className={"play-audio"} icon={faPause} onClick={() => PlayPause()} />
                           :
