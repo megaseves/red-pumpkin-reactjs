@@ -47,14 +47,26 @@
     /*background-color: gold;*/
     margin-top: 10px;
 }
-.time-line {
-    min-width: 340px;
+.time-line-container {
+    width: 340px;
     height: 10px;
     border-radius: 8px;
-    background-color: white;
+    background-color: var(--thiBgColor);
     align-self: flex-end;
+    cursor: pointer;
 }
-
+.time-line {
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+.time-line:hover {
+    position: relative;
+    cursor: pointer;
+    height: 15px;
+    top: -5px;
+}
 
 .casette-div {
     width: 358px;

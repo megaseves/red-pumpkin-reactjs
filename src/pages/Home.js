@@ -42,6 +42,14 @@ export function Home() {
         setCurrentAlbum(songs);
     };
 
+    const onPlaying = () => {
+        const duration = audioElem.current.duration;
+        const current_time = audioElem.current.currentTime;
+
+        setCurrentSong({...currentSong, "progress": current_time / duration * 100, "length": duration});
+    }
+
+
   return (
       <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer.jpg'})`}}>
 
@@ -51,7 +59,7 @@ export function Home() {
 
                 <Route path={"/"} element={
                     <>
-                        <audio src={currentSong.url} ref={audioElem} />
+                        <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} />
                         <Player songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} release={release} />
                     </>
                 }

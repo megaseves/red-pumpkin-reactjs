@@ -3,11 +3,24 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackwardStep, faForwardStep, faPause, faPlay, faRepeat, faShuffle} from "@fortawesome/free-solid-svg-icons";
 import {NextSong} from "../components/NextSong";
 import {NewReleaseSong} from "../components/NewReleaseSong";
+import {useRef} from "react";
 
 export function Player({audioElem, isPlaying, setIsPlaying, currentSong, release}) {
 
+    const clickRef = useRef();
+
     const PlayPause = () => {
         setIsPlaying(!isPlaying);
+    }
+    //console.log(currentSong);
+
+
+    const checkWidth = (e) => {
+        let width = clickRef.current.clientWidth;
+        const offset = e.nativeEvent.offsetX;
+
+        const divProgress = offset / width * 100;
+        audioElem.current.currentTime = divProgress / 100 * currentSong.length;
     }
 
   return (
@@ -23,7 +36,9 @@ export function Player({audioElem, isPlaying, setIsPlaying, currentSong, release
                   <h4 className={"audio-detail-album-name"}>Red Pumpkin</h4>
                   <div className="audio-detail-time">
                     <span className={"time-current"}>0:07</span>
-                    <div className={"time-line"}></div>
+                    <div className={"time-line-container"} onClick={checkWidth}  ref={clickRef} >
+                        <div className="time-line" style={{width: `${currentSong.progress+"%"}`}}></div>
+                    </div>
                     <span className={"time-over"}>4:10</span>
                   </div>
                   <div className="audio-controls">
