@@ -206,9 +206,10 @@
 }
 
 .new-release-songs {
-    width: 320px;
+    width: 342px;
     height: 230px;
     overflow: auto;
+    margin-top: 10px;
     /*background-color: red;*/
 
 }
@@ -216,14 +217,17 @@
     display: flex;
     /*background-color: green;*/
     border-radius: 10px;
-    margin-bottom: 10px;
     padding: 10px;
     align-items: center;
 }
+.new-release-song:hover {
+    cursor: pointer;
+    background-color: var(--thiBgColor);
+}
 .release-song-image {
     background-size: cover;
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
     border-radius: 10px;
     margin-right: 20px;
 }

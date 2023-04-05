@@ -10,5 +10,11 @@ exports.songsdata = [
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Bukott_angyal.wav"
+    },
+    {
+        "title": "Időkerék",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Idokerek.wav"
     }
 ]

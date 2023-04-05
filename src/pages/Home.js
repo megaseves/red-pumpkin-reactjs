@@ -11,8 +11,12 @@ export function Home() {
     const [songs, setSongs] = useState(songsdata);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentSong, setCurrentSong] = useState(songsdata[0]);
+    const [currentAlbum, setCurrentAlbum] = useState({});
+    const [release, setRelease] = useState(songsdata.slice(0,3));
 
     const audioElem = useRef();
+
+    const selectedName = "Túlzó láng";
 
     useEffect(()=>{
         if(isPlaying) {
@@ -21,6 +25,22 @@ export function Home() {
             audioElem.current.pause();
         }
     }, [isPlaying]);
+
+    //console.log(release)
+    useEffect(() => {
+        selectAlbum(selectedName);
+    }, []);
+
+    const selectAlbum = (selectedName) => {
+        let songs = [];
+        for (const key of Object.keys(songsdata)) {
+            const val = songsdata[key];
+            if (val.album_title === selectedName) {
+                songs.push(val);
+            }
+        }
+        setCurrentAlbum(songs);
+    };
 
   return (
       <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer.jpg'})`}}>
@@ -32,7 +52,7 @@ export function Home() {
                 <Route path={"/"} element={
                     <>
                         <audio src={currentSong.url} ref={audioElem} />
-                        <Player songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} />
+                        <Player songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} release={release} />
                     </>
                 }
                 />

@@ -4,7 +4,7 @@ import {faBackwardStep, faForwardStep, faPause, faPlay, faRepeat, faShuffle} fro
 import {NextSong} from "../components/NextSong";
 import {NewReleaseSong} from "../components/NewReleaseSong";
 
-export function Player({audioElem, isPlaying, setIsPlaying, currentSong}) {
+export function Player({audioElem, isPlaying, setIsPlaying, currentSong, release}) {
 
     const PlayPause = () => {
         setIsPlaying(!isPlaying);
@@ -66,10 +66,12 @@ export function Player({audioElem, isPlaying, setIsPlaying, currentSong}) {
             <div className="new-releases">
               <h3 className={"container-title"} >New Releases</h3>
                 <div className="new-release-songs">
-
-                    <NewReleaseSong currentSong={currentSong} />
-                    <NewReleaseSong currentSong={currentSong} />
-
+                    {release && release.map((song) => {
+                        return (
+                            <NewReleaseSong currentSong={song} key={song.title} />
+                            )}
+                        )
+                    }
                 </div>
             </div>
 
