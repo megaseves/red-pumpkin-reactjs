@@ -1,8 +1,8 @@
 
 
-export function NewReleaseSong({currentSong, songKey}) {
+export function NewReleaseSong({currentSong}) {
     return(
-        <div className="new-release-song" key={songKey}>
+        <div className="new-release-song" >
             <img className="release-song-image" src={currentSong.album_url} alt=""></img>
             <div className="release-song-detail">
                 <span className="release-song-title">{currentSong.title}</span>

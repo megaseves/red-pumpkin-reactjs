@@ -3,16 +3,19 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackwardStep, faForwardStep, faPause, faPlay, faRepeat, faShuffle} from "@fortawesome/free-solid-svg-icons";
 import {NextSong} from "../components/NextSong";
 import {NewReleaseSong} from "../components/NewReleaseSong";
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 
-export function Player({songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release}) {
+export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release}) {
 
     const clickRef = useRef();
+
+    let songNumber = -1;
 
     const PlayPause = () => {
         setIsPlaying(!isPlaying);
     }
 
+    //console.log(playList)
 
     const checkWidth = (e) => {
         let width = clickRef.current.clientWidth;
@@ -26,14 +29,31 @@ export function Player({songs, audioElem, isPlaying, setIsPlaying, currentSong, 
 
     const skipBack = () => {
         setIsPlaying(true);
-        const index = songs.findIndex(x=>x.title === currentSong.title);
+        const index = playList.findIndex(x=>x.title === currentSong.title);
 
         if (index === 0) {
-            setCurrentSong(songs[songs.length -1]);
+            setCurrentSong(playList[playList.length -1]);
         } else {
-            setCurrentSong(songs[index - 1]);
+            setCurrentSong(playList[index - 1]);
         }
     }
+    const skipForward = () => {
+        setIsPlaying(true);
+        const index = playList.findIndex(x=>x.title === currentSong.title);
+
+        if (index === playList.length -1) {
+            setCurrentSong(playList[0]);
+        } else {
+            setCurrentSong(playList[index + 1]);
+        }
+    }
+
+
+    const index = () => playList.findIndex(x=>x.title === currentSong.title);
+
+    const minutes = audioElem.current !== undefined && Math.floor(audioElem.current.duration / 60);
+    const secondData = audioElem.current !== undefined && Math.floor((audioElem.current.duration - minutes * 60));
+    const seconds = secondData < 10 ? "0" + secondData : secondData;
 
   return (
 
@@ -51,7 +71,7 @@ export function Player({songs, audioElem, isPlaying, setIsPlaying, currentSong, 
                     <div className={"time-line-container"} onClick={checkWidth}  ref={clickRef} >
                         <div className="time-line" style={{width: `${currentSong.progress+"%"}`}}></div>
                     </div>
-                    <span className={"time-over"}>4:10</span>
+                    <span className={"time-over"}>{ isPlaying ? minutes + ":" + seconds : "0:00"}</span>
                   </div>
                   <div className="audio-controls">
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} />
@@ -61,7 +81,7 @@ export function Player({songs, audioElem, isPlaying, setIsPlaying, currentSong, 
                           :
                           <FontAwesomeIcon className={"play-audio"} icon={faPlay} onClick={() => PlayPause()} />
                       }
-                      <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} />
+                      <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} onClick={() => skipForward()} />
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faRepeat} />
                   </div>
               </div>
@@ -70,10 +90,15 @@ export function Player({songs, audioElem, isPlaying, setIsPlaying, currentSong, 
                   <h3 className={"container-title"} >Up Next</h3>
                   <div className="up-next-songs">
 
-                      <NextSong />
-                      <NextSong />
-                      <NextSong />
-                      <NextSong />
+                      {playList.length > 0 ? playList.slice(index()+1).map((song) => {
+                            songNumber++;
+                          return (
+                              <NextSong song={song} key={songNumber} playList={playList} setCurrentSong={setCurrentSong} setIsPlaying={setIsPlaying} />
+                          )
+                      })
+                        :
+                          <p>There is no next song!</p>
+                      }
 
                   </div>
               </div>

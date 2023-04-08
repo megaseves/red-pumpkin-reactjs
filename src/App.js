@@ -1,4 +1,5 @@
 import './App.css';
+import './Scrollbar.css';
 import {Home} from "./pages/Home";
 
 

@@ -11,14 +11,15 @@ export function Home() {
     const [songs, setSongs] = useState(songsdata);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentSong, setCurrentSong] = useState(songsdata[0]);
-    const [currentAlbum, setCurrentAlbum] = useState({});
-    const [release, setRelease] = useState(songsdata.slice(0,3));
+    const [playList, setPlayList] = useState({});
+    const [release] = useState(songsdata.slice(0,3));
 
-    const [auPlay, setAuPlay] = useState(false);
 
     const audioElem = useRef();
 
     const selectedName = "Túlzó láng";
+
+    //console.log(currentSong)
 
     useEffect(() => {
 /*        const prevValue = isPlaying;
@@ -33,7 +34,8 @@ export function Home() {
     //console.log(release)
     useEffect(() => {
         selectAlbum(selectedName);
-    }, []);
+        //console.log(currentAlbum)
+    }, [setIsPlaying]);
 
 
 
@@ -44,8 +46,9 @@ export function Home() {
             if (val.album_title === selectedName) {
                 songs.push(val);
             }
+
         }
-        setCurrentAlbum(songs);
+        setPlayList(songs);
     };
 
     const onPlaying = () => {
@@ -66,7 +69,7 @@ export function Home() {
                 <Route path={"/"} element={
                     <>
                         <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} autoPlay />
-                        <Player songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
+                        <Player playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
                     </>
                 }
                 />
