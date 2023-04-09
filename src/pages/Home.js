@@ -17,6 +17,16 @@ export function Home() {
 
     const audioElem = useRef();
 
+    const endedAudio = () => {
+        const index = playList.findIndex(x=>x.title === currentSong.title);
+
+        if (index === playList.length -1) {
+            setCurrentSong(playList[0]);
+        } else {
+            setCurrentSong(playList[index + 1]);
+        }
+    };
+
     const selectedName = "Túlzó láng";
 
     //console.log(currentSong)
@@ -68,7 +78,7 @@ export function Home() {
 
                 <Route path={"/"} element={
                     <>
-                        <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} autoPlay />
+                        <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
                         <Player playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
                     </>
                 }

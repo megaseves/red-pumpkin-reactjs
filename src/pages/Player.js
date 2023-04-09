@@ -11,6 +11,8 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
 
     let songNumber = -1;
 
+    // const [currentTime, setCurrentTime] = useState(0);
+
     const PlayPause = () => {
         setIsPlaying(!isPlaying);
     }
@@ -67,11 +69,11 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                   <h2 className={"audio-detail-title"}>{currentSong.title}</h2>
                   <h4 className={"audio-detail-album-name"}>Red Pumpkin</h4>
                   <div className="audio-detail-time">
-                    <span className={"time-current"}>0:07</span>
+                    <span className={"time-current"}>0:00</span>
                     <div className={"time-line-container"} onClick={checkWidth}  ref={clickRef} >
                         <div className="time-line" style={{width: `${currentSong.progress+"%"}`}}></div>
                     </div>
-                    <span className={"time-over"}>{ isPlaying ? minutes + ":" + seconds : "0:00"}</span>
+                    <span className={"time-over"}>{ minutes ? minutes + ":" + seconds : "0:00"}</span>
                   </div>
                   <div className="audio-controls">
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} />
