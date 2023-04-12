@@ -5,7 +5,7 @@ import {NextSong} from "../components/NextSong";
 import {NewReleaseSong} from "../components/NewReleaseSong";
 import {useRef} from "react";
 
-export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat}) {
+export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList}) {
 
     const clickRef = useRef();
 
@@ -74,6 +74,8 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
     };
 
 
+
+
     const index = () => playList.findIndex(x=>x.title === currentSong.title);
 
     const minutes = audioElem.current !== undefined && Math.floor(audioElem.current.duration / 60);
@@ -99,7 +101,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                     <span className={"time-over"}>{ minutes ? minutes + ":" + seconds : "0:00"}</span>
                   </div>
                   <div className="audio-controls">
-                      <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} />
+                      <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
                       <FontAwesomeIcon className={"play-audio medium-control"} icon={faBackwardStep} onClick={() => skipBack()} />
                       {isPlaying ?
                           <FontAwesomeIcon className={"play-audio"} icon={faPause} onClick={() => PlayPause()} />
@@ -107,7 +109,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                           <FontAwesomeIcon className={"play-audio"} icon={faPlay} onClick={() => PlayPause()} />
                       }
                       <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} onClick={() => skipForward()} />
-                      <FontAwesomeIcon id={'repeat'} className={"play-audio small-control active-repeat"} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
+                      <FontAwesomeIcon id={'repeat'} className={"play-audio small-control"} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
                   </div>
               </div>
               <div className="up-next-container">

@@ -36,6 +36,24 @@
     font-weight: normal;
 }
 
+.navbar-button-random {
+    min-width: 80px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 14px;
+    margin: 8px 0;
+    transition: all 0.2s ease;
+}
+.navbar-button-random:hover {
+    background-color: var(--thiBgColor);
+    cursor: pointer;
+}
+
+
 .active {
     color: var(--linkColor);
     /*background-color: var(--thiBgColor);*/

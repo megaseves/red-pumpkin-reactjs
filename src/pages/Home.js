@@ -18,6 +18,7 @@ export function Home() {
 
     const audioElem = useRef();
 
+
     const endedAudio = () => {
         const index = playList.findIndex(x=>x.title === currentSong.title);
         if(isRepeat) {
@@ -67,6 +68,15 @@ export function Home() {
         setCurrentSong(songs[0]);
     };
 
+    const shufflePlayList = () => {
+        const shuffledArray = playList.sort((a, b) => 0.5 - Math.random());
+        if (!isPlaying) {
+            setIsPlaying(true);
+            audioElem.current.play();
+        }
+        setPlayList(shuffledArray);
+    };
+
     const onPlaying = () => {
         const duration = audioElem.current.duration;
         const current_time = audioElem.current.currentTime;
@@ -79,13 +89,13 @@ export function Home() {
       <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer.jpg'})`}}>
 
         <Router>
-            <Navbar />
+            <Navbar shufflePlayList={shufflePlayList} />
             <Routes>
 
                 <Route path={"/"} element={
                     <>
                         <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
-                        <Player isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
+                        <Player shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
                     </>
                 }
                 />
