@@ -247,3 +247,12 @@
     display: flex;
     flex-direction: column;
 }
+
+.play-audio {
+    padding: 10px 0;
+}
+.active-repeat {
+    background-color: var(--thiBgColor);
+    border-radius: 8px;
+
+}

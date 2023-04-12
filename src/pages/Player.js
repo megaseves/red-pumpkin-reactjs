@@ -5,7 +5,7 @@ import {NextSong} from "../components/NextSong";
 import {NewReleaseSong} from "../components/NewReleaseSong";
 import {useRef} from "react";
 
-export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release}) {
+export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat}) {
 
     const clickRef = useRef();
 
@@ -61,6 +61,18 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
 
     //console.log(currentSong.seconds);
 
+    const toggleRepeatBtn = () => {
+        const repeatBtn = document.querySelector('#repeat');
+
+        if (repeatBtn.classList.contains('active-repeat')) {
+            repeatBtn.classList.remove('active-repeat');
+            setIsRepeat(false);
+        } else {
+            repeatBtn.classList.add('active-repeat');
+            setIsRepeat(true);
+        }
+    };
+
 
     const index = () => playList.findIndex(x=>x.title === currentSong.title);
 
@@ -95,7 +107,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                           <FontAwesomeIcon className={"play-audio"} icon={faPlay} onClick={() => PlayPause()} />
                       }
                       <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} onClick={() => skipForward()} />
-                      <FontAwesomeIcon className={"play-audio small-control"} icon={faRepeat} />
+                      <FontAwesomeIcon id={'repeat'} className={"play-audio small-control active-repeat"} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
                   </div>
               </div>
               <div className="up-next-container">
@@ -119,7 +131,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
           </div>
 
           <div className="album-name-and-releases">
-            <div className="album-container">
+            <div className="album-container" onClick={() => selectAlbum("Túlzó láng")}>
                 <img className={"album-image"} src={currentSong.album_url} alt="" />
                 <div className="album-description">
                     <h3>{currentSong.album_title} album</h3>
@@ -133,7 +145,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                 <div className="new-release-songs">
                     {release && release.map((song) => {
                         return (
-                            <NewReleaseSong currentSong={song} key={song.title} />
+                            <NewReleaseSong currentSong={song} key={song.title} setIsPlaying={setIsPlaying} setCurrentSong={setCurrentSong} playList={playList} />
                             )}
                         )
                     }

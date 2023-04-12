@@ -10,6 +10,7 @@ export function Home() {
 
     const [songs, setSongs] = useState(songsdata);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isRepeat, setIsRepeat] = useState(true);
     const [currentSong, setCurrentSong] = useState(songsdata[0]);
     const [playList, setPlayList] = useState({});
     const [release] = useState(songsdata.slice(0,3));
@@ -19,11 +20,15 @@ export function Home() {
 
     const endedAudio = () => {
         const index = playList.findIndex(x=>x.title === currentSong.title);
-
-        if (index === playList.length -1) {
-            setCurrentSong(playList[0]);
+        if(isRepeat) {
+            setCurrentSong(playList[index]);
+            audioElem.current.play();
         } else {
-            setCurrentSong(playList[index + 1]);
+            if (index === playList.length -1) {
+                setCurrentSong(playList[0]);
+            } else {
+                setCurrentSong(playList[index + 1]);
+            }
         }
     };
 
@@ -59,6 +64,7 @@ export function Home() {
 
         }
         setPlayList(songs);
+        setCurrentSong(songs[0]);
     };
 
     const onPlaying = () => {
@@ -79,11 +85,11 @@ export function Home() {
                 <Route path={"/"} element={
                     <>
                         <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
-                        <Player playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
+                        <Player isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
                     </>
                 }
                 />
-                <Route path={"/contacts"} element={<Contacts />} />
+                <Route path={"/contacts"} element={<Contacts audioElem={audioElem} setIsPlaying={setIsPlaying} />} />
             </Routes>
         </Router>
 
