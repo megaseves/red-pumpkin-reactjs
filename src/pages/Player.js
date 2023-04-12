@@ -50,6 +50,17 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
         }
     }
 
+    const converter = (seconds) => {
+        let minutes = Math.floor(seconds / 60);
+        let extraSeconds = seconds % 60;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds;
+
+        return minutes + ':' + extraSeconds;
+    };
+
+    //console.log(currentSong.seconds);
+
 
     const index = () => playList.findIndex(x=>x.title === currentSong.title);
 
@@ -69,7 +80,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                   <h2 className={"audio-detail-title"}>{currentSong.title}</h2>
                   <h4 className={"audio-detail-album-name"}>Red Pumpkin</h4>
                   <div className="audio-detail-time">
-                    <span className={"time-current"}>0:00</span>
+                    <span className={"time-current"}>{ currentSong.seconds ? converter(Math.floor(currentSong.seconds)) : "0:00"}</span>
                     <div className={"time-line-container"} onClick={checkWidth}  ref={clickRef} >
                         <div className="time-line" style={{width: `${currentSong.progress+"%"}`}}></div>
                     </div>

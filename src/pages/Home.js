@@ -65,7 +65,7 @@ export function Home() {
         const duration = audioElem.current.duration;
         const current_time = audioElem.current.currentTime;
 
-        setCurrentSong({...currentSong, "progress": current_time / duration * 100, "length": duration});
+        setCurrentSong({...currentSong, "progress": current_time / duration * 100, "seconds": current_time , "length": duration});
     }
 
 
