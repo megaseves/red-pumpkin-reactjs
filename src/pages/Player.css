@@ -77,7 +77,7 @@
 .casette-div {
     width: 358px;
     height: 233px;
-    margin-top: 100px;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
 }
@@ -122,7 +122,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 80px;
+    margin-top: 60px;
      background: rgba( 255, 255, 255, 0.05 );
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur( 4px );
@@ -173,7 +173,7 @@
 
 .up-next-songs {
     min-width: 400px;
-    max-height: 280px;
+    max-height: 270px;
     /*background-color: lavender;*/
     margin-top: 20px;
     overflow: auto;
