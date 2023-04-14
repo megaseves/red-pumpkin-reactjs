@@ -15,16 +15,22 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    position: relative;
 }
 .play-audio {
     min-width: 40px;
     font-size: 45px;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 0 5px;
     align-self: center;
 }
 .small-control {
-    font-size: 20px;
+    font-size: 16px;
+    color: var(--textColor);
+    transition: 0.8s ease;
+}
+.small-control:hover {
+    color: white;
 }
 .medium-control {
     font-size: 30px;
@@ -38,7 +44,7 @@
     color: var(--textColor);
 }
 .audio-detail-time {
-    min-width: 450px;
+    min-width: 465px;
     color: var(--textColor);
     display: flex;
     justify-content: space-between;
@@ -88,7 +94,12 @@
     font-weight: bold;
 }
 
-
+.time-current {
+    min-width: 55px;
+}
+.time-over {
+    min-width: 55px;
+}
 
 
 
@@ -248,9 +259,73 @@
 
 .play-audio {
     padding: 10px 0;
+    z-index: 10;
 }
-.active-repeat {
+.active-btn {
     background-color: var(--thiBgColor);
     border-radius: 8px;
+}
 
+/* --- VOLUME CONTROL --- */
+.volume-control-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 105px;
+    position: absolute;
+    top: -52px;
+    left: 60px;
+    z-index: 1;
+}
+.volume-control-body {
+    background-color: var(--thiBgColor);
+    /*border-left: 1px solid var(--textColor);
+    border-right: 1px solid var(--textColor);*/
+    width: 45px;
+    height: 105px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.volume-control-box {
+    margin-top: 36px;
+    width: 52px;
+    height: 5px;
+    border-radius: 10px;
+    /*background-color: red;*/
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    transform: rotate(-90deg);
+}/*
+.volume-control {
+    margin-top: 10px;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 50px;
+    border-radius: 10px;
+
+    outline: none;
+}
+*/
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--secBgColor);
+    cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+
+.open {
+    display: flex;
 }

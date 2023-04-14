@@ -56,6 +56,7 @@ export function Home() {
 
 
     const selectAlbum = (selectedName) => {
+        setIsRepeat(false);
         let songs = [];
         for (const key of Object.keys(songsdata)) {
             const val = songsdata[key];
@@ -80,8 +81,9 @@ export function Home() {
     const onPlaying = () => {
         const duration = audioElem.current.duration;
         const current_time = audioElem.current.currentTime;
+        const current_volume = audioElem.current.volume;
 
-        setCurrentSong({...currentSong, "progress": current_time / duration * 100, "seconds": current_time , "length": duration});
+        setCurrentSong({...currentSong, "progress": current_time / duration * 100, "seconds": current_time , "length": duration, "volume": current_volume});
     }
 
 
