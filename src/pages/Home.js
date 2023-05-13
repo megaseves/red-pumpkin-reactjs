@@ -1,10 +1,12 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {Navbar} from "../components/Navbar/Navbar";
-import {Player} from "./Player";
+import {Player} from "./Player/Player";
 import {Contacts} from "./Contacts";
 import { songsdata } from "../audios/audios.js"
 import {useEffect, useRef, useState} from "react";
+import { AudioContext } from '../components/AudioContext';
 import './Home.css';
+import {PlayerBottomComponent} from "./Player/PlayerBottomComponent";
 
 export function Home() {
 
@@ -15,9 +17,14 @@ export function Home() {
     const [playList, setPlayList] = useState({});
     const [release] = useState(songsdata.slice(0,3));
 
-
     const audioElem = useRef();
 
+    const clickRef = useRef();
+
+
+    let minutes = (audioElem.current) ? Math.floor(audioElem.current.duration / 60) : 0;
+    let secondData = (audioElem.current) ? Math.floor((audioElem.current.duration - minutes * 60)) : 0;
+    let seconds = secondData < 10 ? "0" + secondData : secondData;
 
     const endedAudio = () => {
         const index = playList.findIndex(x=>x.title === currentSong.title);
@@ -41,19 +48,32 @@ export function Home() {
 /*        const prevValue = isPlaying;
         setIsPlaying(!prevValue);*/
         if(isPlaying) {
-            audioElem.current.play();
+            (audioElem.current) && audioElem.current.play();
         } else {
-            audioElem.current.pause();
+            (audioElem.current) && audioElem.current.pause();
         }
     }, [isPlaying]);
 
-    //console.log(release)
+
     useEffect(() => {
         selectAlbum(selectedName);
+        // eslint-disable-next-line
+        minutes = (audioElem.current) ? Math.floor(audioElem.current.duration / 60) : 0;
+        // eslint-disable-next-line
+        secondData = (audioElem.current) ? Math.floor((audioElem.current.duration - minutes * 60)) : 0;
+        // eslint-disable-next-line
+        seconds = secondData < 10 ? "0" + secondData : secondData;
         //console.log(currentAlbum)
     }, [setIsPlaying]);
 
+    const converter = (seconds) => {
+        let minutes = Math.floor(seconds / 60);
+        let extraSeconds = seconds % 60;
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
+        extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds;
 
+        return minutes + ':' + extraSeconds;
+    };
 
     const selectAlbum = (selectedName) => {
         setIsRepeat(false);
@@ -67,6 +87,55 @@ export function Home() {
         }
         setPlayList(songs);
         setCurrentSong(songs[0]);
+    };
+
+    const PlayPause = () => {
+        setIsPlaying(!isPlaying);
+    }
+
+    const skipBack = () => {
+        setIsPlaying(true);
+        const index = playList.findIndex(x=>x.title === currentSong.title);
+
+        if (currentSong.seconds > 4) {
+            audioElem.current.currentTime = 0;
+        } else {
+            if (index === 0) {
+                setCurrentSong(playList[playList.length -1]);
+            } else {
+                setCurrentSong(playList[index - 1]);
+            }
+        }
+    }
+    const skipForward = () => {
+        setIsPlaying(true);
+        const index = playList.findIndex(x=>x.title === currentSong.title);
+
+        if (index === playList.length -1) {
+            setCurrentSong(playList[0]);
+        } else {
+            setCurrentSong(playList[index + 1]);
+        }
+    }
+
+    const toggleRepeatBtn = () => {
+        const repeatBtn = document.querySelector('[data-active]');
+
+        const handler = () => {
+          if (repeatBtn.dataset.active === 'non-active') {
+            console.log('Aktiválja');
+            repeatBtn.dataset.active = 'active';
+            setIsRepeat(true);
+          } else {
+            console.log('Deaktiválja');
+            repeatBtn.dataset.active = 'non-active';
+            setIsRepeat(false);
+          }
+        };
+
+        repeatBtn.addEventListener('click', handler);
+
+        return () => repeatBtn.removeEventListener('click', handler);
     };
 
     const shufflePlayList = () => {
@@ -86,25 +155,38 @@ export function Home() {
         setCurrentSong({...currentSong, "progress": current_time / duration * 100, "seconds": current_time , "length": duration, "volume": current_volume});
     }
 
+    const checkWidth = (e) => {
+        let width = clickRef.current.clientWidth;
+        const offset = e.nativeEvent.offsetX;
+
+        const divProgress = offset / width * 100;
+        if (audioElem.current.currentTime !== 0) {
+            audioElem.current.currentTime = divProgress / 100 * currentSong.length;
+        }
+    }
+
 
   return (
       <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer.jpg'})`}}>
+        <AudioContext.Provider value={currentSong}>
+            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
+            <Router>
+                <Navbar shufflePlayList={shufflePlayList} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeatBtn={toggleRepeatBtn} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef}/>
+                <Routes>
 
-        <Router>
-            <Navbar shufflePlayList={shufflePlayList} />
-            <Routes>
+                    <Route path={"/"} element={
+                        <>
+                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeatBtn={toggleRepeatBtn} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth}/>
+                        </>
+                    }
+                    />
 
-                <Route path={"/"} element={
-                    <>
-                        <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
-                        <Player shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release}/>
-                    </>
-                }
-                />
-                <Route path={"/contacts"} element={<Contacts audioElem={audioElem} setIsPlaying={setIsPlaying} />} />
-            </Routes>
-        </Router>
+                    <Route path={"/contacts"} element={<Contacts audioElem={audioElem} setIsPlaying={setIsPlaying} />} />
 
+                </Routes>
+            </Router>
+        </AudioContext.Provider>
       </div>
   );
 }

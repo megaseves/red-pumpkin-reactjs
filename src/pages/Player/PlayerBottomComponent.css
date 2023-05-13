@@ -1,0 +1,105 @@
+.player-bottom-component-container {
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--secBgColor);
+    /*border-top: 1px solid var(--thiBgColor);*/
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px 0 25px;
+    z-index: 100;
+}
+
+.play-and-pause {
+    display: flex;
+    align-items: center;
+}
+.title-container {
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    flex: 2;
+}
+
+.song-title-and-album {
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+}
+.album-title {
+    color: var(--textColor);
+}
+
+.other-controls {
+    min-width: 300px;
+    display: flex;
+    justify-content: right;
+    flex: 1;
+}
+
+.time-container-bottom-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    color: var(--textColor);
+}
+.time-container-bottom-player span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-line-container-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 15px;
+
+    border-radius: 4px;
+
+    align-self: flex-end;
+    cursor: pointer;
+
+    z-index: 200;
+}
+.time-line-bottom-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    background-color: var(--thiBgColor);
+
+    width: 100%;
+    height: 5px;
+
+}
+.time-line-bottom {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 100;
+}
+.time-line-bottom:hover {
+    position: relative;
+    cursor: pointer;
+    height: 10px;
+    top: -5px;
+}
+.time-line-container-bottom:hover .time-line-bottom {
+    position: relative;
+    cursor: pointer;
+    height: 10px;
+    top: -5px;
+}

@@ -73,6 +73,12 @@
     height: 15px;
     top: -5px;
 }
+.time-line-container:hover .time-line {
+    position: relative;
+    cursor: pointer;
+    height: 15px;
+    top: -5px;
+}
 
 .casette-div {
     width: 358px;

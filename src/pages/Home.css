@@ -6,3 +6,8 @@
     background-color: var(--bgColor);
     background-size: cover;
 }
+
+[data-active='active'] {
+    background-color: var(--thiBgColor);
+    border-radius: 8px;
+}

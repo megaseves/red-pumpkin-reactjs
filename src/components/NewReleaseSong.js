@@ -1,5 +1,3 @@
-
-
 export function NewReleaseSong({currentSong, setIsPlaying, setCurrentSong, playList}) {
 
     const changeSong = () => {

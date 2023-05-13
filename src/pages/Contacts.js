@@ -1,12 +1,12 @@
 import './Contacts.css';
+import {useContext} from "react";
+import { AudioContext } from '../components/AudioContext';
 
-export function Contacts({audioElem, setIsPlaying}) {
+export function Contacts() {
 
-    window.addEventListener('load', () => {
-        setIsPlaying(false);
-        audioElem.current.pause()
-    });
+    const audio = useContext(AudioContext);
 
+    
   return (
       <div className="contacts-container">
         <h2>Contacts</h2>

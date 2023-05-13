@@ -10,82 +10,17 @@ import {
     faShuffle,
     faVolumeLow
 } from "@fortawesome/free-solid-svg-icons";
-import {NextSong} from "../components/NextSong";
-import {NewReleaseSong} from "../components/NewReleaseSong";
+import {NextSong} from "../../components/NextSong";
+import {NewReleaseSong} from "../../components/NewReleaseSong";
 import {useRef} from "react";
 
-export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList}) {
+export function Player({PlayPause, skipBack, skipForward, toggleRepeatBtn, playList, songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, clickRef}) {
 
-    const clickRef = useRef();
+
     const MAX = 20;
 
     let songNumber = -1;
 
-    // const [currentTime, setCurrentTime] = useState(0);
-
-    const PlayPause = () => {
-        setIsPlaying(!isPlaying);
-    }
-
-    //console.log(playList)
-
-    const checkWidth = (e) => {
-        let width = clickRef.current.clientWidth;
-        const offset = e.nativeEvent.offsetX;
-
-        const divProgress = offset / width * 100;
-        if (audioElem.current.currentTime !== 0) {
-            audioElem.current.currentTime = divProgress / 100 * currentSong.length;
-        }
-    }
-
-    const skipBack = () => {
-        setIsPlaying(true);
-        const index = playList.findIndex(x=>x.title === currentSong.title);
-
-        if (currentSong.seconds > 4) {
-            audioElem.current.currentTime = 0;
-        } else {
-            if (index === 0) {
-                setCurrentSong(playList[playList.length -1]);
-            } else {
-                setCurrentSong(playList[index - 1]);
-            }
-        }
-    }
-    const skipForward = () => {
-        setIsPlaying(true);
-        const index = playList.findIndex(x=>x.title === currentSong.title);
-
-        if (index === playList.length -1) {
-            setCurrentSong(playList[0]);
-        } else {
-            setCurrentSong(playList[index + 1]);
-        }
-    }
-
-    const converter = (seconds) => {
-        let minutes = Math.floor(seconds / 60);
-        let extraSeconds = seconds % 60;
-        //minutes = minutes < 10 ? "0" + minutes : minutes;
-        extraSeconds = extraSeconds < 10 ? "0" + extraSeconds : extraSeconds;
-
-        return minutes + ':' + extraSeconds;
-    };
-    const volume = currentSong.volume !== undefined && currentSong.volume * 100;
-    //console.log(volume);
-
-    const toggleRepeatBtn = () => {
-        const repeatBtn = document.querySelector('#repeat');
-
-        if (repeatBtn.classList.contains('active-btn')) {
-            repeatBtn.classList.remove('active-btn');
-            setIsRepeat(false);
-        } else {
-            repeatBtn.classList.add('active-btn');
-            setIsRepeat(true);
-        }
-    };
 
     const volumeModal = () => {
       const volumeBtn = document.querySelector('#volume');
@@ -107,9 +42,6 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
 
     const index = () => playList.findIndex(x=>x.title === currentSong.title);
 
-    const minutes = audioElem.current !== undefined && Math.floor(audioElem.current.duration / 60);
-    const secondData = audioElem.current !== undefined && Math.floor((audioElem.current.duration - minutes * 60));
-    const seconds = secondData < 10 ? "0" + secondData : secondData;
 
   return (
 
@@ -136,7 +68,6 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                               <div className="volume-control-box">
                                 <input className="volume-control" type="range" min={0} max={MAX} onChange={handleVolume}/>
                               </div>
-                            {/*<div className="volume-control" style={{height: `${volume+"%"}`}}></div>*/}
                           </div>
                       </div>
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
@@ -147,7 +78,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                           <FontAwesomeIcon className={"play-audio"} icon={faPlay} onClick={() => PlayPause()} />
                       }
                       <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} onClick={() => skipForward()} />
-                      <FontAwesomeIcon id={'repeat'} className={"play-audio small-control"} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
+                      <FontAwesomeIcon className={"play-audio small-control"} data-active={'non-active'} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faEllipsisVertical} />
                   </div>
               </div>
@@ -157,7 +88,7 @@ export function Player({playList, songs, audioElem, isPlaying, setIsPlaying, cur
                   <div className="up-next-songs">
 
                       {playList.length > 0 ? playList.slice(index()+1).map((song) => {
-                            songNumber++;
+                          songNumber++;
                           return (
                               <NextSong song={song} key={songNumber} playList={playList} setCurrentSong={setCurrentSong} setIsPlaying={setIsPlaying} />
                           )
