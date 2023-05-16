@@ -22,6 +22,7 @@
     min-width: 300px;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-left: 15px;
     flex: 2;
 }
@@ -80,13 +81,13 @@
     background-color: var(--thiBgColor);
 
     width: 100%;
-    height: 5px;
+    height: 2px;
 
 }
 .time-line-bottom {
     position: relative;
     width: 100%;
-    height: 5px;
+    height: 2px;
     border-radius: 10px;
     background-color: white;
     z-index: 100;
@@ -94,12 +95,23 @@
 .time-line-bottom:hover {
     position: relative;
     cursor: pointer;
-    height: 10px;
-    top: -5px;
+    height: 4px;
+    top: -3px;
 }
 .time-line-container-bottom:hover .time-line-bottom {
     position: relative;
     cursor: pointer;
-    height: 10px;
-    top: -5px;
+    height: 4px;
+    top: -3px;
+}
+
+.player-bottom-content-position {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-bottom-left {
+    display: flex;
+    gap: 20px;
 }
