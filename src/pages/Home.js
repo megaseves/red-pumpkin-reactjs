@@ -164,6 +164,14 @@ export function Home() {
             audioElem.current.currentTime = divProgress / 100 * currentSong.length;
         }
     }
+    useEffect(() => {
+        document.addEventListener('keyup', function(event) {
+            // 32 = space bar
+            if (event.keyCode === 32) {
+                PlayPause();
+            }
+        });
+    });
 
 
   return (
@@ -177,7 +185,7 @@ export function Home() {
 
                     <Route path={"/"} element={
                         <>
-                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeatBtn={toggleRepeatBtn} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth}/>
+                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeatBtn={toggleRepeatBtn} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
                         </>
                     }
                     />

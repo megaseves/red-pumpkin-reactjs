@@ -14,7 +14,19 @@ import {NextSong} from "../../components/NextSong";
 import {NewReleaseSong} from "../../components/NewReleaseSong";
 import {useRef} from "react";
 
-export function Player({PlayPause, skipBack, skipForward, toggleRepeatBtn, playList, songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, clickRef}) {
+export function Player({PlayPause, skipBack, skipForward, toggleRepeatBtn, playList, songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter}) {
+
+    const clickPlayerRef = useRef();
+
+    const checkWidthPlayer = (e) => {
+        let width = clickPlayerRef.current.clientWidth;
+        const offset = e.nativeEvent.offsetX;
+
+        const divProgress = offset / width * 100;
+        if (audioElem.current.currentTime !== 0) {
+            audioElem.current.currentTime = divProgress / 100 * currentSong.length;
+        }
+    }
 
 
     const MAX = 20;
@@ -56,7 +68,7 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeatBtn, playL
                   <h4 className={"audio-detail-album-name"}>Red Pumpkin</h4>
                   <div className="audio-detail-time">
                     <span className={"time-current"}>{ currentSong.seconds ? converter(Math.floor(currentSong.seconds)) : "0:00"}</span>
-                    <div className={"time-line-container"} onClick={checkWidth}  ref={clickRef} >
+                    <div className={"time-line-container"} onClick={checkWidthPlayer}  ref={clickPlayerRef} >
                         <div className="time-line" style={{width: `${currentSong.progress+"%"}`}}></div>
                     </div>
                     <span className={"time-over"}>{ minutes ? minutes + ":" + seconds : "0:00"}</span>
