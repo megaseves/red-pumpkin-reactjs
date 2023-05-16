@@ -11,9 +11,30 @@ import {
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeatBtn, shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef}) {
+export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef}) {
 
     const audio = useContext(AudioContext);
+
+    const MAX = 20;
+
+    const handleVolume = (e) => {
+        const { value } = e.target;
+        audioElem.current.volume = value / MAX;
+    };
+
+
+    const volumeModal = () => {
+        const volumeBtn = document.querySelector('#volume');
+        const volumeControlContainer = document.querySelector('.bottom-player-volume-control-container');
+
+        if (volumeBtn.classList.contains('active-btn')) {
+            volumeBtn.classList.remove('active-btn');
+            volumeControlContainer.classList.remove('open');
+        } else {
+            volumeBtn.classList.add('active-btn');
+            volumeControlContainer.classList.add('open');
+        }
+    };
 
     return(
 
@@ -54,8 +75,16 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                 </div>
 
                 <div className="other-controls">
-                    <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} />
-                    <FontAwesomeIcon className={"play-audio small-control"} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
+                    <div className={'bottom-player-volume-control-container'}>
+                        <div className={'bottom-player-volume-control-body'}>
+                            <div className="bottom-player-volume-control-box">
+                                <input id="bottom-player-volume-control" type="range" min={0} max={MAX} onChange={handleVolume}/>
+                            </div>
+                        </div>
+                    </div>
+                    <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()} />
+
+                    <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} icon={faRepeat} data-active={'non-active'} onClick={() => toggleRepeat()} />
                     <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
                 </div>
             </div>

@@ -118,24 +118,18 @@ export function Home() {
         }
     }
 
-    const toggleRepeatBtn = () => {
-        const repeatBtn = document.querySelector('[data-active]');
+    const toggleRepeat = () => {
+        const repeatBtn = document.querySelector('#toggleBtn');
 
-        const handler = () => {
-          if (repeatBtn.dataset.active === 'non-active') {
+        if (repeatBtn.dataset.active === 'non-active') {
+            setIsRepeat(true);
             console.log('Aktiválja');
             repeatBtn.dataset.active = 'active';
-            setIsRepeat(true);
-          } else {
+        } else {
+            setIsRepeat(false);
             console.log('Deaktiválja');
             repeatBtn.dataset.active = 'non-active';
-            setIsRepeat(false);
-          }
-        };
-
-        repeatBtn.addEventListener('click', handler);
-
-        return () => repeatBtn.removeEventListener('click', handler);
+        }
     };
 
     const shufflePlayList = () => {
@@ -180,12 +174,12 @@ export function Home() {
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} />
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeatBtn={toggleRepeatBtn} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef}/>
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} />
                 <Routes>
 
                     <Route path={"/"} element={
                         <>
-                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeatBtn={toggleRepeatBtn} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
+                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
                         </>
                     }
                     />

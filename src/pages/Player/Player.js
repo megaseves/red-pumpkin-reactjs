@@ -14,7 +14,7 @@ import {NextSong} from "../../components/NextSong";
 import {NewReleaseSong} from "../../components/NewReleaseSong";
 import {useRef} from "react";
 
-export function Player({PlayPause, skipBack, skipForward, toggleRepeatBtn, playList, songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter}) {
+export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList, songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter}) {
 
     const clickPlayerRef = useRef();
 
@@ -90,7 +90,7 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeatBtn, playL
                           <FontAwesomeIcon className={"play-audio"} icon={faPlay} onClick={() => PlayPause()} />
                       }
                       <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} onClick={() => skipForward()} />
-                      <FontAwesomeIcon className={"play-audio small-control"} data-active={'non-active'} icon={faRepeat} onClick={() => toggleRepeatBtn()} />
+                      <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} data-active={'non-active'} icon={faRepeat} onClick={() => toggleRepeat()} />
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faEllipsisVertical} />
                   </div>
               </div>

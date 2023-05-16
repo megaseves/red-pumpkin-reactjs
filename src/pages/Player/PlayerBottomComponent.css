@@ -115,3 +115,55 @@
     display: flex;
     gap: 20px;
 }
+
+
+.bottom-player-volume-control-container {
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-player-volume-control-body {
+   /* background-color: var(--thiBgColor);*/
+    /*border-left: 1px solid var(--textColor);
+    border-right: 1px solid var(--textColor);*/
+    width: 120px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+.bottom-player-volume-control-box {
+    width: 100px;
+    height: 5px;
+    border-radius: 10px;
+    /*background-color: red;*/
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+}
+#bottom-player-volume-control {
+    background-color: var(--bgColor);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+.open {
+    display: flex;
+}
