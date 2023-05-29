@@ -94,27 +94,31 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
                       <FontAwesomeIcon className={"play-audio small-control"} icon={faEllipsisVertical} />
                   </div>
               </div>
+
+
+          </div>
+
+          <div className="playlist-and-lyrics">
               <div className="up-next-container">
+                  <h3 className={"container-title"} >KÖVETKEZIK</h3>
                   <div className="container-line"></div>
-                  <h3 className={"container-title"} >Up Next</h3>
                   <div className="up-next-songs">
 
                       {playList.length > 0 ? playList.slice(index()+1).map((song) => {
-                          songNumber++;
-                          return (
-                              <NextSong song={song} key={songNumber} playList={playList} setCurrentSong={setCurrentSong} setIsPlaying={setIsPlaying} />
-                          )
-                      })
-                        :
+                              songNumber++;
+                              return (
+                                  <NextSong song={song} key={songNumber} playList={playList} setCurrentSong={setCurrentSong} setIsPlaying={setIsPlaying} />
+                              )
+                          })
+                          :
                           <p>There is no next song!</p>
                       }
 
                   </div>
               </div>
-
           </div>
 
-          <div className="album-name-and-releases">
+          {/*<div className="album-name-and-releases">
             <div className="album-container" onClick={() => selectAlbum("Túlzó láng")}>
                 <img className={"album-image"} src={currentSong.album_url} alt="" />
                 <div className="album-description">
@@ -137,7 +141,7 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
             </div>
 
 
-          </div>
+          </div>*/}
 
       </div>
   );

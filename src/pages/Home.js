@@ -173,7 +173,7 @@ export function Home() {
         <AudioContext.Provider value={currentSong}>
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
-                <Navbar shufflePlayList={shufflePlayList} />
+                {/*<Navbar shufflePlayList={shufflePlayList} />*/}
                 <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} />
                 <Routes>
 
