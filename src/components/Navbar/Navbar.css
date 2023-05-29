@@ -67,6 +67,11 @@
 .title {
     flex: 1;
     /*border: 1px solid red;*/
+
+}
+.title a {
+    text-decoration: none;
+    color: white;
 }
 .navbar-menu-content {
     display: flex;
