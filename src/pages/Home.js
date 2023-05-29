@@ -8,6 +8,9 @@ import { AudioContext } from '../components/AudioContext';
 import './Home.css';
 import {PlayerBottomComponent} from "./Player/PlayerBottomComponent";
 import {MainPage} from "./MainPage";
+import {Albums} from "./Albums";
+import {Members} from "./Members";
+import {Events} from "./Events";
 
 export function Home() {
 
@@ -219,8 +222,11 @@ export function Home() {
                     />
 
 
-                    <Route path={"/contacts"} element={<Contacts audioElem={audioElem} setIsPlaying={setIsPlaying} />} />
 
+                    <Route path={"/albums"} element={<Albums />} />
+                    <Route path={"/events"} element={<Events />} />
+                    <Route path={"/members"} element={<Members />} />
+                    <Route path={"/contacts"} element={<Contacts />} />
                 </Routes>
             </Router>
         </AudioContext.Provider>
