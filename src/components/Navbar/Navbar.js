@@ -9,20 +9,40 @@ import {
 import {NavbarButton} from "./NavbarButton/NavbarButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export function Navbar({shufflePlayList}) {
+
+
+export function Navbar({shufflePlayList, showPlayerComponent, closePlayerComponent}) {
   return (
     <div className="navbar-container">
 
+        <div className="title">
+            <h2>Red Pumpkin</h2>
+        </div>
+        <div className="navbar-menu-content">
+            <NavbarButton title={"KEZDŐLAP"} to={"/"} icon={faPlay} closePlayerComponent={closePlayerComponent} />
+{/*            <span className={"menu-content"} onClick={() => showPlayerComponent()} >
+                <FontAwesomeIcon className="menu-icon" icon={faPlay} />
+                <p className="menu-title">PLAYER</p>
+            </span>*/}
 
-        <NavbarButton title={"PLAYER"} to={"/"} icon={faPlay} />
-        <span className={"navbar-button-random"} onClick={() => shufflePlayList()}>
-            <FontAwesomeIcon className="menu-icon" icon={faShuffle} />
-            <p className="menu-title">RANDOM</p>
-        </span>
-        <NavbarButton title={"ALBUMS"} to={"/albums"} icon={faCompactDisc} />
-        <NavbarButton title={"EVENTS"} to={"/events"} icon={faCalendarCheck} />
-        <NavbarButton title={"MEMBERS"} to={"/members"} icon={faIdBadge} />
-        <NavbarButton title={"CONTACTS"} to={"/contacts"} icon={faAddressBook} />
+            <span className={"navbar-button-random"} onClick={() => shufflePlayList()}>
+                <FontAwesomeIcon className="menu-icon" icon={faShuffle} />
+                <p className="menu-title">RANDOM</p>
+            </span>
+
+
+            <NavbarButton title={"ALBUMOK"} to={"/albums"} icon={faCompactDisc} closePlayerComponent={closePlayerComponent} />
+            <NavbarButton title={"ESEMÉNYEK"} to={"/events"} icon={faCalendarCheck} closePlayerComponent={closePlayerComponent} />
+            <NavbarButton title={"TAGOK"} to={"/members"} icon={faIdBadge} closePlayerComponent={closePlayerComponent} />
+            <NavbarButton title={"ELÉRHETŐSÉG"} to={"/contacts"} icon={faAddressBook} closePlayerComponent={closePlayerComponent} />
+
+        </div>
+
+        <div className="right-content">
+
+        </div>
+
+
 
     </div>
   );

@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from "react";
 import { AudioContext } from '../components/AudioContext';
 import './Home.css';
 import {PlayerBottomComponent} from "./Player/PlayerBottomComponent";
+import {MainPage} from "./MainPage";
 
 export function Home() {
 
@@ -20,6 +21,8 @@ export function Home() {
     const audioElem = useRef();
 
     const clickRef = useRef();
+
+    const bottomPlayerRef = useRef();
 
 
     let minutes = (audioElem.current) ? Math.floor(audioElem.current.duration / 60) : 0;
@@ -134,11 +137,15 @@ export function Home() {
 
     const shufflePlayList = () => {
         const shuffledArray = playList.sort((a, b) => 0.5 - Math.random());
+
         if (!isPlaying) {
             setIsPlaying(true);
             audioElem.current.play();
         }
+
         setPlayList(shuffledArray);
+
+        openPlayerComponent();
     };
 
     const onPlaying = () => {
@@ -167,22 +174,50 @@ export function Home() {
         });
     });
 
+    const showPlayerComponent = () => {
+        const playerComponent = document.querySelector(".player-container");
+
+        if (playerComponent.classList.contains("open")) {
+            playerComponent.classList.remove("open");
+        } else {
+            playerComponent.classList.add("open");
+        }
+    }
+
+
+
+    const openPlayerComponent = () => {
+        const playerComponent = document.querySelector(".player-container");
+        if (!playerComponent.classList.contains("open")) {
+            playerComponent.classList.add("open");
+        }
+    }
+
+    const closePlayerComponent = () => {
+        const playerComponent = document.querySelector(".player-container");
+        if (playerComponent.classList.contains("open")) {
+            playerComponent.classList.remove("open");
+        }
+    }
+
 
   return (
-      <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer.jpg'})`}}>
+      <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer2.jpg'})`}}>
         <AudioContext.Provider value={currentSong}>
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
-                {/*<Navbar shufflePlayList={shufflePlayList} />*/}
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} />
+                <Navbar shufflePlayList={shufflePlayList} showPlayerComponent={showPlayerComponent} closePlayerComponent={closePlayerComponent} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} />
+                <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
                 <Routes>
 
                     <Route path={"/"} element={
                         <>
-                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
+                            <MainPage />
                         </>
                     }
                     />
+
 
                     <Route path={"/contacts"} element={<Contacts audioElem={audioElem} setIsPlaying={setIsPlaying} />} />
 

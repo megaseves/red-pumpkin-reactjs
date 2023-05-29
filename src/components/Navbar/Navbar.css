@@ -1,14 +1,16 @@
 .navbar-container {
-    width: 100px;
-    height: 100vh;
-    background-color: var(--secBgColor);
-    position: fixed;
-    border-right: 1px solid var(--thiBgColor);
+    width: 100vw;
+
+    position: relative;
     display: flex;
+    padding: 0 50px;
+
+
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
     z-index: 100;
+
+
 }
 .menu-content {
     min-width: 80px;
@@ -60,4 +62,25 @@
 }
 .active p {
     font-weight: bold;
+}
+
+.title {
+    flex: 1;
+    /*border: 1px solid red;*/
+}
+.navbar-menu-content {
+    display: flex;
+    gap: 30px;
+    flex-direction: row;
+    flex: 2;
+    /*border: 1px solid pink;*/
+    justify-content: center;
+    padding: 10px 0;
+
+
+}
+.right-content {
+    display: flex;
+    flex: 1;
+    /*border: 1px solid green;*/
 }

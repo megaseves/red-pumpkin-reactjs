@@ -11,7 +11,7 @@ import {
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef}) {
+export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef}) {
 
     const audio = useContext(AudioContext);
 
@@ -63,7 +63,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
 
                 </div>
 
-                <div className="title-container">
+                <div className="title-container" onClick={() => showPlayerComponent()}>
                     <img className="release-song-image" src={currentSong.album_url} alt=""></img>
                     <div className="song-title-and-album">
                         <div className="song-title"><h3>{audio.title}</h3></div>
@@ -82,7 +82,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                             </div>
                         </div>
                     </div>
-                    <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()} />
+                    <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()} ref={bottomPlayerRef} />
 
                     <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} icon={faRepeat} data-active={'non-active'} onClick={() => toggleRepeat()} />
                     <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
