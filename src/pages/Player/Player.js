@@ -59,6 +59,7 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
 
       <div className="player-container" >
 
+
           <div className="player">
                 <div className="casette-div" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/cassette.png'})`}}>
                     <p className="casette-tittle">{currentSong.title}</p>

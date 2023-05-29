@@ -203,6 +203,14 @@ export function Home() {
         }
     }
 
+    const changeSong = (index) => {
+        setIsPlaying(true);
+        const songIndex = playList.findIndex(x => x.id === index);
+        setCurrentSong(playList[songIndex]);
+
+        showPlayerComponent();
+    }
+
 
   return (
       <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer2.jpg'})`}}>
@@ -216,7 +224,7 @@ export function Home() {
 
                     <Route path={"/"} element={
                         <>
-                            <MainPage />
+                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong}  />
                         </>
                     }
                     />

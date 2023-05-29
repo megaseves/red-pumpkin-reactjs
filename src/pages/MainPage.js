@@ -4,7 +4,7 @@ import { AudioContext } from '../components/AudioContext';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
 
-export function MainPage() {
+export function MainPage(props) {
 
     const audio = useContext(AudioContext);
 
@@ -23,27 +23,33 @@ export function MainPage() {
                     <div className="song-card-container">
 
                         <div className="song-card">
-                            <div className="song-card-link">
+                            <div className="song-card-link" onClick={() => props.changeSong(9)}>
                                 <FontAwesomeIcon className={"song-card-icon"} icon={faPlay} />
-                                <div className="song-card-img"></div>
+                                <div className="song-card-img-container">
+                                    <img className="song-card-img" src={"../albumBorito.jpg"} alt="" />
+                                </div>
                             </div>
                             <h4>Fekete krónika</h4>
                             <p>Túlzó láng</p>
                         </div>
 
                         <div className="song-card">
-                            <div className="song-card-link">
+                            <div className="song-card-link" onClick={() => props.changeSong(8)}>
                                 <FontAwesomeIcon className={"song-card-icon"} icon={faPlay} />
-                                <div className="song-card-img"></div>
+                                <div className="song-card-img-container">
+                                    <img className="song-card-img" src={"../albumBorito.jpg"} alt="" />
+                                </div>
                             </div>
                             <h4>Halhatatlan jel</h4>
                             <p>Túlzó láng</p>
                         </div>
 
                         <div className="song-card">
-                            <div className="song-card-link">
+                            <div className="song-card-link" onClick={() => props.changeSong(7)}>
                                 <FontAwesomeIcon className={"song-card-icon"} icon={faPlay} />
-                                <div className="song-card-img"></div>
+                                <div className="song-card-img-container">
+                                    <img className="song-card-img" src={"../albumBorito.jpg"} alt="" />
+                                </div>
                             </div>
                             <h4>Időkerék</h4>
                             <p>Túlzó láng</p>

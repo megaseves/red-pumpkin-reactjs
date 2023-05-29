@@ -1,5 +1,6 @@
 exports.songsdata = [
     {
+        "id": 9,
         "title": "Fekete krónika",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -7,6 +8,7 @@ exports.songsdata = [
         "length": "4:12"
     },
     {
+        "id": 8,
         "title": "Halhatatlan jel",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -14,6 +16,7 @@ exports.songsdata = [
         "length": "5:22"
     },
     {
+        "id": 7,
         "title": "Időkerék",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -21,6 +24,7 @@ exports.songsdata = [
         "length": "4:05"
     },
     {
+        "id": 6,
         "title": "Bukott angyal",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -28,6 +32,7 @@ exports.songsdata = [
         "length": "4:57"
     },
     {
+        "id": 5,
         "title": "Tűzhordozó",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -35,6 +40,7 @@ exports.songsdata = [
         "length": "4:42"
     },
     {
+        "id": 4,
         "title": "Hullócsillag",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -42,6 +48,7 @@ exports.songsdata = [
         "length": "4:11"
     },
     {
+        "id": 3,
         "title": "Ígéret földje",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -49,6 +56,7 @@ exports.songsdata = [
         "length": "4:55"
     },
     {
+        "id": 2,
         "title": "Titkos alagút",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -56,6 +64,7 @@ exports.songsdata = [
         "length": "3:02"
     },
     {
+        "id": 1,
         "title": "Nem lehet baj",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
@@ -63,6 +72,7 @@ exports.songsdata = [
         "length": "6:17"
     },
     {
+        "id": 0,
         "title": "Reménytelen",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
