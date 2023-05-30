@@ -9,7 +9,7 @@ export function Events() {
 
     return (
         <div className="events-container">
-            <h2>Events</h2>
+
         </div>
     );
 }

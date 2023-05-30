@@ -9,7 +9,7 @@ export function Albums() {
 
     return (
         <div className="albums-container">
-            <h2>Albums</h2>
+
         </div>
     );
 }

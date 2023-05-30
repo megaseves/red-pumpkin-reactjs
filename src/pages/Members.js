@@ -9,7 +9,7 @@ export function Members() {
 
     return (
         <div className="members-container">
-            <h2>Members</h2>
+
         </div>
     );
 }
