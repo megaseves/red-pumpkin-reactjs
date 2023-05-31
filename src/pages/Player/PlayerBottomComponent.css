@@ -40,6 +40,7 @@
     min-width: 300px;
     display: flex;
     justify-content: right;
+    align-items: center;
     flex: 1;
 }
 
@@ -166,4 +167,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .open {
     display: flex;
+}
+
+.ForRef {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+
 }

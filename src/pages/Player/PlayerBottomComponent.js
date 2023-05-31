@@ -63,7 +63,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
 
                 </div>
 
-                <div className="title-container" onClick={() => showPlayerComponent()}>
+                <div className="title-container" onClick={(e) => showPlayerComponent(e)}>
                     <img className="release-song-image" src={currentSong.album_url} alt=""></img>
                     <div className="song-title-and-album">
                         <div className="song-title"><h3>{audio.title}</h3></div>
@@ -74,18 +74,23 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                     </div>
                 </div>
 
-                <div className="other-controls">
-                    <div className={'bottom-player-volume-control-container'}>
-                        <div className={'bottom-player-volume-control-body'}>
-                            <div className="bottom-player-volume-control-box">
-                                <input id="bottom-player-volume-control" type="range" min={0} max={MAX} onChange={handleVolume}/>
+                <div className="other-controls" onClick={(e) => showPlayerComponent(e) }>
+                    <div ref={bottomPlayerRef} className={"ForRef"}>
+                        <div className={'bottom-player-volume-control-container'}>
+                            <div className={'bottom-player-volume-control-body'}>
+                                <div className="bottom-player-volume-control-box">
+                                    <input id="bottom-player-volume-control" type="range" min={0} max={MAX} onChange={handleVolume}/>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()} ref={bottomPlayerRef} />
 
-                    <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} icon={faRepeat} data-active={'non-active'} onClick={() => toggleRepeat()} />
-                    <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
+                        <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()}  />
+
+                        <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} icon={faRepeat} data-active={'non-active'} onClick={() => toggleRepeat()} />
+                        <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
+
+                    </div>
+
                 </div>
             </div>
 

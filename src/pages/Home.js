@@ -177,14 +177,18 @@ export function Home() {
         });
     });
 
-    const showPlayerComponent = () => {
+    const showPlayerComponent = (e) => {
         const playerComponent = document.querySelector(".player-container");
 
-        if (playerComponent.classList.contains("open")) {
-            playerComponent.classList.remove("open");
-        } else {
-            playerComponent.classList.add("open");
+        const clickedOnRef = bottomPlayerRef.current && bottomPlayerRef.current.contains(e.target);
+        if (!clickedOnRef) {
+            if (playerComponent.classList.contains("open")) {
+                playerComponent.classList.remove("open");
+            } else {
+                playerComponent.classList.add("open");
+            }
         }
+
     }
 
 
