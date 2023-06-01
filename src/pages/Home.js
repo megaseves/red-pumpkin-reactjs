@@ -125,16 +125,18 @@ export function Home() {
     }
 
     const toggleRepeat = () => {
-        const repeatBtn = document.querySelector('#toggleBtn');
+        const repeatBtn = document.querySelectorAll('#toggleBtn');
 
-        if (repeatBtn.dataset.active === 'non-active') {
+        if (repeatBtn[0].dataset.active === 'non-active') {
             setIsRepeat(true);
             console.log('Aktiválja');
-            repeatBtn.dataset.active = 'active';
+            repeatBtn[0].dataset.active = 'active';
+            repeatBtn[1].dataset.active = 'active';
         } else {
             setIsRepeat(false);
             console.log('Deaktiválja');
-            repeatBtn.dataset.active = 'non-active';
+            repeatBtn[0].dataset.active = 'non-active';
+            repeatBtn[1].dataset.active = 'non-active';
         }
     };
 
