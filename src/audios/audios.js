@@ -17,19 +17,19 @@ exports.songsdata = [
     },
     {
         "id": 7,
-        "title": "Időkerék",
-        "album_title": "Túlzó láng",
-        "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
-        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Idokerek.wav",
-        "length": "4:05"
-    },
-    {
-        "id": 6,
         "title": "Bukott angyal",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Bukott_angyal.wav",
         "length": "4:57"
+    },
+    {
+        "id": 6,
+        "title": "Időkerék",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Idokerek.wav",
+        "length": "4:05"
     },
     {
         "id": 5,

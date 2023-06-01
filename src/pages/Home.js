@@ -190,10 +190,15 @@ export function Home() {
                 playerComponent.classList.add("open");
             }
         }
-
     }
 
+    const showPlayerComponentByMainPage = () => {
+        const playerComponent = document.querySelector(".player-container");
 
+        if (!playerComponent.classList.contains("open")) {
+            playerComponent.classList.add("open");
+        }
+    }
 
     const openPlayerComponent = () => {
         const playerComponent = document.querySelector(".player-container");
@@ -211,10 +216,10 @@ export function Home() {
 
     const changeSong = (index) => {
         setIsPlaying(true);
-        const songIndex = playList.findIndex(x => x.id === index);
-        setCurrentSong(playList[songIndex]);
+        const songIndex = songs.findIndex(x => x.id === index);
+        setCurrentSong(songs[songIndex]);
 
-        showPlayerComponent();
+        showPlayerComponentByMainPage();
     }
 
 
@@ -230,12 +235,10 @@ export function Home() {
 
                     <Route path={"/"} element={
                         <>
-                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong}  />
+                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} />
                         </>
                     }
                     />
-
-
 
                     <Route path={"/albums"} element={<Albums />} />
                     <Route path={"/events"} element={<Events />} />
