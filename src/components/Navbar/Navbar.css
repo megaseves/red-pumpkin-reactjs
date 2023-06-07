@@ -13,7 +13,7 @@
 
 }
 .menu-content {
-    min-width: 80px;
+    min-width: 100px;
     font-weight: bold;
     display: flex;
     flex-direction: column;

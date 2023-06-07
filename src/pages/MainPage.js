@@ -31,7 +31,7 @@ export function MainPage(props) {
                                     <div className="song-card-link" onClick={() => props.changeSong(song.id)}>
                                         <FontAwesomeIcon className={"song-card-icon"} icon={faPlay} />
                                         <div className="song-card-img-container">
-                                            <img className="song-card-img" src={"../albumBorito.jpg"} alt="" />
+                                            <img className="song-card-img" src={song.cover_url} alt="" />
                                         </div>
                                     </div>
                                     <h4>{song.title}</h4>

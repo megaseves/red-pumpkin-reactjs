@@ -1,0 +1,93 @@
+.albums-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+.album-card-container {
+    width: 800px;
+
+}
+
+.album-card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+
+    cursor: pointer;
+}
+
+.album-card h4 {
+    font-size: 18px;
+}
+.album-card h4:hover {
+    text-decoration: underline;
+}
+.album-card p {
+    font-size: 13px;
+}
+
+
+
+.album-card-icon-border {
+    position: absolute;
+    bottom: 22px;
+    right: 22px;
+
+
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: black;
+    opacity: 0.8;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    transition: width 0.3s, height 0.3s, bottom 0.3s, right 0.3s;
+}
+.album-card-icon-border:hover {
+    width: 46px;
+    height: 46px;
+    bottom: 20px;
+    right: 20px;
+    opacity: 1;
+}
+.album-card-icon-border:hover .album-card-icon {
+    font-size: 22px;
+    padding-left: 4px;
+
+}
+.album-card-icon {
+
+    font-size: 18px;
+
+    padding-left: 3px;
+
+    color: white;
+
+    z-index: 100;
+    transition: font-size 0.3s, padding-left 0.3s;
+}
+
+
+
+.album-card-img-container {
+    width: 200px;
+    height: 200px;
+
+    overflow: hidden;
+}
+
+.album-card-img {
+    width: 200px;
+    height: 200px;
+
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.album-card-link {
+    margin-bottom: 8px;
+}

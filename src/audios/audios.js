@@ -4,6 +4,8 @@ exports.songsdata = [
         "title": "Fekete krónika",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/coverImages/feketeKronika/feketeKronikaCover.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/feketeKronika/backgroundFeketeKronika.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Fekete_kronika.wav",
         "length": "4:12"
     },
@@ -12,6 +14,8 @@ exports.songsdata = [
         "title": "Halhatatlan jel",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/coverImages/halhatatlanJel/halhatatlanJelCover.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/halhatatlanJel/backgroundHalhatatlanJel.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Halhatatlan_jel.wav",
         "length": "5:22"
     },
@@ -20,6 +24,8 @@ exports.songsdata = [
         "title": "Bukott angyal",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/coverImages/bukottAngyal/bukottAngyalCover.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/bukottAngyal/backgroundBukottAngyal.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Bukott_angyal.wav",
         "length": "4:57"
     },
@@ -28,6 +34,8 @@ exports.songsdata = [
         "title": "Időkerék",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Idokerek.wav",
         "length": "4:05"
     },
@@ -36,6 +44,8 @@ exports.songsdata = [
         "title": "Tűzhordozó",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Tuzhordozo.wav",
         "length": "4:42"
     },
@@ -44,6 +54,8 @@ exports.songsdata = [
         "title": "Hullócsillag",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Hullocsillag.wav",
         "length": "4:11"
     },
@@ -52,6 +64,8 @@ exports.songsdata = [
         "title": "Ígéret földje",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Igeret_foldje.wav",
         "length": "4:55"
     },
@@ -60,6 +74,8 @@ exports.songsdata = [
         "title": "Titkos alagút",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Titkos_alagut.wav",
         "length": "3:02"
     },
@@ -68,6 +84,8 @@ exports.songsdata = [
         "title": "Nem lehet baj",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Nem_Lehet_Baj.wav",
         "length": "6:17"
     },
@@ -76,6 +94,8 @@ exports.songsdata = [
         "title": "Reménytelen",
         "album_title": "Túlzó láng",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/backgroundNone.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Remenytelen.wav",
         "length": "4:00"
     }

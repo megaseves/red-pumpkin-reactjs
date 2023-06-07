@@ -240,7 +240,7 @@ export function Home() {
                     }
                     />
 
-                    <Route path={"/albums"} element={<Albums />} />
+                    <Route path={"/albums"} element={<Albums selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} /> } />
                     <Route path={"/events"} element={<Events />} />
                     <Route path={"/members"} element={<Members />} />
                     <Route path={"/contacts"} element={<Contacts />} />

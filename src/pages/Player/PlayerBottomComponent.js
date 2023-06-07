@@ -64,7 +64,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                 </div>
 
                 <div className="title-container" onClick={(e) => showPlayerComponent(e)}>
-                    <img className="release-song-image" src={currentSong.album_url} alt=""></img>
+                    <img className="release-song-image" src={currentSong.cover_url} alt=""></img>
                     <div className="song-title-and-album">
                         <div className="song-title"><h3>{audio.title}</h3></div>
                         <div className="album-title"><p>{audio.album_title}</p></div>
