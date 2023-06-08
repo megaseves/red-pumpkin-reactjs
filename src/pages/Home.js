@@ -153,6 +153,29 @@ export function Home() {
         openPlayerComponent();
     };
 
+
+    const randomPlaySong = () => {
+        const shuffledArray = playList.sort((a, b) => 0.5 - Math.random());
+
+        setPlayList(shuffledArray);
+
+        if (currentSong.id !== shuffledArray[0].id) {
+            setCurrentSong(shuffledArray[0]);
+        } else {
+            setCurrentSong(shuffledArray[1]);
+        }
+
+
+        if (!isPlaying) {
+            setIsPlaying(true);
+            audioElem.current.play();
+        }
+
+        openPlayerComponent();
+    };
+
+
+
     const onPlaying = () => {
         const duration = audioElem.current.duration;
         const current_time = audioElem.current.currentTime;
@@ -235,7 +258,7 @@ export function Home() {
 
                     <Route path={"/"} element={
                         <>
-                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} />
+                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} />
                         </>
                     }
                     />

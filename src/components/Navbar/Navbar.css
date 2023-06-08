@@ -75,7 +75,7 @@
 }
 .navbar-menu-content {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     flex-direction: row;
     flex: 2;
     /*border: 1px solid pink;*/

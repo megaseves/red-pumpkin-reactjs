@@ -2,7 +2,7 @@ import './Mainpage.css';
 import {useContext} from "react";
 import { AudioContext } from '../components/AudioContext';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlay} from "@fortawesome/free-solid-svg-icons";
+import {faPlay, faShuffle} from "@fortawesome/free-solid-svg-icons";
 import {songsdata} from "../audios/audios";
 
 export function MainPage(props) {
@@ -16,9 +16,15 @@ export function MainPage(props) {
         <div className="mainpage-container">
 
             <div className="mainpage-header">
-                <div className="mainpage-player">
-                    <h3>Lejátszó megnyitása</h3>
+
+                <div className="shuffle-player">
+                    <h2>Random</h2>
+                    <div className="mainpage-player" onClick={() => props.randomPlaySong()}>
+                        <FontAwesomeIcon className={"mainpage-random-btn"} icon={faShuffle} />
+                    </div>
+                    <h4>Véletlenszerű lejátszás</h4>
                 </div>
+
 
                 <div className="mainpage-recommend">
                     <h2>Legújabb számok</h2>
@@ -27,7 +33,7 @@ export function MainPage(props) {
 
                         { songs && songs.slice(0,3).map((song) => {
                             return (
-                                <div className="song-card">
+                                <div className="song-card" key={song.id}>
                                     <div className="song-card-link" onClick={() => props.changeSong(song.id)}>
                                         <FontAwesomeIcon className={"song-card-icon"} icon={faPlay} />
                                         <div className="song-card-img-container">

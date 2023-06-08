@@ -24,17 +24,21 @@
 }
 
 .mainpage-player {
-    width: 330px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
 
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
 
-    margin: 20px;
+    margin: 20px 20px 0 0;
 
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
     cursor: pointer;
+    border-radius: 6px;
+
+    background: rgb(157,25,158);
+    background: linear-gradient(137deg, rgba(157,25,158,1) 0%, rgba(25,63,157,1) 69%, rgba(17,23,103,1) 100%);
 }
 .mainpage-player:hover {
     opacity: 0.8;
@@ -47,6 +51,18 @@
 
 }
 
+.mainpage-random-btn {
+    font-size: 78px;
+
+}
+.shuffle-player h4 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+.shuffle-player h4:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 
 /*  SONG CARD  */
