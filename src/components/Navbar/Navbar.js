@@ -2,7 +2,7 @@ import './Navbar.css';
 import {
     faAddressBook,
     faCalendarCheck,
-    faCompactDisc,
+    faCompactDisc, faHouse,
     faIdBadge, faPlay,
     faShuffle
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +12,7 @@ import {Link} from "react-router-dom";
 
 
 
-export function Navbar({shufflePlayList, showPlayerComponent, closePlayerComponent}) {
+export function Navbar({shufflePlayList, openPlayerComponent, closePlayerComponent}) {
   return (
     <div className="navbar-container">
 
@@ -20,16 +20,16 @@ export function Navbar({shufflePlayList, showPlayerComponent, closePlayerCompone
             <Link to={"/"} onClick={() => closePlayerComponent()}><h2>🎃 Red Pumpkin</h2></Link>
         </div>
         <div className="navbar-menu-content">
-            <NavbarButton title={"KEZDŐLAP"} to={"/"} icon={faPlay} closePlayerComponent={closePlayerComponent} />
+            <NavbarButton title={"KEZDŐLAP"} to={"/"} icon={faHouse} closePlayerComponent={closePlayerComponent} />
 {/*            <span className={"menu-content"} onClick={() => showPlayerComponent()} >
                 <FontAwesomeIcon className="menu-icon" icon={faPlay} />
                 <p className="menu-title">PLAYER</p>
             </span>*/}
 
-            <span className={"navbar-button-random"} onClick={() => shufflePlayList()}>
-                <FontAwesomeIcon className="menu-icon" icon={faShuffle} />
-                <p className="menu-title">RANDOM</p>
-            </span>
+{/*            <span className={"navbar-button-random"} onClick={() => openPlayerComponent()}>
+                <FontAwesomeIcon className="menu-icon" icon={faPlay} />
+                <p className="menu-title">LEJÁTSZÓ</p>
+            </span>*/}
 
 
             <NavbarButton title={"ALBUMOK"} to={"/albums"} icon={faCompactDisc} closePlayerComponent={closePlayerComponent} />
