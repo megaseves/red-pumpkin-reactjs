@@ -204,34 +204,43 @@ export function Home() {
 
     const showPlayerComponent = (e) => {
         const playerComponent = document.querySelector(".player-container");
+        const backToPlayerDiv = document.querySelector(".back-to-player");
 
         const clickedOnRef = bottomPlayerRef.current && bottomPlayerRef.current.contains(e.target);
         if (!clickedOnRef) {
             if (playerComponent.classList.contains("open")) {
                 playerComponent.classList.remove("open");
+                backToPlayerDiv.classList.remove("close");
             } else {
                 playerComponent.classList.add("open");
+                backToPlayerDiv.classList.add("close");
             }
         }
     }
 
     const showPlayerComponentByMainPage = () => {
         const playerComponent = document.querySelector(".player-container");
+        const backToPlayerDiv = document.querySelector(".back-to-player");
 
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
+            backToPlayerDiv.classList.add("close");
         }
     }
 
     const openPlayerComponent = () => {
         const playerComponent = document.querySelector(".player-container");
+        const backToPlayerDiv = document.querySelector(".back-to-player");
+
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
+            backToPlayerDiv.classList.add("close");
         }
     }
 
     const closePlayerComponent = () => {
         const playerComponent = document.querySelector(".player-container");
+
         if (playerComponent.classList.contains("open")) {
             playerComponent.classList.remove("open");
         }
@@ -252,7 +261,7 @@ export function Home() {
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} />
                 <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
                 <Routes>
 

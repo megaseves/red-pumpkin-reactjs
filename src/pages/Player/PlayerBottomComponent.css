@@ -176,3 +176,37 @@ input[type="range"]::-webkit-slider-thumb {
     height: 40px;
 
 }
+
+.back-to-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: -130px;
+    right: 30px;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+.back-to-player-icon {
+    font-size: 30px;
+}
+.back-to-player-img {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    background-position: center;
+    border-radius: 8px;
+
+    z-index: -1;
+}
+.close {
+    display: none;
+}

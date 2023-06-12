@@ -1,7 +1,7 @@
 import './PlayerBottomComponent.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faBackwardStep,
+    faBackwardStep, faCaretUp,
     faEllipsisVertical,
     faForwardStep,
     faPause,
@@ -11,7 +11,7 @@ import {
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef}) {
+export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent}) {
 
     const audio = useContext(AudioContext);
 
@@ -39,6 +39,12 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
     return(
 
         <div className="player-bottom-component-container" >
+
+            <div className="back-to-player" onClick={() => openPlayerComponent()}>
+                <FontAwesomeIcon className={"back-to-player-icon"} icon={faCaretUp} />
+                <img className="back-to-player-img" src={currentSong.cover_url} alt="" />
+            </div>
+
             <div className={"time-line-container-bottom"} onClick={checkWidth}  ref={clickRef} >
                 <div className="time-line-bottom" style={{width: `${currentSong.progress+"%"}`}}></div>
                 <div className="time-line-bottom-bg"></div>
