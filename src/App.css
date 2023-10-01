@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600;700&display=swap');
 
 
 * {
@@ -6,13 +6,14 @@
   margin: 0;
   box-sizing: border-box;
 }
-body { background: var(--bgColor); overflow-x: hidden; color: white; font-family: 'Quicksand', sans-serif; }
+body { background: var(--bgColor); overflow-x: hidden; color: white; font-family: 'Gabarito', cursive; }
 
 :root {
   --linkColor: #c72329;
   --bgColor: #0c0c0c;
+  --selectedColor: #1e1e1e;
   --secBgColor: #292a2b;
-  --thiBgColor: #3c3d3f;
+  --thiBgColor: #333333;
   --textColor: #adb1b5;
   --secTextColor: white;
 }

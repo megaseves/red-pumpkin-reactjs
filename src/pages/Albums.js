@@ -22,7 +22,7 @@ export function Albums(props) {
                                 <FontAwesomeIcon className={"album-card-icon"} icon={faPlay} />
                             </div>
                             <div className="album-card-img-container">
-                                <img className="album-card-img" src={"../albumBorito.jpg"} alt="" />
+                                <img className="album-card-img" src={"../albumBorito.webp"} alt="" />
                             </div>
                         </div>
                         <h4>Túlzó láng</h4>

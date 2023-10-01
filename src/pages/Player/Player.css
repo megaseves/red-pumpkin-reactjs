@@ -2,7 +2,7 @@
     /*margin-left: 100px;*/
     width: 100%;
     height: 80%;
-    padding: 0 80px 0 80px;
+    padding: 0;
 
     position: absolute;
 
@@ -19,28 +19,130 @@
 
 .player-background {
     position: absolute;
-    top: -110px;
-    left: 0;
+    top: -120px;
+    left: 0px;
     width: 100%;
     height: 115%;
 
-}
-.player-background img {
-    width: 50%;
-    background-size: cover;
-    z-index: 100;
+    background: rgb(12,12,12);
+    background: radial-gradient(circle, rgba(12,12,12,1) 0%, rgba(23,23,23,1) 0%, rgba(12,12,12,1) 100%);
 }
 
 .player {
-    width: 100%;
-    padding: 0 100px 100px 100px;
+    width: 600px;
+    height: 600px;
 
     /*border: 1px solid pink;*/
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 101;
+
+    margin: 0 50px;
+
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+.player:hover {
+    cursor: pointer;
+}
+.player:hover .player-playbtn-container {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Shine hover */
+.player-hover div {
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+.player-hover figure {
+	position: relative;
+}
+.player-hover figure::before {
+	position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.player-hover figure:hover::before {
+	-webkit-animation: shine .75s;
+	animation: shine .75s;
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+
+
+
+.player-title-container {
+    display: flex;
+    align-items: center;
+    flex-flow: column-reverse;
+    color: white;
+    z-index: 10;
+
+    width: 100%;
+    height: 100%;
+}
+.player-title {
+    margin-bottom: 100px;
+
+}
+.player-title h1 {
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
+    background-color: black;
+    padding: 10px;
+}
+.player-title h3 {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    background-color: black;
+    padding: 10px;
+    font-weight: normal;
+}
+
+
+.player-borito-background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.player-playbtn-container {
+    position: absolute;
+    bottom: 70px;
+    right: 110px;
+
+    z-index: 10;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s linear;
+}
+
 .audio-controls {
     display: flex;
     justify-content: center;
@@ -53,6 +155,13 @@
     cursor: pointer;
     margin: 0 5px;
     align-self: center;
+}
+.player-playbtn {
+    min-width: 40px;
+    font-size: 80px;
+    cursor: pointer;
+    align-self: center;
+    opacity: 0.7;
 }
 .small-control {
     font-size: 16px;
@@ -192,11 +301,11 @@
 
 
 .up-next-container {
-    margin-top: 70px;
     min-width: 460px;
     /*background-color: gold;*/
     padding: 10px 20px;
     position: relative;
+    overflow-x: auto;
 }
 .container-line {
     position: absolute;
@@ -216,18 +325,27 @@
 }
 
 .up-next-song {
-    background-color: var(--thiBgColor);
-    border-radius: 7px;
+
     min-height: 50px;
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-    margin: 0 10px 10px 0;
+    margin: 0 10px 0 0;
     cursor: pointer;
+    border-bottom: 1px solid var(--thiBgColor);
+}
+.up-next-song:last-child {
+    border-bottom: none;
 }
 .up-next-song:hover {
-
+    background-color: var(--secBgColor);
 }
+
+.selected {
+    background-color: var(--selectedColor);
+}
+
+
 .up-next-song-detail {
     display: flex;
     flex-direction: column;
@@ -368,7 +486,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 
 .playlist-and-lyrics {
-    width: 100%;
+    width: 800px;
+    height: 600px;
     /*border: 1px solid red;*/
 }
 

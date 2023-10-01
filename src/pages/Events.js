@@ -9,7 +9,7 @@ export function Events() {
 
     return (
         <div className="events-container">
-
+            <h2>Egyelőre nincsenek események!</h2>
         </div>
     );
 }
