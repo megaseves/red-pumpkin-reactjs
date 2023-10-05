@@ -28,10 +28,6 @@
     background: radial-gradient(circle, rgba(12,12,12,1) 0%, rgba(23,23,23,1) 0%, rgba(12,12,12,1) 100%);
 }
 
-.bg-when-player-container-open {
-    background: radial-gradient(circle, rgba(12,12,12,1) 0%, rgba(23,23,23,1) 0%, rgba(12,12,12,1) 100%) !important;
-}
-
 .player {
     width: 600px;
     height: 600px;

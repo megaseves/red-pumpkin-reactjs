@@ -3,7 +3,8 @@
     height: 100vh;
     z-index: 0;
     position: absolute;
-    background-color: var(--bgColor);
+    background: rgb(12,12,12);
+    background: radial-gradient(circle, rgba(12,12,12,1) 0%, rgba(23,23,23,1) 0%, rgba(12,12,12,1) 100%);
     background-size: cover;
 }
 
