@@ -7,6 +7,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/feketeKronika/feketeKronikaCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/feketeKronika/feketeKronikaCover.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Fekete_kronika.wav",
+        "lyrics": "Szabadon vagy láncra verve, szemeid bezárva, a szivárvány íze mégis pokolian fájna. Fekete krónikában kék madárka, mennyi lehet a lélek ára, ha titokban van elém tárva?\n\n Fortuna kegyeibe fogadta az énem, mindent feláldoztam, hogy igazán éljek. Ízleltem gyümölcsét és féltem, a hetedik fejezet végleg ott hagy a révben.\r\n Minden holnapot a mára cseréltem, tébolyult lelkem szenved még most sem értem. Néha a vágy karmai könnyen elérnek, remélem feleszmélek időben és térben.",
         "length": "4:12"
     },
     {
@@ -17,6 +18,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/halhatatlanJel/halhatatlanJelCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/halhatatlanJel/halhatatlanJelCover.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Halhatatlan_jel.wav",
+        "lyrics": "Hamarosan...",
         "length": "5:22"
     },
     {
@@ -27,6 +29,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/bukottAngyal/bukottAngyalCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/bukottAngyal/bukottAngyalCover.jpg'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Bukott_angyal.wav",
+        "lyrics": "Hamarosan...",
         "length": "4:57"
     },
     {
@@ -37,6 +40,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Idokerek.wav",
+        "lyrics": "Hamarosan...",
         "length": "4:05"
     },
     {
@@ -47,6 +51,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Tuzhordozo.wav",
+        "lyrics": "Hamarosan...",
         "length": "4:42"
     },
     {
@@ -57,6 +62,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Hullocsillag.wav",
+        "lyrics": "Hamarosan...",
         "length": "4:11"
     },
     {
@@ -67,6 +73,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Igeret_foldje.wav",
+        "lyrics": "Hamarosan...",
         "length": "4:55"
     },
     {
@@ -77,6 +84,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Titkos_alagut.wav",
+        "lyrics": "Hamarosan...",
         "length": "3:02"
     },
     {
@@ -87,6 +95,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Nem_Lehet_Baj.wav",
+        "lyrics": "Hamarosan...",
         "length": "6:17"
     },
     {
@@ -97,6 +106,7 @@ exports.songsdata = [
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Remenytelen.wav",
+        "lyrics": "Hamarosan...",
         "length": "4:00"
     }
 ]

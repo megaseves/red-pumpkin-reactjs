@@ -48,6 +48,31 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
     const index = () => playList.findIndex(x=>x.title === currentSong.title);
 
 
+    const lyricsModalOpen = () => {
+      const upNextSongsDiv = document.querySelector(".up-next-songs");
+      const lyricsModalDiv = document.querySelector(".lyrics-modal");
+      const upNextTitle = document.querySelector(".up-next-title");
+      const lyricsTitle = document.querySelector(".lyrics-title");
+      
+      upNextSongsDiv.classList.add('close');
+      lyricsModalDiv.classList.remove('close');
+      upNextTitle.classList.remove("active-tab");
+      lyricsTitle.classList.add("active-tab");
+    };
+
+    const lyricsModalClose = () => {
+      const upNextSongsDiv = document.querySelector(".up-next-songs");
+      const lyricsModalDiv = document.querySelector(".lyrics-modal");
+      const upNextTitle = document.querySelector(".up-next-title");
+      const lyricsTitle = document.querySelector(".lyrics-title");
+      
+      upNextSongsDiv.classList.remove('close');
+      lyricsModalDiv.classList.add('close');
+      upNextTitle.classList.add("active-tab");
+      lyricsTitle.classList.remove("active-tab");
+    };
+
+
   return (
 
       <div className="player-container" >
@@ -62,47 +87,24 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
                     <div className="player-title-container"><div className='player-title'><h1>{currentSong.title}</h1></div><div className='player-title'><h3>{currentSong.album_title} album</h3></div></div>
                     <div className="player-borito-background" style={{backgroundImage: `url(${currentSong.background_cover_url})`}}></div>
 
-                    {/*<div className="casette-div" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/cassette.png'})`}}>
-                        <p className="casette-tittle">{currentSong.title}</p>
-                    </div>
-                    <div className="audio-detail">
-                    <h2 className={"audio-detail-title"}>{currentSong.title}</h2>
-                    <h4 className={"audio-detail-album-name"}>Red Pumpkin</h4>
-                    <div className="audio-detail-time">
-                        <span className={"time-current"}>{ currentSong.seconds ? converter(Math.floor(currentSong.seconds)) : "0:00"}</span>
-                        <div className={"time-line-container"} onClick={checkWidthPlayer}  ref={clickPlayerRef} >
-                            <div className="time-line" style={{width: `${currentSong.progress+"%"}`}}></div>
-                        </div>
-                        <span className={"time-over"}>{ minutes ? minutes + ":" + seconds : "0:00"}</span>
-                    </div>
-                    <div className="audio-controls">
-                        <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()} />
-                        <div className={'volume-control-container'}>
-                            <div className={'volume-control-body'}>
-                                <div className="volume-control-box">
-                                    <input className="volume-control" type="range" min={0} max={MAX} onChange={handleVolume}/>
-                                </div>
-                            </div>
-                        </div>
-                        <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
-                        <FontAwesomeIcon className={"play-audio medium-control"} icon={faBackwardStep} onClick={() => skipBack()} />
-                        {isPlaying ?
-                            <FontAwesomeIcon className={"play-audio"} icon={faPause} onClick={() => PlayPause()} />
-                            :
-                            <FontAwesomeIcon className={"play-audio"} icon={faPlay} onClick={() => PlayPause()} />
-                        }
-                        <FontAwesomeIcon className={"play-audio medium-control"} icon={faForwardStep} onClick={() => skipForward()} />
-                        <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} data-active={'non-active'} icon={faRepeat} onClick={() => toggleRepeat()} />
-                        <FontAwesomeIcon className={"play-audio small-control"} icon={faEllipsisVertical} />
-                    </div>
-                        </div> */}
-
                 </div>
 
           <div className="playlist-and-lyrics">
               <div className="up-next-container">
-                  <h3 className={"container-title"} >KÖVETKEZIK</h3>
-                  <div className="container-line"></div>
+                <div className='up-next-tabs'>
+                    <div className='up-next-div'>
+                        <h3 className="container-title up-next-title active-tab" onClick={() => lyricsModalClose() }>KÖVETKEZIK</h3>
+                        <div className="container-line"></div>
+                    </div>
+                    <div className='lyrics-div'>
+                    <h3 className="container-title lyrics-title" onClick={() => lyricsModalOpen() }>DALSZÖVEG</h3>
+                    <div className="container-line"></div>
+                    </div>
+                </div>
+                  <div className='lyrics-modal close'>
+                    { currentSong.lyrics }
+                  
+                  </div>
                   <div className="up-next-songs">
                     <div className="up-next-song selected">
                         <div className="up-next-song-detail">
