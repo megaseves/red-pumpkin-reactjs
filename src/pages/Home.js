@@ -11,6 +11,7 @@ import {MainPage} from "./MainPage";
 import {Albums} from "./Albums";
 import {Members} from "./Members";
 import {Events} from "./Events";
+import { Album, TulzoLangAlbum } from "./albums/TulzoLangAlbum";
 
 export function Home() {
 
@@ -253,6 +254,7 @@ export function Home() {
         setCurrentSong(songs[songIndex]);
 
         showPlayerComponentByMainPage();
+        window.scrollTo(0, 0);
     }
 
     
@@ -276,6 +278,7 @@ export function Home() {
                     />
 
                     <Route path={"/albums"} element={<Albums selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} /> } />
+                    <Route path={"/album/tulzo-lang"} element={<TulzoLangAlbum selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
                     <Route path={"/events"} element={<Events />} />
                     <Route path={"/members"} element={<Members />} />
                     <Route path={"/contacts"} element={<Contacts />} />

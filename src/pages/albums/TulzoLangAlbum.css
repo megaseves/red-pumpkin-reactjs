@@ -1,0 +1,89 @@
+.album-container-div {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+}
+.album-div {
+    width: 70vw;
+}
+.album-cover-image-div {
+    width: 240px;
+    height: 240px;
+    background-size: cover;
+
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.album-title-div {
+    margin-top: 20px;
+}
+
+.album-header {
+    display: flex;
+    gap: 50px;
+}
+
+.album-title-p-div {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.album-description-div {
+    margin-top: 20px;
+    max-width: 700px;
+}
+.album-control-btns {
+    margin-top: 20px;
+}
+.album-control-play-btn {
+    cursor: pointer;
+    
+    background-color: white;
+    color: black;
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+.album-control-play-btn .play-audio {
+
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+}
+
+.album-control-play-btn span {
+    position: relative;
+    right: 6px;
+    bottom: 1px;
+    margin-right: 5px;
+}
+
+
+.album-song-title {
+    width: 800px;
+    margin-left: 40px;
+}
+
+.album-song {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--secBgColor)
+}
+.album-song:last-child {
+    border-bottom: none;
+}
+
+.album-song:hover {
+    background-color: var(--selectedColor);
+}
+
+.album-songs-div {
+    margin-top: 50px;
+    margin-bottom: 160px;
+}
