@@ -17,3 +17,8 @@ body { background: var(--bgColor); overflow-x: hidden; color: white; font-family
   --textColor: #adb1b5;
   --secTextColor: white;
 }
+
+a {
+  color: var(--linkColor);
+  text-decoration: none;
+}
