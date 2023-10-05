@@ -20,6 +20,7 @@ export function Home() {
     const [currentSong, setCurrentSong] = useState(songsdata[0]);
     const [playList, setPlayList] = useState({});
     const [release] = useState(songsdata.slice(0,3));
+    const [isActiveVolumeModal, setIsActiveVolumeModal] = useState(true);
 
     const audioElem = useRef();
 
@@ -205,15 +206,18 @@ export function Home() {
     const showPlayerComponent = (e) => {
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
+        const bg = document.querySelector(".bg");
 
         const clickedOnRef = bottomPlayerRef.current && bottomPlayerRef.current.contains(e.target);
         if (!clickedOnRef) {
             if (playerComponent.classList.contains("open")) {
                 playerComponent.classList.remove("open");
                 backToPlayerDiv.classList.remove("close");
+                bg.classList.remove("bg-when-player-container-open");
             } else {
                 playerComponent.classList.add("open");
                 backToPlayerDiv.classList.add("close");
+                bg.classList.add("bg-when-player-container-open");
             }
         }
     }
@@ -221,20 +225,24 @@ export function Home() {
     const showPlayerComponentByMainPage = () => {
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
+        const bg = document.querySelector(".bg");
 
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
             backToPlayerDiv.classList.add("close");
+            bg.classList.add("bg-when-player-container-open");
         }
     }
 
     const openPlayerComponent = () => {
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
+        const bg = document.querySelector(".bg");
 
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
             backToPlayerDiv.classList.add("close");
+            bg.classList.add("bg-when-player-container-open");
         }
     }
 
@@ -254,14 +262,17 @@ export function Home() {
         showPlayerComponentByMainPage();
     }
 
+    
+
 
   return (
       <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer2.jpg'})`}}>
         <AudioContext.Provider value={currentSong}>
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
+                <div className="volumeHandlerMouseOver" ></div>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} />
                 <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
                 <Routes>
 

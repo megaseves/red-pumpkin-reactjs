@@ -1,17 +1,10 @@
 import './Player.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faBackwardStep,
-    faEllipsisVertical,
-    faForwardStep,
     faPause,
-    faPlay,
-    faRepeat,
-    faShuffle,
-    faVolumeLow
+    faPlay
 } from "@fortawesome/free-solid-svg-icons";
 import {NextSong} from "../../components/NextSong";
-import {NewReleaseSong} from "../../components/NewReleaseSong";
 import {useRef} from "react";
 
 export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList, songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter}) {
@@ -59,7 +52,6 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
 
       <div className="player-container" >
         <div className="player-background"></div>
-
     
                 <div className="player" onClick={() => PlayPause()}>
                     <div className="player-playbtn-container">{isPlaying ?

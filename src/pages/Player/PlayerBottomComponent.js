@@ -11,34 +11,41 @@ import {
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent}) {
+export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal}) {
 
     const audio = useContext(AudioContext);
 
     const MAX = 20;
+
 
     const handleVolume = (e) => {
         const { value } = e.target;
         audioElem.current.volume = value / MAX;
     };
 
-
-    const volumeModal = () => {
+    const volumeModalOpen = () => {
         const volumeBtn = document.querySelector('#volume');
         const volumeControlContainer = document.querySelector('.bottom-player-volume-control-container');
 
-        if (volumeBtn.classList.contains('active-btn')) {
-            volumeBtn.classList.remove('active-btn');
-            volumeControlContainer.classList.remove('open');
-        } else {
-            volumeBtn.classList.add('active-btn');
-            volumeControlContainer.classList.add('open');
-        }
+        volumeBtn.classList.add('active-btn');
+        volumeControlContainer.classList.add('open');
+
+        setIsActiveVolumeModal(false);
+    };
+
+    const volumeModalClose = () => {
+        const volumeBtn = document.querySelector('#volume');
+        const volumeControlContainer = document.querySelector('.bottom-player-volume-control-container');
+
+        volumeBtn.classList.remove('active-btn');
+        volumeControlContainer.classList.remove('open');
+
+        setIsActiveVolumeModal(false);
     };
 
     return(
 
-        <div className="player-bottom-component-container" >
+        <div className="player-bottom-component-container" onMouseLeave={() => volumeModalClose() }>
 
             <div className="back-to-player" onClick={() => openPlayerComponent()}>
                 <FontAwesomeIcon className={"back-to-player-icon"} icon={faCaretUp} />
@@ -90,7 +97,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                             </div>
                         </div>
 
-                        <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onClick={() => volumeModal()}  />
+                        <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onMouseOver={() => volumeModalOpen() }  />
 
                         <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} icon={faRepeat} data-active={'non-active'} onClick={() => toggleRepeat()} />
                         <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
