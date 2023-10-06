@@ -272,7 +272,7 @@ export function Home() {
 
                     <Route path={"/"} element={
                         <>
-                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} />
+                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} PlayPause={PlayPause} isPlaying={isPlaying} />
                         </>
                     }
                     />

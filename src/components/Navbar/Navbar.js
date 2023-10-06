@@ -4,7 +4,7 @@ import {
     faCalendarCheck,
     faCompactDisc, faHouse,
     faIdBadge, faPlay,
-    faShuffle
+    faShuffle, faBars
 } from "@fortawesome/free-solid-svg-icons";
 import {NavbarButton} from "./NavbarButton/NavbarButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -19,23 +19,23 @@ export function Navbar({shufflePlayList, openPlayerComponent, closePlayerCompone
         <div className="title">
             <Link to={"/"} onClick={() => closePlayerComponent()}><h2>🎃 Red Pumpkin</h2></Link>
         </div>
-        <div className="navbar-menu-content">
-            <NavbarButton title={"KEZDŐLAP"} to={"/"} icon={faHouse} closePlayerComponent={closePlayerComponent} />
-{/*            <span className={"menu-content"} onClick={() => showPlayerComponent()} >
-                <FontAwesomeIcon className="menu-icon" icon={faPlay} />
-                <p className="menu-title">PLAYER</p>
-            </span>*/}
+        <div className='navbar-menu-content-container'>
 
-{/*            <span className={"navbar-button-random"} onClick={() => openPlayerComponent()}>
-                <FontAwesomeIcon className="menu-icon" icon={faPlay} />
-                <p className="menu-title">LEJÁTSZÓ</p>
-            </span>*/}
+            <div className="navbar-menu-content">
+                <NavbarButton title={"KEZDŐLAP"} to={"/"} icon={faHouse} closePlayerComponent={closePlayerComponent} />
+                <NavbarButton title={"ALBUMOK"} to={"/albums"} icon={faCompactDisc} closePlayerComponent={closePlayerComponent} />
+                <NavbarButton title={"ESEMÉNYEK"} to={"/events"} icon={faCalendarCheck} closePlayerComponent={closePlayerComponent} />
+                <NavbarButton title={"TAGOK"} to={"/members"} icon={faIdBadge} closePlayerComponent={closePlayerComponent} />
+                <NavbarButton title={"ELÉRHETŐSÉG"} to={"/contacts"} icon={faAddressBook} closePlayerComponent={closePlayerComponent} />
+            </div>
 
-
-            <NavbarButton title={"ALBUMOK"} to={"/albums"} icon={faCompactDisc} closePlayerComponent={closePlayerComponent} />
-            <NavbarButton title={"ESEMÉNYEK"} to={"/events"} icon={faCalendarCheck} closePlayerComponent={closePlayerComponent} />
-            <NavbarButton title={"TAGOK"} to={"/members"} icon={faIdBadge} closePlayerComponent={closePlayerComponent} />
-            <NavbarButton title={"ELÉRHETŐSÉG"} to={"/contacts"} icon={faAddressBook} closePlayerComponent={closePlayerComponent} />
+            <div className='navbar-menu-on-phone'>
+                <div className='menu-icon-phone-main-btn'><Link to={"/"}><h3>Kezdőlap</h3></Link></div>
+                <div className='menu-icon-phone-div'>
+                    <FontAwesomeIcon icon={faBars} className='menu-icon-phone' />
+                </div>
+                
+            </div>
 
         </div>
 
