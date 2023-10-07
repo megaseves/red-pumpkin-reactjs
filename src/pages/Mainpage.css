@@ -59,6 +59,16 @@
     height: 200px;
 
 }
+.current-playing-container {
+    display: flex;
+}
+.current-playing-div {
+    margin: 25px 0 0 50px;
+}
+.current-playing-title {
+    font-weight: bold;
+    font-size: 18px;
+}
 .others-mainpage {
     height: 200px;
     display: flex;
@@ -197,6 +207,26 @@
 
     z-index: 100;
 }
+.not-playing-container {
+    position: relative;
+}
+.playing-container {
+    position: relative;
+}
+.not-playing-icon {
+    position: absolute;
+    bottom: 15px;
+    left: 27px;
+}
+.not-playing-icon-pause {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    z-index: 1000;
+
+    padding: 25px;
+}
+
 
 
 @media screen and (max-width: 890px) {
@@ -245,6 +275,10 @@
     .mainpage-recommend {
         padding: 20px;
         height: 350px;
+    }
+    .others-mainpage, .player-mainpage {
+        height: 200px;
+        
     }
     .second-mainpage-container {
         padding: 20px;

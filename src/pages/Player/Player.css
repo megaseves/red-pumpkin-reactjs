@@ -150,7 +150,7 @@
 }
 .play-audio {
     min-width: 40px;
-    font-size: 45px;
+    font-size: 35px;
     cursor: pointer;
     margin: 0 5px;
     align-self: center;
@@ -171,7 +171,7 @@
     color: white;
 }
 .medium-control {
-    font-size: 30px;
+    font-size: 26px;
 }
 .audio-detail {
     text-align: center;

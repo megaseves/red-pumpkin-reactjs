@@ -6,12 +6,13 @@ import {
     faForwardStep,
     faPause,
     faPlay, faRepeat, faShuffle,
-    faVolumeLow
+    faVolumeLow,
+    faVolumeXmark
 } from "@fortawesome/free-solid-svg-icons";
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal}) {
+export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal, volumeMute, setCurrentVolume, currentVolume}) {
 
     const audio = useContext(AudioContext);
 
@@ -21,6 +22,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
     const handleVolume = (e) => {
         const { value } = e.target;
         audioElem.current.volume = value / MAX;
+        setCurrentVolume(value / MAX);
     };
 
     const volumeModalOpen = () => {
@@ -97,7 +99,12 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                             </div>
                         </div>
 
-                        <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onMouseOver={() => volumeModalOpen() }  />
+                        { audioElem.current != undefined && audioElem.current.volume === 0 ? 
+                            <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeXmark} onMouseOver={() => volumeModalOpen() } onClick={() => volumeMute() } />
+                        :
+                            <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onMouseOver={() => volumeModalOpen() } onClick={() => volumeMute() } />
+                    }
+                        
 
                         <FontAwesomeIcon id={'toggleBtn'} className={"play-audio small-control"} icon={faRepeat} data-active={'non-active'} onClick={() => toggleRepeat()} />
                         <FontAwesomeIcon className={"play-audio small-control"} icon={faShuffle} onClick={() => shufflePlayList()} />
