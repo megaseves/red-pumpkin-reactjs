@@ -18,5 +18,5 @@
 }
 
 ::-webkit-scrollbar-corner {
-    background-color: var(--secBgColor);
-}
+    background: black;
+  }

@@ -10,11 +10,12 @@
 }
 
 .album-card {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     position: relative;
 
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .album-card h4 {
@@ -74,15 +75,15 @@
 
 
 .album-card-img-container {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
 
     overflow: hidden;
 }
 
 .album-card-img {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
 
     background-size: cover;
     border-radius: 10px;

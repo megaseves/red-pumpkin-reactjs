@@ -310,16 +310,19 @@
     color: var(--fourthBgColor);
     cursor: pointer;
 }
-.container-line {
+.container-line-up-next, .container-line-lyrics {
     position: relative;
     top: 8px;
     left: 0;
     min-width: 100px;
     height: 1px;
-    background-color: var(--fourthBgColor);
+
 }
 .active-tab {
     color: white;
+}
+.active-tab-line {
+    background-color: white;
 }
 
 .up-next-songs {

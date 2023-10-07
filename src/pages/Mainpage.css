@@ -18,20 +18,20 @@
 
 .mainpage-header {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    gap: 100px;
     justify-content: space-around;
 }
 
 .mainpage-player {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    margin: 20px 20px 0 0;
+
+    margin: 0;
 
     /*border: 1px solid gray;*/
     cursor: pointer;
@@ -42,32 +42,51 @@
 }
 .mainpage-player:hover {
     opacity: 0.8;
+
+    transition: opacity 0.19s linear;
 }
 .mainpage-recommend {
+    padding: 30px;
+    height: 350px;
 
-    padding: 0 100px 100px 100px;
+    border: 1px solid var(--secBgColor);
+    border-radius: 5px;
 
-/*    border: 1px solid pink;*/
-
+    margin-bottom: 50px;
 }
 
-.mainpage-random-btn {
-    font-size: 78px;
+.player-mainpage {
+    height: 200px;
+
+}
+.others-mainpage {
+    height: 200px;
+    display: flex;
+}
+.random-btn-on-mainpage {
+
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.mainpage-random-btn-icon {
+    font-size: 40px;
 
 }
 .second-mainpage-container {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    margin-bottom: 100px;
-
-    padding: 0 100px 100px 100px;
+    padding: 0;
+    gap: 25px;
 
 }
+
 .second-mainpage-content {
-    width: 300px;
-    height: 350px;
+    width: 180px;
+
+
+    position: relative;
 
 }
 
@@ -79,41 +98,87 @@
     cursor: pointer;
 }
 
+.h6-header {
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/*  AJÁNLOTT ALBUM SONG  */
+.album-song-recommended {
+    max-width: 300px;
+}
+
 
 /*  SONG CARD  */
 .song-card-container {
+    
     display: flex;
     gap: 40px;
 
 }
 .song-card {
-    width: 250px;
-    height: 220px;
+    width: 170px;
+    height: 170px;
     position: relative;
-   /* border: 1px solid gold;*/
-
-    cursor: pointer;
 }
 
 .song-card-link:hover {
-    opacity: 0.9;
+    opacity: 0.7;
+    cursor: pointer;
+
+    transition: opacity 0.19s linear;
+}
+.song-card p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.song-card-details p, h3 {
+    display: inline-block;
+}
+
+.song-card-link {
+    margin-bottom: 10px;
 }
 .song-card-img-container {
-    width: 250px;
-    height: 220px;
+    width: 170px;
+    height: 170px;
 
     overflow: hidden;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 .song-card-img {
-    width: 250px;
-    height: 250px;
+    width: 170px;
+    height: 170px;
 
     background-size: cover;
     
 
 }
 
+.album-card-mainpage {
+    width: 120px;
+    height: 120px;
+    position: relative;
+
+    cursor: pointer;
+    
+}
+
+.album-card-img-container-mainpage {
+    width: 120px;
+    height: 120px;
+
+    overflow: hidden;
+}
+
+.album-card-img-mainpage {
+    width: 120px;
+    height: 120px;
+
+    background-size: cover;
+    border-radius: 10px;
+}
 
 .song-card h4 {
     margin-top: 10px;
@@ -125,10 +190,10 @@
 }
 .song-card-icon {
     position: absolute;
-    top: 85px;
-    left: 110px;
+    top: 70px;
+    left: 75px;
     color: white;
-    font-size: 55px;
+    font-size: 35px;
 
     z-index: 100;
 }
@@ -186,12 +251,21 @@
 
         width: 600px;
         height: 400px;
+
+        gap: 30px;
     }
+    .mainpage-header {
+        gap: 15px;
+    }
+    
 
 }
 
 @media screen and (max-width: 1310px) {
     .mainpage-header {
         flex-direction: column;
+    }
+    .album-song-recommended {
+        max-width: 700px;
     }
 }
