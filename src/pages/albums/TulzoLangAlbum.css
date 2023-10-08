@@ -65,6 +65,8 @@
 .album-song-title {
     width: 800px;
     margin-left: 40px;
+
+    flex: 10;
 }
 
 .album-song {
@@ -73,7 +75,9 @@
 
     padding: 20px;
     cursor: pointer;
-    border-bottom: 1px solid var(--secBgColor)
+    border-bottom: 1px solid var(--secBgColor);
+
+    flex: 1;
 }
 .album-song:last-child {
     border-bottom: none;

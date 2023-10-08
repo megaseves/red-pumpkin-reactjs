@@ -8,15 +8,6 @@ export function MainPage(props) {
 
     const songs = props.songs;
 
-    const hoverPauseAudioOnMainpage = () => {
-        const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
-        notPlayingIcon.classList.remove("close");
-    };
-    const leaveHoverPauseAudioOnMainpage = () => {
-        const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
-        notPlayingIcon.classList.add("close");
-    };
-
     return (
         <div className="mainpage-container">
 
@@ -139,7 +130,7 @@ export function MainPage(props) {
 
                         <div className='current-playing-container'>
                             {   props.isPlaying ?
-                                <div className='playing-container' onMouseEnter={() => hoverPauseAudioOnMainpage()} onMouseLeave={() => leaveHoverPauseAudioOnMainpage()}>
+                                <div className='playing-container' onMouseEnter={() => props.hoverPauseAudioOnMainpage()} onMouseLeave={() => props.leaveHoverPauseAudioOnMainpage()}>
                                     <FontAwesomeIcon className={"play-audio not-playing-icon-pause close"} icon={faPause} onClick={() => props.playPause()} />
                                     <div class="playing" >
                                         <span class="playing__bar playing__bar1"></span>

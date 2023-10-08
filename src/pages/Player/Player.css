@@ -376,6 +376,10 @@
     color: var(--textColor);
 }
 
+.song-card-drag {
+    cursor: move;
+}
+
 .new-releases {
     min-width: 385px;
     height: 300px;
@@ -508,4 +512,22 @@ input[type="range"]::-webkit-slider-thumb {
     display: flex;
     gap: 100px;
     margin-bottom: 30px;
+}
+
+.up-next-cover-url {
+    width: 30px;
+    height: 30px;
+
+}
+
+.up-next-url-container {
+    flex: 2;
+}
+
+.up-next-song-detail {
+    flex: 20;
+}
+
+.up-next-song-min-con {
+    flex: 1;
 }

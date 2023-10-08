@@ -11,7 +11,8 @@ import {MainPage} from "./MainPage";
 import {Albums} from "./Albums";
 import {Members} from "./Members";
 import {Events} from "./Events";
-import { Album, TulzoLangAlbum } from "./albums/TulzoLangAlbum";
+import { TulzoLangAlbum } from "./albums/TulzoLangAlbum";
+
 
 export function Home() {
 
@@ -20,11 +21,10 @@ export function Home() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isRepeat, setIsRepeat] = useState(true);
     const [currentSong, setCurrentSong] = useState(songsdata[0]);
-    const [playList, setPlayList] = useState({});
+    const [playList, setPlayList] = useState(songs);
     const [release] = useState(songsdata.slice(0,3));
     const [isActiveVolumeModal, setIsActiveVolumeModal] = useState(true);
-    const [currentVolume, setCurrentVolume] = useState(audioElem.current != undefined ? audioElem.current.volume : 1)
-
+    const [currentVolume, setCurrentVolume] = useState(audioElem.current !== undefined ? audioElem.current.volume : 1)
 
     const clickRef = useRef();
 
@@ -273,9 +273,14 @@ export function Home() {
         }
     };
 
-    useEffect(() => {
-        console.log(currentVolume)
-    }, [currentVolume]);
+    const hoverPauseAudioOnMainpage = () => {
+        const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
+        notPlayingIcon.classList.remove("close");
+    };
+    const leaveHoverPauseAudioOnMainpage = () => {
+        const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
+        notPlayingIcon.classList.add("close");
+    };
 
 
   return (
@@ -285,12 +290,13 @@ export function Home() {
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
                 <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
-                <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
+                <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
+
                 <Routes>
 
                     <Route path={"/"} element={
                         <>
-                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} PlayPause={PlayPause} isPlaying={isPlaying} playList={playList} currentSong={currentSong} playPause={PlayPause} />
+                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} PlayPause={PlayPause} isPlaying={isPlaying} playList={playList} currentSong={currentSong} playPause={PlayPause} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
                         </>
                     }
                     />
