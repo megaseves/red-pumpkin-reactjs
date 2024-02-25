@@ -1,17 +1,19 @@
 .navbar-container {
-    width: 100px;
-    height: 100vh;
-    background-color: var(--secBgColor);
-    position: fixed;
-    border-right: 1px solid var(--thiBgColor);
+    width: 100vw;
+
+    position: relative;
     display: flex;
+    padding: 0 50px;
+
+
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 100;
+    justify-content: space-between;
+    z-index: 300;
+
+
 }
 .menu-content {
-    min-width: 80px;
+    min-width: 100px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -60,4 +62,74 @@
 }
 .active p {
     font-weight: bold;
+}
+
+.title {
+    flex: 1;
+    /*border: 1px solid red;*/
+
+}
+.title a {
+    text-decoration: none;
+    color: white;
+}
+.title h2 {
+    font-size: 24px;
+}
+.navbar-menu-content {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    flex: 2;
+    /*border: 1px solid pink;*/
+    justify-content: center;
+    padding: 10px 0;
+}
+.navbar-menu-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 112px;
+}
+.right-content {
+    display: flex;
+    flex: 1;
+    /*border: 1px solid green;*/
+}
+.navbar-menu-on-phone {
+    display: none;
+}
+.navbar-container a {
+    color: white;
+}
+
+
+@media screen and (max-width: 1120px) {
+    .navbar-menu-content {
+        display: none;
+    }
+    .menu-icon-phone-main-btn {
+        padding: 30px;
+        cursor: pointer;
+    }
+    .navbar-menu-on-phone {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 20px;
+    }
+    .menu-icon-phone-div {
+        padding: 30px;
+        cursor: pointer;
+    }
+    .menu-icon-phone {
+        font-size: 28px;
+        margin-top: -2px;
+    }
+    .right-content {
+        display: none;
+    }
 }

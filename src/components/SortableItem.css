@@ -1,0 +1,65 @@
+.on-playlist-playing {
+    width: 40px;
+    height: 40px;
+    border-radius: .3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: .5rem;
+    box-sizing: border-box;
+    gap: 1px;
+}
+.on-not-playing {
+
+    width: 40px;
+    height: 40px;
+    border-radius: .3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: .5rem;
+    box-sizing: border-box;
+    gap: 1px;
+
+    position: relative;
+}
+.on-not-playing-container {
+
+    width: 40px;
+    height: 40px;
+    border-radius: .3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: .5rem;
+    box-sizing: border-box;
+    gap: 1px;
+
+    position: relative;
+}
+.on-playing-container {
+    position: relative;
+}
+
+.on-not-playing-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 18px;
+
+    color: var(--fourthBgColor);
+    margin: 0;
+
+}
+.on-not-playing-icon-pause {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+
+    padding: 0;    
+    margin: 0;
+
+    font-size: 18px;
+}
+

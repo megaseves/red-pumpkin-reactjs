@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600;700&display=swap');
 
 
 * {
@@ -6,13 +6,53 @@
   margin: 0;
   box-sizing: border-box;
 }
-body { background: var(--bgColor); overflow-x: hidden; color: white; font-family: 'Quicksand', sans-serif; }
+h2 {
+  font-size: 26px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 19px;
+  font-weight: normal;
+}
+h6 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+p {
+  font-size: 14px;
+}
+
+.p-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+body { 
+
+    background: rgb(12,12,12);
+    background: radial-gradient(circle, rgba(12,12,12,1) 0%, rgba(23,23,23,1) 0%, rgba(12,12,12,1) 100%);
+  
+  overflow-x: hidden; color: white; font-family: 'Gabarito', cursive; }
 
 :root {
   --linkColor: #c72329;
-  --bgColor: #1e1f21;
+  --bgColor: #0c0c0c;
+  --selectedColor: #1e1e1e;
   --secBgColor: #292a2b;
-  --thiBgColor: #3c3d3f;
+  --thiBgColor: #333333;
+  --fourthBgColor: #686868;
   --textColor: #adb1b5;
   --secTextColor: white;
+}
+
+a {
+  color: var(--linkColor);
+  text-decoration: none;
+}
+p {
+  color: var(--textColor);
 }
