@@ -133,3 +133,15 @@
         display: none;
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .menu-icon-phone-main-btn {
+        display: none;
+    }
+    .navbar-container {
+        padding: 0 10px 0 20px;
+    }
+    .menu-icon-phone-div {
+        padding: 20px;
+    }
+}

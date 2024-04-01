@@ -144,6 +144,10 @@
     cursor: pointer;
     text-decoration: underline;
 }
+.song-card-details {
+    display: flex;
+    flex-direction: column;
+}
 .song-card-details p, h3 {
     display: inline-block;
 }
@@ -302,4 +306,41 @@
     .album-song-recommended {
         max-width: 700px;
     }
+}
+
+@media screen and (max-width: 500px) {
+    .mainpage-header {
+        width: 100%;
+        height: auto;
+    }
+    .mainpage-recommend {
+        width: 100%;
+        height: auto;
+
+    }
+    .song-card-container {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .song-card {
+        height: auto;
+    }
+    .album-songs-div-recommend {
+        max-width: 300px;
+    }
+
+    .playing-now-container {
+        margin-bottom: 150px;
+    }
+
+    .h6-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .mainpage-albums-container {
+        flex-direction: row;
+    }
+
 }

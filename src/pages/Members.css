@@ -37,6 +37,8 @@
 }
 .other-member {
     position: relative;
+
+    background-color:#848286;
 }
 .member-title {
     position: absolute;

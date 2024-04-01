@@ -2,7 +2,12 @@ import './Player.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faPause,
-    faPlay
+    faPlay,
+    faChevronDown,
+    faCirclePlay,
+    faCirclePause,
+    faBackwardStep,
+    faForwardStep
 } from "@fortawesome/free-solid-svg-icons";
 import {
     DndContext,
@@ -14,8 +19,12 @@ import {
     verticalListSortingStrategy
 } from "@dnd-kit/sortable";
 import { SortableItem } from '../../components/SortableItem';
+import {useContext} from "react";
+import {AudioContext} from "../../components/AudioContext";
 
-export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList, setPlayList , songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, hoverPauseAudioOnMainpage, leaveHoverPauseAudioOnMainpage}) {
+export function Player({clickRef, closePlayerComponent, PlayPause, skipBack, skipForward, toggleRepeat, playList, setPlayList , songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, hoverPauseAudioOnMainpage, leaveHoverPauseAudioOnMainpage}) {
+
+    const audio = useContext(AudioContext);
 
     let i = 0;
 
@@ -67,6 +76,9 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
   return (
 
       <div className="player-container" >
+        <div className='mobile-player-header'>
+          <FontAwesomeIcon icon={faChevronDown} className='down-icon' onClick={closePlayerComponent} />
+        </div>
         <div className="player-background"></div>
     
                 <div className="player" onClick={() => PlayPause()}>
@@ -78,6 +90,26 @@ export function Player({PlayPause, skipBack, skipForward, toggleRepeat, playList
                     <div className="player-title-container"><div className='player-title'><h1>{currentSong.title}</h1></div><div className='player-title'><h3>{currentSong.album_title} album</h3></div></div>
                     <div className="player-borito-background" style={{backgroundImage: `url(${currentSong.background_cover_url})`}}></div>
 
+                </div>
+
+                <div className='mobile-player-title'>
+                  <h3 className='mobile-player-title-h3'>{audio.title}</h3>
+                  <p className='mobile-player-title-p'>{audio.album_title}</p>
+                </div>
+
+                <div className={"time-line-container-mobile"} onClick={checkWidth} ref={clickRef} >
+                  <div className="time-line-mobile" style={{width: `${currentSong.progress+"%"}`}}></div>
+                  <div className="time-line-bg-mobile"></div>
+                </div>
+
+                <div className='mobile-player-btns'>
+                    <FontAwesomeIcon className={"play-audio medium-control-mobile"} icon={faBackwardStep} onClick={() => skipBack()} />
+                    {isPlaying ?
+                        <FontAwesomeIcon  className={"player-playbtn-mobile"} icon={faCirclePause} onClick={() => PlayPause()} />
+                        :
+                        <FontAwesomeIcon className={"player-playbtn-mobile"} icon={faCirclePlay} onClick={() => PlayPause()} />
+                    }
+                    <FontAwesomeIcon className={"play-audio medium-control-mobile"} icon={faForwardStep} onClick={() => skipForward()} />
                 </div>
 
           <div className="playlist-and-lyrics">

@@ -215,3 +215,30 @@ input[type="range"]::-webkit-slider-thumb {
 .close {
     display: none;
 }
+
+@media only screen and (max-width: 500px) {
+    .back-to-player {
+        display: none;
+    }
+    .other-controls {
+        display: none;
+    }
+    .time-container-bottom-player {
+        display: none;
+    }
+    .medium-control {
+        display: none;
+    }
+    .settings {
+        display: none;
+    }
+    .title-container {
+        justify-content: flex-start;
+        min-width: 0;
+    }
+    .player-bottom-content-position {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

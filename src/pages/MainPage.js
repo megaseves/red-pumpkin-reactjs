@@ -47,7 +47,7 @@ export function MainPage(props) {
                     
 
                     
-                    <div className='mainpage-recommend others-mainpage'>
+                    <div className='mainpage-recommend others-mainpage mainpage-albums-container'>
                         <div className="second-mainpage-content">
                             <div className="mainpage-player" onClick={() => props.randomPlaySong()}>
                                 <FontAwesomeIcon className={"mainpage-random-btn-icon"} icon={faShuffle} />
@@ -122,7 +122,7 @@ export function MainPage(props) {
                     </div>
 
 
-                    <div className="mainpage-recommend player-mainpage">
+                    <div className="mainpage-recommend player-mainpage playing-now-container">
                         <div className='h6-header'>
                             <h6>Lejátszó</h6>
                             <p className='p-link' onClick={() => props.openPlayerComponent()}>Lejátszó megnyitása</p>

@@ -20,10 +20,10 @@ export function Members() {
                     <div className='member-role'>Gitár, Ének</div>
                     <div className='member-image' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/members/gyenes_jonas_levente_red_pumpkin_pic.webp'})`}}></div>
                 </div>
-                <div className='member'>
-                    <div className='member-title'>Varga Roland</div>
-                    <div className='member-role'>Basszusgitár, Scream</div>
-                    <div className='member-image' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/members/varga_roland_red_pumpkin_pic.webp'})`}}></div>
+                <div className='other-member'>
+                    <div className='member-title'>Keressük...</div>
+                    <div className='member-role'>Basszusgitár</div>
+                    <div className='other-member-image' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/members/keressuk_red_pumpkin_pic.webp'})`}}></div>
                 </div>
                 
                 

@@ -210,14 +210,24 @@ export function Home() {
     const showPlayerComponent = (e) => {
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
+        
+        const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
+        const navbarContainer = document.querySelector(".navbar-container");
+        const mainpageContainer = document.querySelector(".mainpage-container");
 
         const clickedOnRef = bottomPlayerRef.current && bottomPlayerRef.current.contains(e.target);
         if (!clickedOnRef) {
             if (playerComponent.classList.contains("open")) {
                 playerComponent.classList.remove("open");
+                playerBottomComponentContainer.classList.remove("hide");
+                navbarContainer.classList.remove("hide");
+                mainpageContainer.classList.remove("hide");
                 backToPlayerDiv.classList.remove("close");
             } else {
                 playerComponent.classList.add("open");
+                playerBottomComponentContainer.classList.add("hide");
+                navbarContainer.classList.add("hide");
+                mainpageContainer.classList.add("hide");
                 backToPlayerDiv.classList.add("close");
             }
         }
@@ -227,8 +237,15 @@ export function Home() {
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
 
+        const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
+        const navbarContainer = document.querySelector(".navbar-container");
+        const mainpageContainer = document.querySelector(".mainpage-container");
+
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
+            playerBottomComponentContainer.classList.add("hide");
+            navbarContainer.classList.add("hide");
+            mainpageContainer.classList.add("hide");
             backToPlayerDiv.classList.add("close");
         }
     }
@@ -237,8 +254,15 @@ export function Home() {
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
 
+        const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
+        const navbarContainer = document.querySelector(".navbar-container");
+        const mainpageContainer = document.querySelector(".mainpage-container");
+
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
+            playerBottomComponentContainer.classList.add("hide");
+            navbarContainer.classList.add("hide");
+            mainpageContainer.classList.add("hide");
             backToPlayerDiv.classList.add("close");
         }
     }
@@ -246,8 +270,17 @@ export function Home() {
     const closePlayerComponent = () => {
         const playerComponent = document.querySelector(".player-container");
 
+        const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
+        const navbarContainer = document.querySelector(".navbar-container");
+
+        const mainpageContainer = document.querySelector(".mainpage-container");
+
+
         if (playerComponent.classList.contains("open")) {
             playerComponent.classList.remove("open");
+            playerBottomComponentContainer.classList.remove("hide");
+            mainpageContainer.classList.remove("hide");
+            navbarContainer.classList.remove("hide");
         }
     }
 
@@ -290,7 +323,7 @@ export function Home() {
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
                 <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
-                <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
+                <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} clickRef={clickRef} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} closePlayerComponent={closePlayerComponent} />
 
                 <Routes>
 

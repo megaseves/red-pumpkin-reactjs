@@ -1,5 +1,27 @@
 exports.songsdata = [
     {
+        "id": 11,
+        "title": "Szolgáló",
+        "album_title": "Új",
+        "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/coverImages/szolgalo/szolgaloCover.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/szolgalo/szolgaloCover.jpg'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Szolgalo.wav",
+        "lyrics": "",
+        "length": "3:55"
+    },
+    {
+        "id": 10,
+        "title": "Belső háború",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/coverImages/belsoHaboru/belsoHaboruCover.jpg'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/belsoHaboru/belsoHaboruCover.jpg'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/Red_Pumpkin_-_Belso_haboru.wav",
+        "lyrics": "",
+        "length": "3:34"
+    },
+    {
         "id": 9,
         "title": "Fekete krónika",
         "album_title": "Túlzó láng",
