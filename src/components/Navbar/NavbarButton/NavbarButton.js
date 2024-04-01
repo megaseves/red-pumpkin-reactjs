@@ -8,11 +8,11 @@ export function NavbarButton(props) {
     const btnClass = isActive ? "menu-content active" : "menu-content";
 
   return (
-    <Link to={props.to} className={"navbar-button"} >
+    <Link to={props.to} className={"navbar-button"} onClick={() => props.closePlayerComponent()} >
             <div className={btnClass}>
                 <FontAwesomeIcon className="menu-icon" icon={props.icon} />
                 <p className="menu-title">{props.title}</p>
             </div>
-      </Link>
+    </Link>
   );
 }

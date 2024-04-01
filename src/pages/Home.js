@@ -7,24 +7,34 @@ import {useEffect, useRef, useState} from "react";
 import { AudioContext } from '../components/AudioContext';
 import './Home.css';
 import {PlayerBottomComponent} from "./Player/PlayerBottomComponent";
+import {MainPage} from "./MainPage";
+import {Albums} from "./Albums";
+import {Members} from "./Members";
+import {Events} from "./Events";
+import { TulzoLangAlbum } from "./albums/TulzoLangAlbum";
+
 
 export function Home() {
 
+    const audioElem = useRef();
     const [songs, setSongs] = useState(songsdata);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isRepeat, setIsRepeat] = useState(true);
     const [currentSong, setCurrentSong] = useState(songsdata[0]);
-    const [playList, setPlayList] = useState({});
+    const [playList, setPlayList] = useState(songs);
     const [release] = useState(songsdata.slice(0,3));
-
-    const audioElem = useRef();
+    const [isActiveVolumeModal, setIsActiveVolumeModal] = useState(true);
+    const [currentVolume, setCurrentVolume] = useState(audioElem.current !== undefined ? audioElem.current.volume : 1)
 
     const clickRef = useRef();
+
+    const bottomPlayerRef = useRef();
 
 
     let minutes = (audioElem.current) ? Math.floor(audioElem.current.duration / 60) : 0;
     let secondData = (audioElem.current) ? Math.floor((audioElem.current.duration - minutes * 60)) : 0;
     let seconds = secondData < 10 ? "0" + secondData : secondData;
+
 
     const endedAudio = () => {
         const index = playList.findIndex(x=>x.title === currentSong.title);
@@ -91,6 +101,7 @@ export function Home() {
 
     const PlayPause = () => {
         setIsPlaying(!isPlaying);
+        audioElem.current.volume = currentVolume;
     }
 
     const skipBack = () => {
@@ -119,27 +130,56 @@ export function Home() {
     }
 
     const toggleRepeat = () => {
-        const repeatBtn = document.querySelector('#toggleBtn');
+        const repeatBtn = document.querySelectorAll('#toggleBtn');
 
-        if (repeatBtn.dataset.active === 'non-active') {
+        if (repeatBtn[0].dataset.active === 'non-active') {
             setIsRepeat(true);
             console.log('Aktiválja');
-            repeatBtn.dataset.active = 'active';
+            repeatBtn[0].dataset.active = 'active';
+            repeatBtn[1].dataset.active = 'active';
         } else {
             setIsRepeat(false);
             console.log('Deaktiválja');
-            repeatBtn.dataset.active = 'non-active';
+            repeatBtn[0].dataset.active = 'non-active';
+            repeatBtn[1].dataset.active = 'non-active';
         }
     };
 
     const shufflePlayList = () => {
         const shuffledArray = playList.sort((a, b) => 0.5 - Math.random());
+
         if (!isPlaying) {
             setIsPlaying(true);
             audioElem.current.play();
         }
+
         setPlayList(shuffledArray);
+
+        openPlayerComponent();
     };
+
+
+    const randomPlaySong = () => {
+        const shuffledArray = playList.sort((a, b) => 0.5 - Math.random());
+
+        setPlayList(shuffledArray);
+
+        if (currentSong.id !== shuffledArray[0].id) {
+            setCurrentSong(shuffledArray[0]);
+        } else {
+            setCurrentSong(shuffledArray[1]);
+        }
+
+
+        if (!isPlaying) {
+            setIsPlaying(true);
+            audioElem.current.play();
+        }
+
+        openPlayerComponent();
+    };
+
+
 
     const onPlaying = () => {
         const duration = audioElem.current.duration;
@@ -167,25 +207,105 @@ export function Home() {
         });
     });
 
+    const showPlayerComponent = (e) => {
+        const playerComponent = document.querySelector(".player-container");
+        const backToPlayerDiv = document.querySelector(".back-to-player");
+
+        const clickedOnRef = bottomPlayerRef.current && bottomPlayerRef.current.contains(e.target);
+        if (!clickedOnRef) {
+            if (playerComponent.classList.contains("open")) {
+                playerComponent.classList.remove("open");
+                backToPlayerDiv.classList.remove("close");
+            } else {
+                playerComponent.classList.add("open");
+                backToPlayerDiv.classList.add("close");
+            }
+        }
+    }
+
+    const showPlayerComponentByMainPage = () => {
+        const playerComponent = document.querySelector(".player-container");
+        const backToPlayerDiv = document.querySelector(".back-to-player");
+
+        if (!playerComponent.classList.contains("open")) {
+            playerComponent.classList.add("open");
+            backToPlayerDiv.classList.add("close");
+        }
+    }
+
+    const openPlayerComponent = () => {
+        const playerComponent = document.querySelector(".player-container");
+        const backToPlayerDiv = document.querySelector(".back-to-player");
+
+        if (!playerComponent.classList.contains("open")) {
+            playerComponent.classList.add("open");
+            backToPlayerDiv.classList.add("close");
+        }
+    }
+
+    const closePlayerComponent = () => {
+        const playerComponent = document.querySelector(".player-container");
+
+        if (playerComponent.classList.contains("open")) {
+            playerComponent.classList.remove("open");
+        }
+    }
+
+    const changeSong = (index) => {
+        setIsPlaying(true);
+        const songIndex = songs.findIndex(x => x.id === index);
+        setCurrentSong(songs[songIndex]);
+
+        showPlayerComponentByMainPage();
+        window.scrollTo(0, 0);
+    }
+
+    const volumeMute = () => {
+        if (audioElem.current.volume > 0) {
+            audioElem.current.volume = 0;
+        } else {
+            if (currentVolume === 0) {
+                audioElem.current.volume = 0.3;
+            } else {
+                audioElem.current.volume = currentVolume;
+            }
+            
+        }
+    };
+
+    const hoverPauseAudioOnMainpage = () => {
+        const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
+        notPlayingIcon.classList.remove("close");
+    };
+    const leaveHoverPauseAudioOnMainpage = () => {
+        const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
+        notPlayingIcon.classList.add("close");
+    };
+
 
   return (
-      <div className={"bg"} style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/bgPlayer.jpg'})`}}>
+      <div className={"bg"}>
         <AudioContext.Provider value={currentSong}>
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
-                <Navbar shufflePlayList={shufflePlayList} />
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} />
+                <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
+                <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
+
                 <Routes>
 
                     <Route path={"/"} element={
                         <>
-                            <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} />
+                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} PlayPause={PlayPause} isPlaying={isPlaying} playList={playList} currentSong={currentSong} playPause={PlayPause} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
                         </>
                     }
                     />
 
-                    <Route path={"/contacts"} element={<Contacts audioElem={audioElem} setIsPlaying={setIsPlaying} />} />
-
+                    <Route path={"/albums"} element={<Albums selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} /> } />
+                    <Route path={"/album/tulzo-lang"} element={<TulzoLangAlbum selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
+                    <Route path={"/events"} element={<Events />} />
+                    <Route path={"/members"} element={<Members />} />
+                    <Route path={"/contacts"} element={<Contacts />} />
                 </Routes>
             </Router>
         </AudioContext.Provider>
