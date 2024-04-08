@@ -99,7 +99,7 @@ export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlayi
                             </div>
                         </div>
 
-                        { audioElem.current != undefined && audioElem.current.volume === 0 ? 
+                        { audioElem.current !== undefined && audioElem.current.volume === 0 ? 
                             <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeXmark} onMouseOver={() => volumeModalOpen() } onClick={() => volumeMute() } />
                         :
                             <FontAwesomeIcon id={'volume'} className={"play-audio small-control"} icon={faVolumeLow} onMouseOver={() => volumeModalOpen() } onClick={() => volumeMute() } />
