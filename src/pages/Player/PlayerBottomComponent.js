@@ -12,7 +12,7 @@ import {
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal, volumeMute, setCurrentVolume, currentVolume}) {
+export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal, volumeMute, setCurrentVolume, currentVolume}) {
 
     const audio = useContext(AudioContext);
 
@@ -54,7 +54,7 @@ export function PlayerBottomComponent({isPlaying, PlayPause, skipBack, skipForwa
                 <img className="back-to-player-img" src={currentSong.cover_url} alt="" />
             </div>
 
-            <div className={"time-line-container-bottom"} onClick={checkWidth}  ref={clickRef} >
+            <div className={"time-line-container-bottom"} onClick={checkWidthBottom}  ref={clickRefBottom} >
                 <div className="time-line-bottom" style={{width: `${currentSong.progress+"%"}`}}></div>
                 <div className="time-line-bottom-bg"></div>
             </div>

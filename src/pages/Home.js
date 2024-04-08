@@ -27,6 +27,7 @@ export function Home() {
     const [currentVolume, setCurrentVolume] = useState(audioElem.current !== undefined ? audioElem.current.volume : 1)
 
     const clickRef = useRef();
+    const clickRefBottom = useRef();
 
     const bottomPlayerRef = useRef();
 
@@ -192,12 +193,24 @@ export function Home() {
     const checkWidth = (e) => {
         let width = clickRef.current.clientWidth;
         const offset = e.nativeEvent.offsetX;
-
+        
         const divProgress = offset / width * 100;
         if (audioElem.current.currentTime !== 0) {
             audioElem.current.currentTime = divProgress / 100 * currentSong.length;
         }
     }
+
+    const checkWidthBottom = (e) => {
+        let width = clickRefBottom.current.clientWidth;
+        const offset = e.nativeEvent.offsetX;
+        
+        const divProgress = offset / width * 100;
+        if (audioElem.current.currentTime !== 0) {
+            audioElem.current.currentTime = divProgress / 100 * currentSong.length;
+        }
+    }
+
+
     useEffect(() => {
         document.addEventListener('keyup', function(event) {
             // 32 = space bar
@@ -322,7 +335,7 @@ export function Home() {
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} checkWidthBottom={checkWidthBottom} clickRefBottom={clickRefBottom} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
                 <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} clickRef={clickRef} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} closePlayerComponent={closePlayerComponent} />
 
                 <Routes>

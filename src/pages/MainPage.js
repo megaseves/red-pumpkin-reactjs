@@ -14,10 +14,10 @@ export function MainPage(props) {
             <div className="mainpage-header">
                 <div className='flex-break'>
 
-                    <div className="mainpage-recommend">
+                    <div className="mainpage-recommend mainpage-new-songs-container">
                         <div className='h6-header'>
                             <h6>Legújabb dalok</h6>
-                            <Link to={'/album/tulzo-lang'}><p className='p-link'>Összes megtekintés</p></Link>
+                            <Link to={'/album/tulzo-lang'}><p className='p-link'>Több</p></Link>
                         </div>
                         
 
