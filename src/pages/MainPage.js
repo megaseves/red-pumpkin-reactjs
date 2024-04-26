@@ -3,6 +3,7 @@ import './AudioPlayingAnimation.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPause, faPlay, faShuffle} from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+import { MobileNavbar } from '../components/Navbar/MobileNavbar/MobileNavbar';
 
 export function MainPage(props) {
 
@@ -173,6 +174,8 @@ export function MainPage(props) {
 
             </div>
 
+
+        <MobileNavbar />
         </div>
     );
 }

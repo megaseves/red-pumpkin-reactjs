@@ -66,6 +66,8 @@ export function Home() {
     }, [isPlaying]);
 
 
+
+
     useEffect(() => {
         selectAlbum(selectedName);
         // eslint-disable-next-line
@@ -327,6 +329,15 @@ export function Home() {
         const notPlayingIcon = document.querySelector(".not-playing-icon-pause");
         notPlayingIcon.classList.add("close");
     };
+
+
+    useEffect(() => {
+        if (isPlaying) {
+            document.title = currentSong.title + " - Red Pumpkin";
+        } else {
+            document.title = "Red Pumpkin | Official website";
+        }
+    }, [isPlaying, skipBack, skipForward]);
 
 
   return (

@@ -22,7 +22,7 @@ import { SortableItem } from '../../components/SortableItem';
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function Player({clickRef, closePlayerComponent, PlayPause, skipBack, skipForward, toggleRepeat, playList, setPlayList , songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, hoverPauseAudioOnMainpage, leaveHoverPauseAudioOnMainpage}) {
+export function Player({ clickRef, closePlayerComponent, PlayPause, skipBack, skipForward, toggleRepeat, playList, setPlayList , songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, hoverPauseAudioOnMainpage, leaveHoverPauseAudioOnMainpage}) {
 
     const audio = useContext(AudioContext);
 
@@ -101,6 +101,13 @@ export function Player({clickRef, closePlayerComponent, PlayPause, skipBack, ski
                   <div className="time-line-mobile" style={{width: `${currentSong.progress+"%"}`}}></div>
                   <div className="time-line-bg-mobile"></div>
                 </div>
+
+                <div className="time-container-bottom-player-mobile">
+                        <span className={"time-current-mobile"}>{ currentSong.seconds ? converter(Math.floor(currentSong.seconds)) : "0:00"}</span>
+                        
+                        <span className={"time-over-mobile"}>{ minutes ? minutes + ":" + seconds : "0:00"}</span>
+                </div>
+                
 
                 <div className='mobile-player-btns'>
                     <FontAwesomeIcon className={"play-audio medium-control-mobile"} icon={faBackwardStep} onClick={() => skipBack()} />
