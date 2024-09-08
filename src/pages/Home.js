@@ -52,19 +52,14 @@ export function Home() {
 
     const selectedName = "Túlzó láng";
 
-    //console.log(currentSong)
-
     useEffect(() => {
-/*        const prevValue = isPlaying;
-        setIsPlaying(!prevValue);*/
-        if(isPlaying) {
-            (audioElem.current) && audioElem.current.play();
+        // Lejátszás vagy szünet állapot alapján történő akciók
+        if (isPlaying) {
+          audioElem.current && audioElem.current.play();
         } else {
-            (audioElem.current) && audioElem.current.pause();
+          audioElem.current && audioElem.current.pause();
         }
-    }, [isPlaying]);
-
-
+      }, [isPlaying]); 
 
 
     useEffect(() => {
@@ -330,7 +325,7 @@ export function Home() {
   return (
       <div>
         <AudioContext.Provider value={currentSong}>
-            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
+            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay id="audio" />
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
                 <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} checkWidthBottom={checkWidthBottom} clickRefBottom={clickRefBottom} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
