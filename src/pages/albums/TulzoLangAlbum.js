@@ -20,7 +20,11 @@ export function TulzoLangAlbum(props) {
           <div className='album-div'>
             
             <div className='album-header'>
-              <div className='album-cover-image-div' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/albumBorito.webp'}`}}></div>
+
+              <div className='album-cover-container'>
+                <div className='album-cover-image-div' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/albumBorito.webp'}`}}></div>
+              </div>
+              
               <div className='album-details-div'>
                 <div className='album-title-div'><h1>Túlzó láng</h1></div>
                 <div className='album-title-p-div'><p>Album • 2022</p></div>
@@ -31,7 +35,7 @@ export function TulzoLangAlbum(props) {
                   <span className='album-control-play-btn' onClick={() => {
                                     props.selectAlbum("Túlzó láng");
                                     props.openPlayerComponent();
-                                    props.changeSong(9);
+                                    props.changeSong(10);
                                 }}><FontAwesomeIcon className={"play-audio"} icon={faPlay} /> <span>Lejátszás</span></span>
                 </div>
               </div>
