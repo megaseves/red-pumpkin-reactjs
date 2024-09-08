@@ -1,6 +1,6 @@
 .player-container {
     width: 100%;
-    height: 600px;
+    height: calc(100dvh - 250px);
     padding: 0;
 
     position: fixed;
@@ -11,8 +11,7 @@
 
     display: none;
     justify-content: space-evenly;
-
-    align-items: center;
+    align-items: flex-start;
 
     z-index: 200;
 
@@ -51,6 +50,17 @@
 .player:hover .player-playbtn-container {
     visibility: visible;
     opacity: 1;
+}
+
+
+.player-avatar {
+    width: auto;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 /* Shine hover */
@@ -311,7 +321,7 @@
 .up-next-container {
     min-width: 460px;
     /*background-color: gold;*/
-    padding: 10px 20px;
+    padding: 0 20px;
     position: relative;
     overflow-x: auto;
 }
@@ -336,8 +346,8 @@
 
 .up-next-songs {
     width: 100%;
-    height: 67vh;
-    /*background-color: lavender;*/
+    height: calc(100dvh - 300px);
+
     margin-top: 20px;
     overflow: auto;
 }
@@ -423,8 +433,8 @@
 }
 .release-song-image {
     background-size: cover;
-    width: 55px;
-    height: 55px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
     margin-right: 20px;
 }
@@ -512,9 +522,10 @@ input[type="range"]::-webkit-slider-thumb {
 
 
 .playlist-and-lyrics {
+
+    flex: 6;
     width: 800px;
-    height: 600px;
-    /*border: 1px solid red;*/
+    height: calc(100dvh - 250px);
 }
 
 .up-next-tabs {

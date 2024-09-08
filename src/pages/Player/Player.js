@@ -80,16 +80,18 @@ export function Player({ clickRef, closePlayerComponent, PlayPause, skipBack, sk
           <FontAwesomeIcon icon={faChevronDown} className='down-icon' onClick={() => closePlayerComponent("player")} />
         </div>
         <div className="player-background"></div>
-    
-                <div className="player" onClick={() => PlayPause()}>
-                    <div className="player-playbtn-container">{isPlaying ?
-                            <FontAwesomeIcon className={"player-playbtn"} icon={faPause} onClick={() => PlayPause()} />
-                            :
-                            <FontAwesomeIcon className={"player-playbtn"} icon={faPlay} onClick={() => PlayPause()} />
-                        }</div>
-                    <div className="player-title-container"><div className='player-title'><h1>{currentSong.title}</h1></div><div className='player-title'><h3>{currentSong.album_title} album</h3></div></div>
-                    <div className="player-borito-background" style={{backgroundImage: `url(${currentSong.background_cover_url})`}}></div>
 
+                <div className='player-avatar'>
+                  <div className="player" onClick={() => PlayPause()}>
+                      <div className="player-playbtn-container">{isPlaying ?
+                              <FontAwesomeIcon className={"player-playbtn"} icon={faPause} onClick={() => PlayPause()} />
+                              :
+                              <FontAwesomeIcon className={"player-playbtn"} icon={faPlay} onClick={() => PlayPause()} />
+                          }</div>
+                      <div className="player-title-container"><div className='player-title'><h1>{currentSong.title}</h1></div><div className='player-title'><h3>{currentSong.album_title} album</h3></div></div>
+                      <div className="player-borito-background" style={{backgroundImage: `url(${currentSong.background_cover_url})`}}></div>
+
+                  </div>
                 </div>
 
                 <div className='mobile-player-title'>
