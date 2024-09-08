@@ -341,7 +341,7 @@ export function Home() {
 
 
   return (
-      <div className={"bg"}>
+      <div>
         <AudioContext.Provider value={currentSong}>
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay />
             <Router>

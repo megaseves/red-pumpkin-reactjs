@@ -32,11 +32,12 @@ p {
   cursor: pointer;
 }
 body { 
+  background: rgb(12,12,12);
 
-    background: rgb(12,12,12);
-    background: radial-gradient(circle, rgba(12,12,12,1) 0%, rgba(23,23,23,1) 0%, rgba(12,12,12,1) 100%);
-  
-  overflow-x: hidden; color: white; font-family: 'Gabarito', cursive; }
+  overflow-x: hidden;
+  color: white;
+  font-family: 'Gabarito', cursive;
+}
 
 :root {
   --linkColor: #c72329;

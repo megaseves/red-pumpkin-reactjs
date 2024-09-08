@@ -103,6 +103,9 @@
 .navbar-container a {
     color: white;
 }
+.title h2 {
+    display: inline-flex;
+}
 
 
 @media screen and (max-width: 1120px) {
