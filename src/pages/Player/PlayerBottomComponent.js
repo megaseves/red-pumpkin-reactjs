@@ -45,6 +45,10 @@ export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlayi
         setIsActiveVolumeModal(false);
     };
 
+    const areWeOnTheMainPage = () => {
+        return document.querySelector(".mainpage-container") ? "main" : "another";
+    }
+
     return(
 
         <div className="player-bottom-component-container" onMouseLeave={() => volumeModalClose() }>
@@ -78,7 +82,7 @@ export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlayi
 
                 </div>
 
-                <div className="title-container" onClick={(e) => showPlayerComponent(e)}>
+                <div className="title-container" onClick={(e) => showPlayerComponent(e, areWeOnTheMainPage())}>
                     <img className="release-song-image" src={currentSong.cover_url} alt=""></img>
                     <div className="song-title-and-album">
                         <div className="song-title"><h3>{audio.title}</h3></div>
@@ -89,7 +93,7 @@ export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlayi
                     </div>
                 </div>
 
-                <div className="other-controls" onClick={(e) => showPlayerComponent(e) }>
+                <div className="other-controls" onClick={(e) => showPlayerComponent(e, areWeOnTheMainPage()) }>
                     <div ref={bottomPlayerRef} className={"ForRef"}>
                         <div className={'bottom-player-volume-control-container'}>
                             <div className={'bottom-player-volume-control-body'}>

@@ -36,7 +36,6 @@ export function Home() {
     let secondData = (audioElem.current) ? Math.floor((audioElem.current.duration - minutes * 60)) : 0;
     let seconds = secondData < 10 ? "0" + secondData : secondData;
 
-
     const endedAudio = () => {
         const index = playList.findIndex(x=>x.title === currentSong.title);
         if(isRepeat) {
@@ -223,12 +222,12 @@ export function Home() {
     });
 
     const showPlayerComponent = (e) => {
+        const allPage = document.getElementById("all-page");
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
         
         const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
         const navbarContainer = document.querySelector(".navbar-container");
-        const mainpageContainer = document.querySelector(".mainpage-container");
 
         const clickedOnRef = bottomPlayerRef.current && bottomPlayerRef.current.contains(e.target);
         if (!clickedOnRef) {
@@ -236,66 +235,54 @@ export function Home() {
                 playerComponent.classList.remove("open");
                 playerBottomComponentContainer.classList.remove("hide");
                 navbarContainer.classList.remove("hide");
-                mainpageContainer.classList.remove("hide");
                 backToPlayerDiv.classList.remove("close");
+                allPage.classList.remove("hide");
+                allPage.classList.remove("hideDesktop");   
             } else {
                 playerComponent.classList.add("open");
                 playerBottomComponentContainer.classList.add("hide");
                 navbarContainer.classList.add("hide");
-                mainpageContainer.classList.add("hide");
-                backToPlayerDiv.classList.add("close");
+                backToPlayerDiv.classList.add("close");  
+                allPage.classList.add("hide");
+                allPage.classList.add("hideDesktop");
             }
         }
-    }
-
-    const showPlayerComponentByMainPage = () => {
-        const playerComponent = document.querySelector(".player-container");
-        const backToPlayerDiv = document.querySelector(".back-to-player");
-
-        const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
-        const navbarContainer = document.querySelector(".navbar-container");
-        const mainpageContainer = document.querySelector(".mainpage-container");
-
-        if (!playerComponent.classList.contains("open")) {
-            playerComponent.classList.add("open");
-            playerBottomComponentContainer.classList.add("hide");
-            navbarContainer.classList.add("hide");
-            mainpageContainer.classList.add("hide");
-            backToPlayerDiv.classList.add("close");
-        }
+        
     }
 
     const openPlayerComponent = () => {
+        const allPage = document.getElementById("all-page");
         const playerComponent = document.querySelector(".player-container");
         const backToPlayerDiv = document.querySelector(".back-to-player");
-
+        
         const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
         const navbarContainer = document.querySelector(".navbar-container");
-        const mainpageContainer = document.querySelector(".mainpage-container");
 
         if (!playerComponent.classList.contains("open")) {
             playerComponent.classList.add("open");
             playerBottomComponentContainer.classList.add("hide");
             navbarContainer.classList.add("hide");
-            mainpageContainer.classList.add("hide");
             backToPlayerDiv.classList.add("close");
+            allPage.classList.add("hide");
+            allPage.classList.add("hideDesktop");
         }
     }
 
     const closePlayerComponent = () => {
+        const allPage = document.getElementById("all-page");
         const playerComponent = document.querySelector(".player-container");
-
+        const backToPlayerDiv = document.querySelector(".back-to-player");
+        
         const playerBottomComponentContainer = document.querySelector(".player-bottom-component-container");
         const navbarContainer = document.querySelector(".navbar-container");
-
-        const mainpageContainer = document.querySelector(".mainpage-container");
-
 
         if (playerComponent.classList.contains("open")) {
             playerComponent.classList.remove("open");
             playerBottomComponentContainer.classList.remove("hide");
-            mainpageContainer.classList.remove("hide");
+            backToPlayerDiv.classList.remove("close");
             navbarContainer.classList.remove("hide");
+            allPage.classList.remove("hide");
+            allPage.classList.remove("hideDesktop");
         }
     }
 
@@ -304,7 +291,7 @@ export function Home() {
         const songIndex = songs.findIndex(x => x.id === index);
         setCurrentSong(songs[songIndex]);
 
-        showPlayerComponentByMainPage();
+        openPlayerComponent();
         window.scrollTo(0, 0);
     }
 
@@ -348,22 +335,26 @@ export function Home() {
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
                 <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} checkWidthBottom={checkWidthBottom} clickRefBottom={clickRefBottom} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
                 <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} clickRef={clickRef} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} closePlayerComponent={closePlayerComponent} />
+                
+                <div id="all-page">
+                    <Routes>
+                        
+                            <Route path={"/"} element={
+                                <>
+                                    <MainPage changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} PlayPause={PlayPause} isPlaying={isPlaying} playList={playList} currentSong={currentSong} playPause={PlayPause} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
+                                </>
+                            }
+                            />
+                        
 
-                <Routes>
+                        <Route path={"/albums"} element={<Albums selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} /> } />
+                        <Route path={"/album/tulzo-lang"} element={<TulzoLangAlbum selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
+                        <Route path={"/events"} element={<Events />} />
+                        <Route path={"/members"} element={<Members />} />
+                        <Route path={"/contacts"} element={<Contacts />} />
+                    </Routes>
+                </div>
 
-                    <Route path={"/"} element={
-                        <>
-                            <MainPage showPlayerComponent={showPlayerComponent} changeSong={changeSong} songs={songs} shufflePlayList={shufflePlayList} randomPlaySong={randomPlaySong} selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} PlayPause={PlayPause} isPlaying={isPlaying} playList={playList} currentSong={currentSong} playPause={PlayPause} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} />
-                        </>
-                    }
-                    />
-
-                    <Route path={"/albums"} element={<Albums selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} /> } />
-                    <Route path={"/album/tulzo-lang"} element={<TulzoLangAlbum selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
-                    <Route path={"/events"} element={<Events />} />
-                    <Route path={"/members"} element={<Members />} />
-                    <Route path={"/contacts"} element={<Contacts />} />
-                </Routes>
             </Router>
         </AudioContext.Provider>
       </div>
