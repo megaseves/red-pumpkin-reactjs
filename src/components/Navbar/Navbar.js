@@ -18,7 +18,7 @@ export function Navbar({shufflePlayList, openPlayerComponent, closePlayerCompone
     <div className="navbar-container">
 
         <div className="title">
-            <Link to={"/"} onClick={() => closePlayerComponent()}><h2>🎃 Red Pumpkin</h2></Link>
+            <Link to={"/"} onClick={() => closePlayerComponent()}><h2>Red Pumpkin</h2></Link>
         </div>
         <div className='navbar-menu-content-container'>
 
