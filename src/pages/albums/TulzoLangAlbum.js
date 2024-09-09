@@ -3,18 +3,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faPlay
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from 'react';
 
 export function TulzoLangAlbum(props) {
 
   let i = 0;
-
-  useEffect(() => {
-    console.log(props.playList)
-  }, []);
-
-
-    
+  
   return (
       <div className="album-container-div">
           <div className='album-div'>
@@ -46,6 +39,7 @@ export function TulzoLangAlbum(props) {
 
               { props.playList.length > 0 && props.playList.map((song) => {
                   i++;
+                  
                 return (
                   <>
                     <div className='album-song' key={song.id} onClick={() => props.changeSong(song.id)}>

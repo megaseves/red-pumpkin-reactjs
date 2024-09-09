@@ -5,6 +5,9 @@
 ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0); /* Átlátszó track */
 }
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0);
+}
 
 ::-webkit-scrollbar-thumb {
     background: rgba(135, 135, 135, 0.3); /* Átlátszó thumb */

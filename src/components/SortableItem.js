@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -10,6 +11,7 @@ import './SortableItem.css';
 
 
 export function SortableItem(props) {
+
     const {
         attributes,
         listeners,
@@ -23,25 +25,32 @@ export function SortableItem(props) {
         transition
     };
 
-    const mouseEnterForPauseIcon = () => {
-        const pauseBtn = document.querySelector(".on-not-playing-pause");
-        const staggeredBtn = document.querySelector(".on-not-playing-staggered");
+    const mouseEnterForPlayIcon = () => {
+        const pauseBtn = document.getElementById("play"+props.song_id);
+        const staggeredBtn = document.getElementById("stagger" + props.song_id);
 
-        pauseBtn.classList.remove("close");
-        staggeredBtn.classList.add("close");
+        pauseBtn && pauseBtn.classList.remove("close");
+        staggeredBtn && staggeredBtn.classList.add("close");
     };
 
-    const mouseLeaveForPauseIcon = () => {
-        const pauseBtn = document.querySelector(".on-not-playing-pause");
-        const staggeredBtn = document.querySelector(".on-not-playing-staggered");
+    const mouseLeaveForPlayIcon = () => {
+        const pauseBtn = document.getElementById("play"+props.song_id);
+        const staggeredBtn = document.getElementById("stagger" + props.song_id);
 
-        pauseBtn.classList.add("close");
-        staggeredBtn.classList.remove("close");
+        pauseBtn && pauseBtn.classList.add("close");
+        staggeredBtn && staggeredBtn.classList.remove("close");
+    };
+
+
+    const clickChangeSong = (event) => {
+        console.log('Element clicked!');
+        /* props.changeSong(props.song_id); */
     };
 
     return (
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners} >
+        <div ref={setNodeRef} style={style} {...attributes} {...listeners} onMouseEnter={mouseEnterForPlayIcon} onMouseLeave={mouseLeaveForPlayIcon} >
             <div className={ props.song_id !== props.currentSong.id ? "song-card-drag up-next-song" : "song-card-drag up-next-song selected" } >
+               
                 <div className="up-next-url-container">
                     
                 {   props.isPlaying && props.song_id === props.currentSong.id ?
@@ -56,15 +65,18 @@ export function SortableItem(props) {
                                 <span class="playing__bar playing__bar2"></span>
                                 <span class="playing__bar playing__bar6"></span>
                                 <span class="playing__bar playing__bar7"></span>
-                            </div> 
+                            </div>
                         </div>
                     :
-                        <div className='on-not-playing-container' >
+                        <div className='on-not-playing-container' data-no-dnd="true" >
+                            <FontAwesomeIcon id={"play" + props.song_id} className={"play-audio on-not-playing-icon on-not-playing-play close"} icon={faPlay} />
                             <FontAwesomeIcon className={"play-audio on-not-playing-icon on-not-playing-pause close"} icon={faPause} />
-                            <FontAwesomeIcon className={"play-audio on-not-playing-icon on-not-playing-staggered"} icon={faBarsStaggered} />
+                            <FontAwesomeIcon id={"stagger" + props.song_id} className={"play-audio on-not-playing-icon on-not-playing-staggered"} icon={faBarsStaggered} />
                         </div>
                     }
                 </div>
+
+
                 <div className="up-next-song-detail">
                     <span className="up-next-song-title">{props.title}</span>
                     <span className="up-next-song-album">{props.album_title} album</span>

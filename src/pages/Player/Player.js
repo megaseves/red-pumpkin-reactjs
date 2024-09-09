@@ -22,7 +22,7 @@ import { SortableItem } from '../../components/SortableItem';
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function Player({ clickRef, closePlayerComponent, PlayPause, skipBack, skipForward, toggleRepeat, playList, setPlayList , songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, hoverPauseAudioOnMainpage, leaveHoverPauseAudioOnMainpage}) {
+export function Player({ clickRef, closePlayerComponent, PlayPause, skipBack, skipForward, toggleRepeat, playList, setPlayList , songs, audioElem, isPlaying, checkWidth, setIsPlaying, currentSong, setCurrentSong ,release, selectAlbum, setIsRepeat, isRepeat, shufflePlayList, seconds, minutes, converter, hoverPauseAudioOnMainpage, leaveHoverPauseAudioOnMainpage, ChangeSong}) {
 
     const audio = useContext(AudioContext);
 
@@ -145,7 +145,7 @@ export function Player({ clickRef, closePlayerComponent, PlayPause, skipBack, sk
                         <SortableContext items={playList} strategy={verticalListSortingStrategy}>
                             
                             { playList && playList.map(song =>
-                                    <SortableItem key={song.id} song_id={song.id} id={i++} title={song.title} album_title={song.album_title} length={song.length} currentSong={currentSong} cover_url={song.cover_url} isPlaying={isPlaying} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} PlayPause={PlayPause} />
+                                    <SortableItem key={song.id} song_id={song.id} id={i++} title={song.title} album_title={song.album_title} length={song.length} currentSong={currentSong} cover_url={song.cover_url} isPlaying={isPlaying} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} PlayPause={PlayPause} ChangeSong={ChangeSong} />
                              )}
 
                         </SortableContext>

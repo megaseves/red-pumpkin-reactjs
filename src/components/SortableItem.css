@@ -47,9 +47,12 @@
     left: 0;
     font-size: 18px;
 
-    color: var(--fourthBgColor);
+    color: var(--textColor);
     margin: 0;
 
+}
+.on-not-playing-icon:hover {
+    color: white;
 }
 .on-not-playing-icon-pause {
     position: absolute;
