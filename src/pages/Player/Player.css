@@ -373,10 +373,18 @@
     background-color: var(--selectedColor);
 }
 
-
 .up-next-song-detail {
     display: flex;
     flex-direction: column;
+    flex: 26;
+}
+.no-movable-div-song-card {
+    display: flex;
+    flex-direction: row;
+    flex: 30;
+}
+.on-not-playing-staggered {
+    cursor: move;
 }
 .up-next-song-title {
     font-weight: bold;
@@ -396,7 +404,7 @@
 }
 
 .song-card-drag {
-    cursor: move;
+    user-select: none;
 }
 
 .new-releases {
@@ -541,13 +549,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .up-next-url-container {
-    
+    cursor: move;
     flex: 2;
 }
 
-.up-next-song-detail {
-    flex: 20;
-}
 
 .up-next-song-min-con {
     flex: 1;

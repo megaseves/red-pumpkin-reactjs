@@ -19,11 +19,12 @@ export function Albums(props) {
                                     <FontAwesomeIcon className={"album-card-icon"} icon={faPlay} />
                                 </div>
                                 <div className="album-card-img-container">
-                                    <img className="album-card-img" src={"../albumBorito.webp"} alt="" />
+                                    <img className="album-card-img" src={"../TulzoLangAlbumBoritoSmall.webp"} alt="" />
                                 </div>
                             </div>
+                        
+                        <h4 className='album-title-h'>Túlzó láng</h4>
                         </Link>
-                        <h4>Túlzó láng</h4>
                         <p>Album</p>
                     </div>
                 </div>

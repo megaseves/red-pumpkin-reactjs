@@ -85,6 +85,16 @@
     height: 2px;
 
 }
+.time-line-bottom-buffer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-radius: 10px;
+    z-index: 95;
+    background-color: rgb(114, 114, 114);
+
+}
 .time-line-bottom {
     position: relative;
     width: 100%;
@@ -92,7 +102,6 @@
     border-radius: 10px;
     background-color: #ec494e;
     z-index: 100;
-
     
 }
 .time-line-bottom:hover {

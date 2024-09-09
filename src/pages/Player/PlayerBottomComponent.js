@@ -12,7 +12,7 @@ import {
 import {useContext} from "react";
 import {AudioContext} from "../../components/AudioContext";
 
-export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal, volumeMute, setCurrentVolume, currentVolume}) {
+export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlaying, PlayPause, skipBack, skipForward, toggleRepeat, setIsRepeat , shufflePlayList, audioElem, seconds, minutes, currentSong, converter, checkWidth, clickRef, showPlayerComponent, bottomPlayerRef, openPlayerComponent, isActiveVolumeModal, setIsActiveVolumeModal, volumeMute, setCurrentVolume, currentVolume, buffered}) {
 
     const audio = useContext(AudioContext);
 
@@ -60,6 +60,7 @@ export function PlayerBottomComponent({clickRefBottom, checkWidthBottom, isPlayi
 
             <div className={"time-line-container-bottom"} onClick={checkWidthBottom}  ref={clickRefBottom} >
                 <div className="time-line-bottom" style={{width: `${currentSong.progress+"%"}`}}></div>
+                <div className="time-line-bottom-buffer" style={{width: `${buffered+"%"}`}}></div>
                 <div className="time-line-bottom-bg"></div>
             </div>
 

@@ -28,8 +28,12 @@ export function Home() {
 
     const clickRef = useRef();
     const clickRefBottom = useRef();
-
     const bottomPlayerRef = useRef();
+
+    const [isBuffering, setIsBuffering] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [buffered, setBuffered] = useState(0);
+    const [duration, setDuration] = useState(0);
 
 
     let minutes = (audioElem.current) ? Math.floor(audioElem.current.duration / 60) : 0;
@@ -81,6 +85,56 @@ export function Home() {
 
         return minutes + ':' + extraSeconds;
     };
+
+    const handleCanPlayThrough = () => {
+        setIsBuffering(false);
+        audioElem.current.play();
+    };
+
+    const handleWaiting = () => {
+        setIsBuffering(true);
+    };
+
+    
+    useEffect(() => {
+        const audio = audioElem.current;
+    
+        // Frissíti a lejátszott időt
+        const handleTimeUpdate = () => {
+          if (audio.duration > 0) {
+            setProgress((audio.currentTime / audio.duration) * 100);
+          }
+        };
+    
+        // Frissíti a pufferelt állapotot
+        const handleProgress = () => {
+          if (audio.buffered.length > 0) {
+            const bufferedEnd = audio.buffered.end(audio.buffered.length - 1);
+            if (audio.duration > 0) {
+              setBuffered((bufferedEnd / audio.duration) * 100);
+            }
+          }
+        };
+    
+        // Ha megvan a teljes időtartam, frissítjük
+        const handleLoadedMetadata = () => {
+          setDuration(audio.duration);
+        };
+    
+        // Eseményfigyelők hozzáadása
+        audio.addEventListener('timeupdate', handleTimeUpdate);
+        audio.addEventListener('progress', handleProgress);
+        audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    
+        // Tisztítás: eseményfigyelők eltávolítása
+        return () => {
+          audio.removeEventListener('timeupdate', handleTimeUpdate);
+          audio.removeEventListener('progress', handleProgress);
+          audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        };
+      }, []); // Üres dependency array biztosítja, hogy csak egyszer fusson le
+    
+
 
     const selectAlbum = (selectedName) => {
         setIsRepeat(false);
@@ -325,10 +379,10 @@ export function Home() {
   return (
       <div>
         <AudioContext.Provider value={currentSong}>
-            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay id="audio" />
+            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay preload="auto" onCanPlayThrough={handleCanPlayThrough} onWaiting={handleWaiting} id="audio" />
             <Router>
                 <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
-                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} checkWidthBottom={checkWidthBottom} clickRefBottom={clickRefBottom} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} />
+                <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} checkWidthBottom={checkWidthBottom} clickRefBottom={clickRefBottom} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} buffered={buffered} />
                 <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} clickRef={clickRef} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} closePlayerComponent={closePlayerComponent} ChangeSong={changeSong} />
                 
                 <div id="all-page">

@@ -28,7 +28,9 @@
     font-size: 13px;
 }
 
-
+.album-title-h{
+    color: white;
+}
 
 .album-card-icon-border {
     position: absolute;
@@ -79,6 +81,9 @@
     height: 170px;
 
     overflow: hidden;
+
+    border: 1px solid var(--secBgColor);
+    border-radius: 5px;
 }
 
 .album-card-img {
