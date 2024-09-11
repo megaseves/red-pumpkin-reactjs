@@ -69,3 +69,7 @@ p {
     display: none !important;
   }
 }
+
+.hidePhoneMenu {
+  display: none !important;
+}

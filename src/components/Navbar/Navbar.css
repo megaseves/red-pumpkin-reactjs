@@ -3,7 +3,7 @@
 
     position: relative;
     display: flex;
-    padding: 0 50px;
+    padding: 0 30px;
 
 
     align-items: center;
@@ -32,7 +32,7 @@
 .menu-icon {
     font-size: 38px;
 }
-.menu-title {
+.desktop-menu {
     font-size: 12px;
     margin-top: 8px;
     font-weight: normal;
@@ -90,7 +90,7 @@
     justify-content: center;
     align-items: center;
 
-    height: 112px;
+    height: auto;
 }
 .right-content {
     display: flex;

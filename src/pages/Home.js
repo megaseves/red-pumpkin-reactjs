@@ -12,6 +12,7 @@ import {Albums} from "./Albums";
 import {Members} from "./Members";
 import {Events} from "./Events";
 import { TulzoLangAlbum } from "./albums/TulzoLangAlbum";
+import { MobileNavbar } from "../components/Navbar/MobileNavbar/MobileNavbar.js";
 
 
 export function Home() {
@@ -132,7 +133,7 @@ export function Home() {
           audio.removeEventListener('progress', handleProgress);
           audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
         };
-      }, []); // Üres dependency array biztosítja, hogy csak egyszer fusson le
+      }, []);
     
 
 
@@ -375,17 +376,31 @@ export function Home() {
         }
     }, [isPlaying, skipBack, skipForward]);
 
+    const toggleMobileNavbar = () => {
+        const mobileNavbar = document.getElementById("mobile-navbar");
+        const allPage = document.getElementById("all-page");
+    
+        if(mobileNavbar.classList.contains('hidePhoneMenu')) {
+            mobileNavbar.classList.remove('hidePhoneMenu');
+            allPage.classList.add('hidePhoneMenu');
+        } else {
+            mobileNavbar.classList.add('hidePhoneMenu');
+            allPage.classList.remove('hidePhoneMenu');
+        }
+      }
+
 
   return (
       <div>
         <AudioContext.Provider value={currentSong}>
             <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay preload="auto" onCanPlayThrough={handleCanPlayThrough} onWaiting={handleWaiting} id="audio" />
             <Router>
-                <Navbar shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
+                <MobileNavbar toggleMobileNavbar={toggleMobileNavbar} />    
+                <Navbar toggleMobileNavbar={toggleMobileNavbar} shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
                 <PlayerBottomComponent isPlaying={isPlaying} PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} checkWidthBottom={checkWidthBottom} clickRefBottom={clickRefBottom} setIsRepeat={setIsRepeat} toggleRepeat={toggleRepeat} audioElem={audioElem} minutes={minutes} seconds={seconds} currentSong={currentSong} converter={converter} shufflePlayList={shufflePlayList} checkWidth={checkWidth} clickRef={clickRef} showPlayerComponent={showPlayerComponent} bottomPlayerRef={bottomPlayerRef} openPlayerComponent={openPlayerComponent} isActiveVolumeModal={isActiveVolumeModal} setIsActiveVolumeModal={setIsActiveVolumeModal} volumeMute={volumeMute} setCurrentVolume={setCurrentVolume} currentVolume={currentVolume} buffered={buffered} />
                 <Player PlayPause={PlayPause} skipBack={skipBack} skipForward={skipForward} toggleRepeat={toggleRepeat} shufflePlayList={shufflePlayList} clickRef={clickRef} setPlayList={setPlayList} isRepeat={isRepeat} setIsRepeat={setIsRepeat} selectAlbum={selectAlbum} playList={playList} songs={songs} setSongs={setSongs} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioElem={audioElem} currentSong={currentSong} setCurrentSong={setCurrentSong} release={release} seconds={seconds} minutes={minutes} converter={converter} checkWidth={checkWidth} hoverPauseAudioOnMainpage={hoverPauseAudioOnMainpage} leaveHoverPauseAudioOnMainpage={leaveHoverPauseAudioOnMainpage} closePlayerComponent={closePlayerComponent} ChangeSong={changeSong} />
                 
-                <div id="all-page">
+                <div id="all-page" >
                     <Routes>
                         
                             <Route path={"/"} element={

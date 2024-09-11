@@ -3,17 +3,16 @@ import {
     faAddressBook,
     faCalendarCheck,
     faCompactDisc, faHouse,
-    faIdBadge, faPlay,
-    faShuffle, faBars
+    faIdBadge, faBars
 } from "@fortawesome/free-solid-svg-icons";
 import {NavbarButton} from "./NavbarButton/NavbarButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
-import { MobileNavbar } from './MobileNavbar/MobileNavbar';
 
 
+export function Navbar({closePlayerComponent, toggleMobileNavbar}) {
 
-export function Navbar({shufflePlayList, openPlayerComponent, closePlayerComponent}) {
+
   return (
     <div className="navbar-container">
 
@@ -32,7 +31,7 @@ export function Navbar({shufflePlayList, openPlayerComponent, closePlayerCompone
 
             <div className='navbar-menu-on-phone'>
                 <div className='menu-icon-phone-main-btn'><Link to={"/"}><h3>Kezdőlap</h3></Link></div>
-                <div className='menu-icon-phone-div'>
+                <div className='menu-icon-phone-div' id='menu-bar-icon' onClick={toggleMobileNavbar}>
                     <FontAwesomeIcon icon={faBars} className='menu-icon-phone' />
                 </div>
                 

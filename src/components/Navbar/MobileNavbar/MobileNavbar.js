@@ -1,18 +1,27 @@
 import { MobileNavbarButton } from '../MobileNavbarButton/MobileNavbarButton';
+import {Link} from "react-router-dom";
 import './MobileNavbar.css';
 
 
+export function MobileNavbar({closePlayerComponent, toggleMobileNavbar}) {
 
-export function MobileNavbar({closePlayerComponent}) {
+
   return (
-    <div className="mobile-navbar-container">
+    <div id='mobile-navbar' className="mobile-navbar-container hidePhoneMenu">
+      <div className='mobil-nav-header'>
+      <Link to={"/"} onClick={toggleMobileNavbar} ><h2>Red Pumpkin</h2></Link>
+        <img id="xbar" src={"../tabler_x.png"} onClick={toggleMobileNavbar} />
+      </div>
+      <div className='mobil-nav-list'>
         <ul>
-          <li><MobileNavbarButton title={"KEZDŐLAP"} to={"/"} closePlayerComponent={closePlayerComponent} /></li>
-          <li><MobileNavbarButton title={"ALBUMOK"} to={"/"} closePlayerComponent={closePlayerComponent} /></li>
-          <li><MobileNavbarButton title={"ESEMÉNYEK"} to={"/"} closePlayerComponent={closePlayerComponent} /></li>
-          <li><MobileNavbarButton title={"TAGOK"} to={"/"} closePlayerComponent={closePlayerComponent} /></li>
-          <li><MobileNavbarButton title={"ELÉRHETŐSÉG"} to={"/"} closePlayerComponent={closePlayerComponent} /></li>
+          <li onClick={toggleMobileNavbar}><MobileNavbarButton title={"Kezdőlap"} to={"/"} /></li>
+          <li onClick={toggleMobileNavbar}><MobileNavbarButton title={"Albumok"} to={"albums"}  /></li>
+          <li onClick={toggleMobileNavbar}><MobileNavbarButton title={"Események"} to={"/events"}  /></li>
+          <li onClick={toggleMobileNavbar}><MobileNavbarButton title={"Tagok"} to={"/members"} /></li>
+          <li onClick={toggleMobileNavbar}><MobileNavbarButton title={"Elérhetőség"} to={"/contacts"} /></li>
         </ul>
+      </div>
+        
     </div>
   );
 }

@@ -4,19 +4,50 @@
     right: 0;
 
     width: 100%;
-    height: 100%;
-    z-index: 1000;
-    padding-top: 100px;
-    background-color: green;
+    height: 100dvh;
+    z-index: 2000;
+    background-color: var(--bgColor);
 
-    display: none;
+    display: flex;
+    flex-direction: column;
 
 }
 
 .mobile-navbar-container ul {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    text-align: right;
     text-decoration: none;
     list-style: none;
+}
+.menu-title {
+    color: white;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: right;
+}
+
+.mobil-nav-list {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: right;
+    padding: 40px 24px;
+}
+.mobil-nav-header {
+    width: 100%;
+    padding: 20px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobil-nav-header h2 {
+    font-size: 24px;
+    color: white;
+}
+
+#xbar {
+    cursor: pointer;
 }

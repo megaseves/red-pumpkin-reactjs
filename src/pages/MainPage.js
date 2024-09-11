@@ -173,9 +173,6 @@ export function MainPage(props) {
 
 
             </div>
-
-
-        <MobileNavbar />
         </div>
     );
 }

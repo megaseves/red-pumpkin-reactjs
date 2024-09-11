@@ -11,7 +11,7 @@ export function NavbarButton(props) {
     <Link to={props.to} className={"navbar-button"} onClick={() => props.closePlayerComponent()} >
             <div className={btnClass}>
                 <FontAwesomeIcon className="menu-icon" icon={props.icon} />
-                <p className="menu-title">{props.title}</p>
+                <p className="desktop-menu">{props.title}</p>
             </div>
     </Link>
   );
