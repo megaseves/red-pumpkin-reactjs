@@ -569,6 +569,27 @@ input[type="range"]::-webkit-slider-thumb {
 .time-line-container-mobile {
     display: none;
 }
+@media only screen and (max-width: 920px) and (min-width: 500px) {
+    .player-container {
+        align-items: center;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .up-next-container {
+        padding: 0;
+    }
+    .up-next-songs {
+        width: 100%;
+    }
+    .playlist-and-lyrics {
+        width: 90vw;
+
+    }
+    .lyrics-modal {
+        height: calc(100dvh - 300px);
+    }
+
+}
 
 @media only screen and (max-width: 500px) {
     .player-container {

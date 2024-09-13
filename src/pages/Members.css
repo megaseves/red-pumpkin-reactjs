@@ -1,3 +1,16 @@
+@media screen and (min-width: 1120px) {
+    .member:hover {
+        cursor: pointer;
+        transform: scale(1.08) rotate(2deg);
+        border-radius: 15px;
+        -webkit-box-shadow: 2px 2px 34px -8px rgba(255,255,255,0.4);
+        -moz-box-shadow: 2px 2px 34px -8px rgba(255,255,255,0.4);
+        box-shadow: 2px 2px 34px -8px rgba(255,255,255,0.4);
+        z-index: 200;
+    }
+
+ }
+
 .members-container {
 
     display: flex;
@@ -11,38 +24,27 @@
 .members {
     display: flex;
 }
-.other-members {
-    display: flex;
-    gap: 50px;
-    margin-bottom: 100px;
-}
-.member-image {
 
-    width: 330px;
-    height: 390px;
-    background-size: cover;
-    opacity: 0.8;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
-.other-member-image {
-    width: 330px;
-    height: 230px;
-    background-size: cover;
-    opacity: 0.8;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
 .member {
     position: relative;
-    width: 270px;
-    height: 480px;
+    width: 220px;
+    height: 450px;
+
+    background-size: cover;
+    background-position: center;
 
     -webkit-transition: all 150ms ease-in-out; 
     -moz-transition: all 150ms ease-in-out; 
     transition: all 150ms ease-in-out; 
 }
-.member:hover {
-    cursor: pointer;
+
+.no-one {
+    opacity: 0.5;
 }
+.no-one:hover {
+    opacity: 1;
+}
+
 .member-title {
     position: absolute;
 
@@ -74,8 +76,18 @@
 }
 
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1120px) {
     .members {
-        flex-direction: column;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
+
+}
+
+@media screen and (max-width: 500px) {
+    .member {
+        width: 85vw;
+    }
+
 }

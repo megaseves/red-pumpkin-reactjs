@@ -173,6 +173,8 @@
     height: 100%;
 
     background-size: cover;
+
+    border-radius: 5px;
     
     -webkit-transition: all 150ms ease-in-out; 
     -moz-transition: all 150ms ease-in-out; 
@@ -281,10 +283,44 @@
         height: 150px;
     
     }
-
-
-
 }
+
+@media only screen and (max-width: 920px) and (min-width: 500px) {
+    .mainpage-container {
+        width: 100vw;
+    }
+    .mainpage-header {
+        width: 100%;
+    }
+    .mainpage-recommend {
+        width: 100%;
+    }
+    .h6-header {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .album-song-title {
+        width: 100% !important;
+    }
+    .album-songs-div-recommend {
+        width: 85vw;
+    }
+    .second-mainpage-content {
+        width: 150px;
+    }
+    .mainpage-new-songs-container {
+        width: 90vw;
+    }
+    .song-card-container {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .mainpage-albums-container {
+        flex-direction: row;
+        gap: 40px;
+    }
+}
+
 @media screen and (max-width: 1120px) {
     .mainpage-container {
         padding: 0;
@@ -331,9 +367,6 @@
         width: 350px;
         height: auto;
         padding: 15px;
-    }
-    .mainpage-new-songs-container {
-        max-width: 390px;
     }
     .song-card-container {
         width: 100%;

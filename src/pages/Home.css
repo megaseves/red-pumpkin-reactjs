@@ -3,3 +3,8 @@
     background-color: var(--thiBgColor);
     border-radius: 8px;
 }
+
+#all-page {
+    display: flex;
+    justify-content: center;
+}

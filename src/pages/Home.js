@@ -387,7 +387,8 @@ export function Home() {
             mobileNavbar.classList.add('hidePhoneMenu');
             allPage.classList.remove('hidePhoneMenu');
         }
-      }
+        closePlayerComponent();
+    }
 
 
   return (

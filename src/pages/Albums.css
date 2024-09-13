@@ -1,13 +1,16 @@
 .albums-container {
-    width: 100%;
+    width: 1000px;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 40px;
+    
+
+    padding: 20px;
 }
 .album-card-container {
     width: 800px;
-
-    padding: 20px;
 }
 
 .album-card {
@@ -83,7 +86,7 @@
 
     overflow: hidden;
 
-    border: 1px solid var(--secBgColor);
+    border: 1px solid #151515;
     border-radius: 5px;
 }
 
@@ -97,4 +100,13 @@
 
 .album-card-link {
     margin-bottom: 8px;
+}
+
+@media screen and (max-width: 1120px) {
+    .albums-container {
+        width: 100vw;
+    }
+    .album-card-container {
+        width: 100%;
+    }
 }

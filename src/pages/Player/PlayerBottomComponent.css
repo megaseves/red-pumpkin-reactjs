@@ -225,7 +225,14 @@ input[type="range"]::-webkit-slider-thumb {
     display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 920px) and (min-width: 500px) {
+    .medium-control {
+        display: flex !important;
+    }
+}
+
+
+@media only screen and (max-width: 920px) {
     .back-to-player {
         display: none;
     }

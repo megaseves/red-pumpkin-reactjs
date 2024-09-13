@@ -8,7 +8,7 @@ export function Albums(props) {
 
     return (
         <div className="albums-container">
-
+                <h2>Albumok</h2>
                 <div className="album-card-container">
                     <div className="album-card">
                         <Link to={'/album/tulzo-lang'}><div className="album-card-link">

@@ -14,14 +14,14 @@ export function TulzoLangAlbum(props) {
             
             <div className='album-header'>
 
-              <div className='album-cover-container'>
-                <div className='album-cover-image-div' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/albumBorito.webp'}`}}></div>
+              <div className='album-cover-container' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/albumBorito.webp'}`}}>
+
               </div>
               
               <div className='album-details-div'>
                 <div className='album-title-div'><h1>Túlzó láng</h1></div>
                 <div className='album-title-p-div'><p>Album • 2022</p></div>
-                <div className='album-title-p2-div'><p>10 dal • 45 perc 43 másodperc</p></div>
+                <div className='album-title-p2-div'><p>11 dal • 47 perc 57 másodperc</p></div> {/* 2 854,2 másodperc */}
                 <div className='album-description-div'><p>Első album a zenekar életében. Teljesen amatőr kezdeményezéssel indult a Reménytelen c. dal megszületésével. Az albumon jelentősen fellelhető minőségi változás egyes dalok között.</p></div>
                 
                 <div className='album-control-btns'>
