@@ -76,6 +76,7 @@ export function Player({ clickRef, closePlayerComponent, PlayPause, skipBack, sk
   return (
 
       <div className="player-container" >
+        
         <div className='mobile-player-header'>
           <FontAwesomeIcon icon={faChevronDown} className='down-icon' onClick={() => closePlayerComponent("player")} />
         </div>

@@ -42,7 +42,7 @@ body {
 :root {
   --linkColor: #c72329;
   --bgColor: #0c0c0c;
-  --selectedColor: #1e1e1e;
+  --selectedColor: rgba(30, 30, 30, 1);
   --secBgColor: #292a2b;
   --thiBgColor: #333333;
   --fourthBgColor: #686868;

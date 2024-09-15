@@ -10,7 +10,7 @@ export function MainPage(props) {
 
     return (
         <div className="mainpage-container">
-
+            <div id='home-bg'></div>
             <div className="mainpage-header">
                 <div className='flex-break'>
 
