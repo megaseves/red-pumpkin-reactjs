@@ -1,8 +1,52 @@
 exports.songsdata = [
     {
+        "id": 15,
+        "title": "Halhatatlan jel",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/rp_halhatatlan_jel_tulzo_lang.wav",
+        "lyrics": "Hamarosan...",
+        "length": "5:20"
+    },
+    {
+        "id": 14,
+        "title": "Titkos alagút",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/rp_titkos_alagut_tulzo_lang.wav",
+        "lyrics": "Hamarosan...",
+        "length": "2:57"
+    },
+        {
+        "id": 13,
+        "title": "Reménytelen",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/rp_remenyelen_tulzo_lang.wav",
+        "lyrics": "Hamarosan...",
+        "length": "4:18"
+    },
+    {
+        "id": 12,
+        "title": "Tűzhordozó",
+        "album_title": "Túlzó láng",
+        "album_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "background_cover_url": `${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`,
+        "url": "https://red-pumpkin-songs.s3.eu-north-1.amazonaws.com/rp_tuzhordozo_tulzo_lang.wav",
+        "lyrics": "Hamarosan...",
+        "length": "4:33"
+    },
+    {
         "id": 11,
         "title": "Szolgáló",
-        "album_title": "Új",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/szolgalo/szolgaloCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/szolgalo/szolgaloCover.jpg'}`,
@@ -13,7 +57,7 @@ exports.songsdata = [
     {
         "id": 10,
         "title": "Belső háború",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/belsoHaboru/belsoHaboruCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/belsoHaboru/belsoHaboruCover.jpg'}`,
@@ -24,7 +68,7 @@ exports.songsdata = [
     {
         "id": 9,
         "title": "Fekete krónika",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/feketeKronika/feketeKronikaCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/feketeKronika/feketeKronikaCover.jpg'}`,
@@ -35,7 +79,7 @@ exports.songsdata = [
     {
         "id": 8,
         "title": "Halhatatlan jel",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/halhatatlanJel/halhatatlanJelCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/halhatatlanJel/halhatatlanJelCover.jpg'}`,
@@ -46,7 +90,7 @@ exports.songsdata = [
     {
         "id": 7,
         "title": "Bukott angyal",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/coverImages/bukottAngyal/bukottAngyalCover.jpg'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/coverImages/bukottAngyal/bukottAngyalCover.jpg'}`,
@@ -57,7 +101,7 @@ exports.songsdata = [
     {
         "id": 6,
         "title": "Időkerék",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
@@ -68,7 +112,7 @@ exports.songsdata = [
     {
         "id": 5,
         "title": "Tűzhordozó",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
@@ -79,7 +123,7 @@ exports.songsdata = [
     {
         "id": 4,
         "title": "Hullócsillag",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
@@ -90,7 +134,7 @@ exports.songsdata = [
     {
         "id": 3,
         "title": "Ígéret földje",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
@@ -101,7 +145,7 @@ exports.songsdata = [
     {
         "id": 2,
         "title": "Titkos alagút",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
@@ -112,7 +156,7 @@ exports.songsdata = [
     {
         "id": 1,
         "title": "Nem lehet baj",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
@@ -123,7 +167,7 @@ exports.songsdata = [
     {
         "id": 0,
         "title": "Reménytelen",
-        "album_title": "Túlzó láng",
+        "album_title": "Demó",
         "album_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,
         "background_cover_url": `${process.env.PUBLIC_URL + '/albumBorito.webp'}`,

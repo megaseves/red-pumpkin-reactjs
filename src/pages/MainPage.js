@@ -8,6 +8,8 @@ export function MainPage(props) {
 
     const songs = props.songs;
 
+    var counter = 0;
+
     return (
         <div className="mainpage-container">
             <div id='home-bg'></div>
@@ -19,32 +21,31 @@ export function MainPage(props) {
                             <h6>Legújabb dalok</h6>
                             <Link to={'/album/tulzo-lang'}><p className='p-link'>Több</p></Link>
                         </div>
-                        
 
-                        <div className="song-card-container">
+                        <div className='new-songs'>
+                            <div className='album-songs-div-recommend'>
 
-                            { songs && songs.slice(0,3).map((song) => {
-                                return (
-                                    <div className="song-card" key={song.id}>
-                                        <div className="song-card-link" onClick={() => props.changeSong(song.id)}>
-                                            <FontAwesomeIcon className={"song-card-icon"} icon={faPlay} />
-                                            <div className="song-card-img-container">
-                                                <img className="song-card-img" src={song.cover_url} alt="" />
+                                { songs && songs.slice(0,4).map((song, index) => {
+                                        return (
+                                            <div className='album-song album-song-recommended' key={song.id} onClick={() => props.changeSong(song.id)}>
+                                                <p>{index+1}</p>
+                                                <p className='album-song-title'>{song.title}</p>
+                                                <p>{song.length}</p>
                                             </div>
-                                        </div>
-                                        <div className='song-card-details'>
-                                            <h3>{song.title}</h3>
-                                            <Link to={'/album/tulzo-lang'}><p>{song.album_title}</p></Link>
-                                        </div>
-                                        
-                                    </div>
-                                )
-                            }) }
+                                        )
+                                }) }
+                                
 
+
+                            </div>
+                            <div className='new-song-album'>
+                                <Link to={'/album/tulzo-lang'}>
+                                    <img className="new-song-album-img" src={"../album_borito_tulzo_lang.webp"} alt="" />
+                                </Link>
+                            </div>
                         </div>
-                    </div>
 
-                    
+                    </div>
 
                     
                     <div className='mainpage-recommend others-mainpage mainpage-albums-container'>
@@ -69,13 +70,36 @@ export function MainPage(props) {
                                         <FontAwesomeIcon className={"album-card-icon"} icon={faPlay} />
                                     </div>
                                     <div className="album-card-img-container-mainpage">
-                                        <img className="album-card-img-mainpage" src={"../albumBorito.webp"} alt="" />
+                                        <img className="album-card-img-mainpage" src={"../album_borito_tulzo_lang.webp"} alt="" />
                                     </div>
                                 </div>
                                 </Link>
                                 
                             </div>
                             <h3 className='random-btn-on-mainpage'>Túlzó láng album</h3>
+                        </div>
+                        <div className="second-mainpage-content">
+                            
+                            <div className="album-card-mainpage">
+                                <Link to={'/album/demo'}><div className="album-card-link-mainpage">
+                                    <div className="album-card-icon-border" onClick={() => {
+                                        props.selectAlbum("Demó");
+                                        props.openPlayerComponent();
+                                        if(!props.isPlaying) {
+                                            props.PlayPause();
+                                        }
+                                        window.scrollTo(0, 0);
+                                    }}>
+                                        <FontAwesomeIcon className={"album-card-icon"} icon={faPlay} />
+                                    </div>
+                                    <div className="album-card-img-container-mainpage">
+                                        <img className="album-card-img-mainpage" src={"../albumBorito.webp"} alt="" />
+                                    </div>
+                                </div>
+                                </Link>
+                                
+                            </div>
+                            <h3 className='random-btn-on-mainpage'>Demó album</h3>
                         </div>
 
                     </div>
@@ -96,30 +120,31 @@ export function MainPage(props) {
                         <div className='recommended-playlist'>
                         <div className='album-songs-div-recommend'>
                                     
-                            <div className='album-song album-song-recommended' key={8} onClick={() => props.changeSong(8)}>
+                            <div className='album-song album-song-recommended' key={8} onClick={() => props.changeSong(7)}>
                                 <p>1</p>
-                                <p className='album-song-title'>Halhatatlan jel</p>
-                                <p>5:22</p>
+                                <p className='album-song-title'>Bukott angyal</p>
+                                <p>4:57</p>
                             </div>
-                            <div className='album-song album-song-recommended' key={5} onClick={() => props.changeSong(5)}>
+                            <div className='album-song album-song-recommended' key={5} onClick={() => props.changeSong(9)}>
                                 <p>2</p>
-                                <p className='album-song-title'>Tűzhordozó</p>
-                                <p>4:42</p>
-                            </div>
-                            <div className='album-song album-song-recommended' key={2} onClick={() => props.changeSong(2)}>
-                                <p>3</p>
-                                <p className='album-song-title'>Titkos alagút</p>
-                                <p>3:02</p>
-                            </div>
-                            <div className='album-song album-song-recommended' key={9} onClick={() => props.changeSong(9)}>
-                                <p>4</p>
                                 <p className='album-song-title'>Fekete krónika</p>
                                 <p>4:12</p>
                             </div>
-
+                            <div className='album-song album-song-recommended' key={2} onClick={() => props.changeSong(11)}>
+                                <p>3</p>
+                                <p className='album-song-title'>Szolgáló</p>
+                                <p>3:55</p>
                             </div>
+                            <div className='album-song album-song-recommended' key={9} onClick={() => props.changeSong(10)}>
+                                <p>4</p>
+                                <p className='album-song-title'>Belső háború</p>
+                                <p>3:34</p>
+                            </div>
+
                         </div>
                     </div>
+
+                </div>
 
 
                     <div className="mainpage-recommend player-mainpage playing-now-container">

@@ -12,6 +12,7 @@ import {Albums} from "./Albums";
 import {Members} from "./Members";
 import {Events} from "./Events";
 import { TulzoLangAlbum } from "./albums/TulzoLangAlbum";
+import { DemoAlbum } from "./albums/demoAlbum";
 import { MobileNavbar } from "../components/Navbar/MobileNavbar/MobileNavbar.js";
 
 
@@ -135,6 +136,17 @@ export function Home() {
         };
       }, []);
     
+    const listAlbum = (selectedName) => {
+        let songs = [];
+        for (const key of Object.keys(songsdata)) {
+            const val = songsdata[key];
+            if (val.album_title === selectedName) {
+                songs.push(val);
+            }
+
+        }
+        return songs;
+    };
 
 
     const selectAlbum = (selectedName) => {
@@ -339,6 +351,7 @@ export function Home() {
     const changeSong = (index) => {
         setIsPlaying(true);
         const songIndex = songs.findIndex(x => x.id === index);
+        selectAlbum(songs[songIndex].album_title);
         setCurrentSong(songs[songIndex]);
 
         openPlayerComponent();
@@ -394,7 +407,7 @@ export function Home() {
   return (
       <div>
         <AudioContext.Provider value={currentSong}>
-            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} preload="auto" onCanPlayThrough={handleCanPlayThrough} onWaiting={handleWaiting} id="audio" />
+            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} onCanPlayThrough={handleCanPlayThrough} onWaiting={handleWaiting} id="audio" />
             <Router>
                 <MobileNavbar toggleMobileNavbar={toggleMobileNavbar} />    
                 <Navbar toggleMobileNavbar={toggleMobileNavbar} shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
@@ -413,7 +426,8 @@ export function Home() {
                         
 
                         <Route path={"/albums"} element={<Albums selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} /> } />
-                        <Route path={"/album/tulzo-lang"} element={<TulzoLangAlbum selectAlbum={selectAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
+                        <Route path={"/album/tulzo-lang"} element={<TulzoLangAlbum selectAlbum={selectAlbum} listAlbum={listAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
+                        <Route path={"/album/demo"} element={<DemoAlbum selectAlbum={selectAlbum} listAlbum={listAlbum} openPlayerComponent={openPlayerComponent} changeSong={changeSong} playList={playList} />} />
                         <Route path={"/events"} element={<Events />} />
                         <Route path={"/members"} element={<Members />} />
                         <Route path={"/contacts"} element={<Contacts />} />

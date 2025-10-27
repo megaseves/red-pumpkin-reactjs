@@ -4,11 +4,11 @@ import {
   faPlay
 } from "@fortawesome/free-solid-svg-icons";
 
-export function TulzoLangAlbum(props) {
+export function DemoAlbum(props) {
 
   let i = 0;
 
-  let listAlbum = props.listAlbum("Túlzó láng");
+  let listAlbum = props.listAlbum("Demó");
   
   return (
       <div className="album-container-div">
@@ -16,21 +16,21 @@ export function TulzoLangAlbum(props) {
             
             <div className='album-header'>
 
-              <div className='album-cover-container' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/album_borito_tulzo_lang.webp'}`}}>
+              <div className='album-cover-container' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/albumBorito.webp'}`}}>
 
               </div>
               
               <div className='album-details-div'>
-                <div className='album-title-div'><h1>Túlzó láng</h1></div>
-                <div className='album-title-p-div'><p>Album • 2025</p></div>
-                <div className='album-title-p2-div'><p>4 dal • 17 perc 8 másodperc</p></div> {/* 2 854,2 másodperc */}
-                <div className='album-description-div'><p>Első album a zenekar életében.</p></div>
+                <div className='album-title-div'><h1>Demó album</h1></div>
+                <div className='album-title-p-div'><p>Album • 2018</p></div>
+                <div className='album-title-p2-div'><p>11 dal • 47 perc 57 másodperc</p></div> {/* 2 854,2 másodperc */}
+                <div className='album-description-div'><p>Demó album. Teljesen amatőr kezdeményezéssel indult a Reménytelen c. dal megszületésével. Az albumon jelentősen fellelhető minőségi változás egyes dalok között.</p></div>
                 
                 <div className='album-control-btns'>
                   <span className='album-control-play-btn' onClick={() => {
-                                    props.selectAlbum("Túlzó láng");
+                                    props.selectAlbum("Demó");
                                     props.openPlayerComponent();
-                                    props.changeSong(15);
+                                    props.changeSong(11);
                                 }}><FontAwesomeIcon className={"play-audio"} icon={faPlay} /> <span>Lejátszás</span></span>
                 </div>
               </div>

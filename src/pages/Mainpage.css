@@ -1,5 +1,5 @@
 #home-bg {
-    background-image: url('/public/playerBackground.jpg');
+    background-image: url('/public/rp_bg.webp');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,7 +9,7 @@
 
     z-index: -100;
 
-    filter: blur(100px);
+    filter: blur(80px);
     opacity: 0.3;
 
     width: 100vw;
@@ -26,6 +26,32 @@
     flex-direction: column;
 
     padding: 60px 0;
+}
+
+.new-songs {
+    display: flex;
+    gap: 30px;
+}
+.new-song-album {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    
+    position: relative;
+}
+.new-song-album-img {
+    width: 230px;
+    border-radius: 12px;
+
+    -webkit-transition: all 150ms ease-in-out; 
+    -moz-transition: all 150ms ease-in-out; 
+    transition: all 150ms ease-in-out; 
+
+}
+.new-song-album-img:hover {
+    transform: scale(1.2) rotate(3deg);
+    cursor: pointer;
 }
 
 .mainpage-container h2 {
@@ -268,6 +294,16 @@
 
 
 @media screen and (max-width: 890px) {
+    .new-songs {
+        flex-direction: column;
+    }
+    .mainpage-new-songs-container {
+        height: auto !important
+
+    }
+    .new-song-album-img {
+        width: 100%;
+    }
     .song-card {
         width: 150px;
         height: 150px;
@@ -302,6 +338,32 @@
         height: 150px;
     
     }
+    .mainpage-albums-container {
+        flex-direction: column !important;
+        gap: 40px;
+    }
+    .second-mainpage-content {
+        width: 100%;
+    }
+    .mainpage-player {
+        width: 100%;
+    }
+    .random-btn-on-mainpage {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
+    .album-card-mainpage {
+        width: 100%;
+        height: 100%;
+    }
+    .album-card-img-mainpage, .album-card-img-container-mainpage {
+        width: 100%;
+        height: 100%;
+    }
+    .new-song-album-img:hover {
+        transform: none
+    }
 }
 
 @media only screen and (max-width: 920px) and (min-width: 500px) {
@@ -335,7 +397,7 @@
         scrollbar-width: none;
     }
     .mainpage-albums-container {
-        flex-direction: row;
+        flex-direction: row !important;
         gap: 40px;
     }
 }
