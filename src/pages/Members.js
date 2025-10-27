@@ -19,10 +19,6 @@ export function Members() {
                     <div className='member-title'>Áron</div>
                     <div className='member-role'>basszusgitár</div>
                 </div>
-                <div className='member' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/members/fenyvesi_david_red_pumpkin_pic.png'})`}}>
-                    <div className='member-title'>Dávid</div>
-                    <div className='member-role'>szintetizátor</div>
-                </div>
                 <div className='member no-one' style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/members/noone.png'})`}}>
                     <div className='member-title'>Keressük...</div>
                     <div className='member-role'>ének</div>

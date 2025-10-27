@@ -394,7 +394,7 @@ export function Home() {
   return (
       <div>
         <AudioContext.Provider value={currentSong}>
-            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} autoPlay preload="auto" onCanPlayThrough={handleCanPlayThrough} onWaiting={handleWaiting} id="audio" />
+            <audio src={currentSong.url} ref={audioElem} onTimeUpdate={onPlaying} onEnded={endedAudio} preload="auto" onCanPlayThrough={handleCanPlayThrough} onWaiting={handleWaiting} id="audio" />
             <Router>
                 <MobileNavbar toggleMobileNavbar={toggleMobileNavbar} />    
                 <Navbar toggleMobileNavbar={toggleMobileNavbar} shufflePlayList={shufflePlayList} openPlayerComponent={openPlayerComponent} closePlayerComponent={closePlayerComponent} />
